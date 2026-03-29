@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next.js Template",
-  description: "A minimal Next.js starter template",
+  title: "ONIMIX — Virtual Football Analysis Engine",
+  description: "Apply the ONIMIX dual-signal framework to analyze SportyBet virtual football slots",
 };
 
 export default function RootLayout({
