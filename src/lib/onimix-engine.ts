@@ -58,10 +58,21 @@ function emptyCard(team: string): TeamEnergyCard {
 function computeFlags(card: TeamEnergyCard): TeamFlag[] {
   const flags: TeamFlag[] = [];
 
+  // No data at all = unknown energy
+  if (card.lastHomeScore === null && card.lastAwayScore === null) {
+    flags.push("UNKNOWN");
+    return flags;
+  }
+
   if (card.lastHomeScore === 0) flags.push("HOME_ZERO_TRAP");
   if (card.lastAwayScore === 0) flags.push("AWAY_ZERO_TRAP");
   if (card.lastGoalsScored !== null && card.lastGoalsScored >= 3) flags.push("COOLDOWN");
   if (card.lastGoalsConceeded !== null && card.lastGoalsConceeded >= 4) flags.push("REPAIR");
+
+  // Low energy flags — scored exactly 1 (not zero, not strong)
+  if (card.lastAwayScore === 1) flags.push("LOW_AWAY_ENERGY");
+  if (card.lastHomeScore === 1) flags.push("LOW_HOME_ENERGY");
+
   if (flags.length === 0) flags.push("CLEAN");
 
   return flags;
@@ -155,6 +166,42 @@ function checkInstantSkips(
     return { skip: true, reason: `${awayTeam} in COOLDOWN (scored 3+ recently)` };
   }
 
+  // Skip 8 (NEW): Both teams played AWAY yesterday and both scored ≤1
+  // Combined low away energy — not enough firepower to guarantee 2+ goals today
+  const homeWasAway = homeCard?.lastAwayDate !== null && homeCard?.lastHomeDate === null;
+  const awayWasAway = awayCard?.lastAwayDate !== null && awayCard?.lastHomeDate === null;
+  if (homeWasAway && awayWasAway) {
+    const homeAwayScore = homeCard?.lastAwayScore ?? 0;
+    const awayAwayScore = awayCard?.lastAwayScore ?? 0;
+    if (homeAwayScore <= 1 && awayAwayScore <= 1) {
+      return {
+        skip: true,
+        reason: `Both teams played AWAY yesterday with low scores (${homeTeam} scored ${homeAwayScore}, ${awayTeam} scored ${awayAwayScore}) — combined low energy`,
+      };
+    }
+  }
+
+  // Skip 9 (NEW): Unknown team energy — no yesterday data + opponent not strong
+  if (homeCard?.flags.includes("UNKNOWN") || awayCard?.flags.includes("UNKNOWN")) {
+    const unknownTeam = homeCard?.flags.includes("UNKNOWN") ? homeTeam : awayTeam;
+    const knownCard = homeCard?.flags.includes("UNKNOWN") ? awayCard : homeCard;
+    // Only allow pick if known opponent scored 2+ and is clean
+    const knownIsStrong =
+      knownCard &&
+      !knownCard.flags.includes("UNKNOWN") &&
+      !knownCard.flags.includes("COOLDOWN") &&
+      !knownCard.flags.includes("REPAIR") &&
+      !knownCard.flags.includes("HOME_ZERO_TRAP") &&
+      !knownCard.flags.includes("AWAY_ZERO_TRAP") &&
+      (knownCard.lastGoalsScored ?? 0) >= 2;
+    if (!knownIsStrong) {
+      return {
+        skip: true,
+        reason: `${unknownTeam} has NO yesterday same-slot data (unknown energy) and opponent is not strong enough to carry`,
+      };
+    }
+  }
+
   // Skip 5: 0:0 probability above 10%
   if (json && json.score00prob > 10) {
     return { skip: true, reason: `0:0 probability ${json.score00prob}% exceeds 10% threshold` };
@@ -186,11 +233,13 @@ function checkNewOpponentOverride(
   json: PreMatchJSON | null
 ): boolean {
   if (!opponentCard) return false;
+  if (opponentCard.flags.includes("UNKNOWN")) return false; // unknown energy cannot override
   const scored2Plus = (opponentCard.lastHomeScore ?? 0) >= 2 || (opponentCard.lastAwayScore ?? 0) >= 2;
   const noZeroTrap = !opponentCard.flags.includes("HOME_ZERO_TRAP") && !opponentCard.flags.includes("AWAY_ZERO_TRAP");
   const notRepair = !opponentCard.flags.includes("REPAIR");
+  const notCooldown = !opponentCard.flags.includes("COOLDOWN");
   const jsonOk = json ? json.over05 >= 75 : false;
-  return scored2Plus && noZeroTrap && notRepair && jsonOk;
+  return scored2Plus && noZeroTrap && notRepair && notCooldown && jsonOk;
 }
 
 // ─── Yesterday Rules (Part A) ─────────────────────────────────────────────────
@@ -322,21 +371,68 @@ function evaluateYesterdayRules(
     });
   }
 
-  // A8 — Both teams away yesterday
-  const bothAway =
-    homeCard?.lastAwayDate !== null && awayCard?.lastAwayDate !== null;
-  if (bothAway) {
-    const bothScored =
-      (homeCard?.lastAwayScore ?? 0) >= 1 && (awayCard?.lastAwayScore ?? 0) >= 1;
+  // A8 — Both teams away yesterday (UPGRADED)
+  // Scoring: both scored 2+ = 2pts | one scored 2+ one scored 1 = 1pt | both scored exactly 1 = 0pts DANGER | either 0 = already caught by A2
+  const homeWasAwayOnly = homeCard?.lastAwayDate !== null && homeCard?.lastHomeDate === null;
+  const awayWasAwayOnly = awayCard?.lastAwayDate !== null && awayCard?.lastHomeDate === null;
+  if (homeWasAwayOnly && awayWasAwayOnly) {
+    const homeAway = homeCard?.lastAwayScore ?? 0;
+    const awayAway = awayCard?.lastAwayScore ?? 0;
+    const bothScored2Plus = homeAway >= 2 && awayAway >= 2;
+    const onlyOneStrong = (homeAway >= 2 && awayAway === 1) || (homeAway === 1 && awayAway >= 2);
+    const bothLow = homeAway <= 1 && awayAway <= 1;
+    const a8Points = bothScored2Plus ? 2 : onlyOneStrong ? 1 : 0;
     rules.push({
       rule: "A8",
-      label: "Both Teams Away Yesterday Scored",
-      passed: bothScored,
-      points: bothScored ? 1 : 0,
-      maxPoints: 1,
-      detail: bothScored
-        ? `${homeTeam} scored ${homeCard?.lastAwayScore}, ${awayTeam} scored ${awayCard?.lastAwayScore} away`
-        : `One or both scored 0 away yesterday`,
+      label: "Both Teams Away Yesterday — Energy Check",
+      passed: !bothLow,
+      points: a8Points,
+      maxPoints: 2,
+      detail: bothLow
+        ? `DANGER: Both scored ≤1 away (${homeTeam}: ${homeAway}, ${awayTeam}: ${awayAway}) — low combined energy`
+        : bothScored2Plus
+        ? `Both scored 2+ away (${homeTeam}: ${homeAway}, ${awayTeam}: ${awayAway}) — strong`
+        : `Mixed energy: ${homeTeam}: ${homeAway}, ${awayTeam}: ${awayAway} away`,
+    });
+  } else if (homeCard?.lastAwayDate !== null || awayCard?.lastAwayDate !== null) {
+    // One of them was away, one was home — standard check
+    const awayTeamScore = awayCard?.lastAwayScore ?? null;
+    if (awayTeamScore !== null) {
+      const passed = awayTeamScore >= 1;
+      rules.push({
+        rule: "A8",
+        label: "Away Team Away Score Yesterday",
+        passed,
+        points: passed ? (awayTeamScore >= 2 ? 2 : 1) : 0,
+        maxPoints: 2,
+        detail: `${awayTeam} scored ${awayTeamScore} away yesterday`,
+      });
+    }
+  }
+
+  // A9 (NEW) — Unknown team energy check
+  const homeUnknown = homeCard?.flags.includes("UNKNOWN") ?? true;
+  const awayUnknown = awayCard?.flags.includes("UNKNOWN") ?? true;
+  if (homeUnknown || awayUnknown) {
+    const unknownTeams = [homeUnknown ? homeTeam : null, awayUnknown ? awayTeam : null]
+      .filter(Boolean)
+      .join(", ");
+    rules.push({
+      rule: "A9",
+      label: "Unknown Team Energy",
+      passed: false,
+      points: 0,
+      maxPoints: 3,
+      detail: `${unknownTeams} — no yesterday same-slot data. Energy unknown, reduces confidence`,
+    });
+  } else {
+    rules.push({
+      rule: "A9",
+      label: "Both Teams Have Yesterday Data",
+      passed: true,
+      points: 3,
+      maxPoints: 3,
+      detail: `Both ${homeTeam} and ${awayTeam} have same-slot history`,
     });
   }
 
