@@ -303,6 +303,23 @@ function checkInstantSkips(
     }
   }
 
+  // Skip 18 (NEW): Both teams scored 2+ yesterday but BOTH switched positions
+  // Double position switch trap — strong form from both sides but unreliable venue performance
+  const homeSwitched = (homeCard?.lastHomeDate !== null && homeCard?.lastAwayDate === null) ||
+    (homeCard?.lastAwayDate !== null && homeCard?.lastHomeDate === null);
+  const awaySwitched = (awayCard?.lastHomeDate !== null && awayCard?.lastAwayDate === null) ||
+    (awayCard?.lastAwayDate !== null && awayCard?.lastHomeDate === null);
+  if (homeSwitched && awaySwitched) {
+    const homePrevScore = homeCard?.lastHomeScore ?? homeCard?.lastAwayScore ?? 0;
+    const awayPrevScore = awayCard?.lastHomeScore ?? awayCard?.lastAwayScore ?? 0;
+    if (homePrevScore >= 2 && awayPrevScore >= 2) {
+      return {
+        skip: true,
+        reason: `Both teams scored 2+ yesterday but BOTH switched positions (${homeTeam}: ${homePrevScore}, ${awayTeam}: ${awayPrevScore}) — double position switch trap`,
+      };
+    }
+  }
+
   // Skip 9 (NEW): Unknown team energy — no yesterday data + opponent not strong
   if (homeCard?.flags.includes("UNKNOWN") || awayCard?.flags.includes("UNKNOWN")) {
     const unknownTeam = homeCard?.flags.includes("UNKNOWN") ? homeTeam : awayTeam;
@@ -712,6 +729,28 @@ function evaluateYesterdayRules(
       detail: bothLow
         ? `TRAP: Both teams scored ≤1 at home yesterday (${homeTeam}: ${a16HomePrevHome}, ${awayTeam}: ${a16AwayPrevHome}) — combined low home energy`
         : `${homeTeam} scored ${a16HomePrevHome}, ${awayTeam} scored ${a16AwayPrevHome} at home — acceptable`,
+    });
+  }
+
+  // A17 (NEW) — Both teams scored 2+ yesterday but BOTH switched positions
+  // Double position switch — strong form but unreliable in new venue
+  const homeSwitchedA17 = (homeCard?.lastHomeDate !== null && homeCard?.lastAwayDate === null) ||
+    (homeCard?.lastAwayDate !== null && homeCard?.lastHomeDate === null);
+  const awaySwitchedA17 = (awayCard?.lastHomeDate !== null && awayCard?.lastAwayDate === null) ||
+    (awayCard?.lastAwayDate !== null && awayCard?.lastHomeDate === null);
+  if (homeSwitchedA17 && awaySwitchedA17) {
+    const a17HomePrev = homeCard?.lastHomeScore ?? homeCard?.lastAwayScore ?? 0;
+    const a17AwayPrev = awayCard?.lastHomeScore ?? awayCard?.lastAwayScore ?? 0;
+    const doubleSwitch = a17HomePrev >= 2 && a17AwayPrev >= 2;
+    rules.push({
+      rule: "A17",
+      label: "Double Position Switch",
+      passed: !doubleSwitch,
+      points: doubleSwitch ? 0 : 2,
+      maxPoints: 2,
+      detail: doubleSwitch
+        ? `TRAP: Both scored 2+ yesterday but both switched positions (${homeTeam}: ${a17HomePrev}, ${awayTeam}: ${a17AwayPrev}) — double position switch`
+        : `${homeTeam} scored ${a17HomePrev}, ${awayTeam} scored ${a17AwayPrev} — acceptable`,
     });
   }
 
