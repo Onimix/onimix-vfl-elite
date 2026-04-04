@@ -320,6 +320,38 @@ function checkInstantSkips(
     }
   }
 
+  // Skip 19 (NEW): Home team scored 2+ AWAY yesterday, now HOME but scored ≤1
+  // Strong away form → weak home form after position switch
+  const homeStrongAwayToWeakHome =
+    homeCard?.lastAwayDate !== null && homeCard?.lastHomeDate === null;
+  if (homeStrongAwayToWeakHome) {
+    const homePrevAway = homeCard?.lastAwayScore ?? 0;
+    const homePrevHome = homeCard?.lastHomeScore;
+    if (homePrevAway >= 2 && (homePrevHome === null || homePrevHome <= 1)) {
+      return {
+        skip: true,
+        reason: `${homeTeam} scored ${homePrevAway} away yesterday (strong) but now weak at HOME (${homePrevHome ?? 0}) — strong-away-to-weak-home trap`,
+      };
+    }
+  }
+
+  // Skip 20 (NEW): Both teams stayed in SAME position but both scored 2+ yesterday, both low today
+  // High form collapse — both dominated in same position yesterday, both fail today
+  const bothHomeS20 = homeCard?.lastHomeDate !== null && awayCard?.lastHomeDate !== null;
+  const bothAwayS20 = homeCard?.lastAwayDate !== null && awayCard?.lastAwayDate !== null;
+  if (bothHomeS20 || bothAwayS20) {
+    const samePosition = bothHomeS20 ? "HOME" : "AWAY";
+    const homePrevSame = bothHomeS20 ? (homeCard?.lastHomeScore ?? 0) : (homeCard?.lastAwayScore ?? 0);
+    const awayPrevSame = bothAwayS20 ? (awayCard?.lastHomeScore ?? 0) : (awayCard?.lastAwayScore ?? 0);
+    // Note: actual result low, but we detect based on if yesterday was high
+    if (homePrevSame >= 2 && awayPrevSame >= 2) {
+      return {
+        skip: true,
+        reason: `Both teams played ${samePosition} yesterday and both scored 2+ (${homeTeam}: ${homePrevSame}, ${awayTeam}: ${awayPrevSame}) but today both low — high-form collapse trap`,
+      };
+    }
+  }
+
   // Skip 9 (NEW): Unknown team energy — no yesterday data + opponent not strong
   if (homeCard?.flags.includes("UNKNOWN") || awayCard?.flags.includes("UNKNOWN")) {
     const unknownTeam = homeCard?.flags.includes("UNKNOWN") ? homeTeam : awayTeam;
@@ -751,6 +783,45 @@ function evaluateYesterdayRules(
       detail: doubleSwitch
         ? `TRAP: Both scored 2+ yesterday but both switched positions (${homeTeam}: ${a17HomePrev}, ${awayTeam}: ${a17AwayPrev}) — double position switch`
         : `${homeTeam} scored ${a17HomePrev}, ${awayTeam} scored ${a17AwayPrev} — acceptable`,
+    });
+  }
+
+  // A18 (NEW) — Home team strong away (2+) → weak home (≤1)
+  const homeStrongAwayA18 =
+    homeCard?.lastAwayDate !== null && homeCard?.lastHomeDate === null;
+  if (homeStrongAwayA18) {
+    const a18PrevAway = homeCard?.lastAwayScore ?? 0;
+    const a18PrevHome = homeCard?.lastHomeScore;
+    const strongToWeak = a18PrevAway >= 2 && (a18PrevHome === null || a18PrevHome <= 1);
+    rules.push({
+      rule: "A18",
+      label: "Strong Away → Weak Home",
+      passed: !strongToWeak,
+      points: strongToWeak ? 0 : 2,
+      maxPoints: 2,
+      detail: strongToWeak
+        ? `TRAP: ${homeTeam} scored ${a18PrevAway} away (strong) but weak at HOME (${a18PrevHome ?? 0}) — strong-away-to-weak-home`
+        : `${homeTeam} away ${a18PrevAway} → home ${a18PrevHome ?? 0} — acceptable`,
+    });
+  }
+
+  // A19 (NEW) — Both teams same position yesterday with both 2+ scores
+  const bothHomeA19 = homeCard?.lastHomeDate !== null && awayCard?.lastHomeDate !== null;
+  const bothAwayA19 = homeCard?.lastAwayDate !== null && awayCard?.lastAwayDate !== null;
+  if (bothHomeA19 || bothAwayA19) {
+    const samePos = bothHomeA19 ? "home" : "away";
+    const a19HomePrev = bothHomeA19 ? (homeCard?.lastHomeScore ?? 0) : (homeCard?.lastAwayScore ?? 0);
+    const a19AwayPrev = bothAwayA19 ? (awayCard?.lastHomeScore ?? 0) : (awayCard?.lastAwayScore ?? 0);
+    const highFormCollapse = a19HomePrev >= 2 && a19AwayPrev >= 2;
+    rules.push({
+      rule: "A19",
+      label: "Both Same Position High Form",
+      passed: !highFormCollapse,
+      points: highFormCollapse ? 0 : 2,
+      maxPoints: 2,
+      detail: highFormCollapse
+        ? `TRAP: Both ${samePos} yesterday with 2+ (${homeTeam}: ${a19HomePrev}, ${awayTeam}: ${a19AwayPrev}) — high-form collapse trap`
+        : `${homeTeam} ${samePos} ${a19HomePrev}, ${awayTeam} ${samePos} ${a19AwayPrev} — acceptable`,
     });
   }
 
