@@ -33,7 +33,8 @@ export type TeamFlag =
   | "LOW_AWAY_ENERGY"   // scored exactly 1 away yesterday — weak signal
   | "LOW_HOME_ENERGY"   // scored exactly 1 home yesterday — weak signal
   | "UNKNOWN"           // no data in yesterday's same-slot results
-  | "CLEAN";
+  | "CLEAN"
+  | "HIGH_SCORER";
 
 // ─── Rule Evaluation ──────────────────────────────────────────────────────────
 

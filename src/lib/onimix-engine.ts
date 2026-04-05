@@ -61,15 +61,16 @@ function computeFlags(card: TeamEnergyCard): TeamFlag[] {
     return flags;
   }
 
-  if (card.lastHomeScore === 0) flags.push("HOME_ZERO_TRAP");
-  if (card.lastAwayScore === 0) flags.push("AWAY_ZERO_TRAP");
-  if (card.lastGoalsScored !== null && card.lastGoalsScored >= 3) flags.push("COOLDOWN");
-  if (card.lastGoalsConceded !== null && card.lastGoalsConceded >= 4) flags.push("REPAIR");
+  if (card.lastGoalsScored !== null && card.lastGoalsScored >= 3) {
+    flags.push("HIGH_SCORER");
+  }
+  if (card.lastGoalsConceded !== null && card.lastGoalsConceded >= 4) {
+    flags.push("REPAIR");
+  }
 
-  if (card.lastAwayScore === 1) flags.push("LOW_AWAY_ENERGY");
-  if (card.lastHomeScore === 1) flags.push("LOW_HOME_ENERGY");
-
-  if (flags.length === 0) flags.push("CLEAN");
+  if (flags.length === 0) {
+    flags.push("CLEAN");
+  }
 
   return flags;
 }
@@ -81,196 +82,129 @@ export function analyzeMatch(
   date: string,
   yesterdayResults: MatchResult[]
 ): MatchAnalysis {
-  const energyCards = buildEnergyCards(yesterdayResults);
+  const sameSlotResults = yesterdayResults.filter((r) => r.slot === slot);
+  const energyCards = buildEnergyCards(sameSlotResults);
   const homeCard = energyCards.get(homeTeam);
   const awayCard = energyCards.get(awayTeam);
 
-  const yesterdayRules = evaluateYesterdayRules(homeTeam, awayTeam, homeCard, awayCard, yesterdayResults);
+  const skipResult = checkInstantSkips(homeTeam, awayTeam, homeCard, awayCard, sameSlotResults);
 
-  const instantSkipResult = checkInstantSkips(homeCard, awayCard, homeTeam, awayTeam, yesterdayResults);
+  let score = 0;
 
-  let yesterdayScore = 0;
-
-  if (!instantSkipResult.skip) {
-    yesterdayScore = Math.min(20, yesterdayRules.reduce((s, r) => s + r.points, 0));
+  if (!skipResult.skip) {
+    const scoringRules = evaluateScoringRules(homeTeam, awayTeam, homeCard, awayCard, sameSlotResults);
+    score = Math.min(14, scoringRules.reduce((s, r) => s + r.points, 0));
   }
 
-  const decision = resolveDecision(yesterdayScore, instantSkipResult.skip);
-  const confidence = resolveConfidence(yesterdayScore, instantSkipResult.skip);
+  const decision = resolveDecision(score, skipResult.skip);
+  const confidence = resolveConfidence(score, skipResult.skip);
 
   return {
     homeTeam,
     awayTeam,
     slot,
     date,
-    yesterdayScore,
+    yesterdayScore: score,
     jsonScore: 0,
-    totalScore: yesterdayScore,
+    totalScore: score,
     decision,
     confidence,
-    instantSkip: instantSkipResult.skip,
-    instantSkipReason: instantSkipResult.reason,
-    yesterdayRules,
+    instantSkip: skipResult.skip,
+    instantSkipReason: skipResult.reason,
+    yesterdayRules: evaluateScoringRules(homeTeam, awayTeam, homeCard, awayCard, sameSlotResults),
     jsonRules: [],
   };
 }
 
 function checkInstantSkips(
-  homeCard: TeamEnergyCard | undefined,
-  awayCard: TeamEnergyCard | undefined,
   homeTeam: string,
   awayTeam: string,
+  homeCard: TeamEnergyCard | undefined,
+  awayCard: TeamEnergyCard | undefined,
   yesterdayResults: MatchResult[]
 ): { skip: boolean; reason: string | null } {
-  
-  // Skip 1: Zero trap
-  if (homeCard?.flags.includes("HOME_ZERO_TRAP")) {
-    return { skip: true, reason: `${homeTeam} scored 0 at home yesterday` };
-  }
-  if (awayCard?.flags.includes("AWAY_ZERO_TRAP")) {
-    return { skip: true, reason: `${awayTeam} scored 0 away yesterday` };
+  if (!homeCard || !awayCard) {
+    return { skip: false, reason: null };
   }
 
-  // Skip 2: Repair mode (conceded 4+)
-  if (homeCard?.flags.includes("REPAIR")) {
-    return { skip: true, reason: `${homeTeam} conceded 4+` };
-  }
-  if (awayCard?.flags.includes("REPAIR")) {
-    return { skip: true, reason: `${awayTeam} conceded 4+` };
+  const homeScoredAny = homeCard.lastHomeScore ?? homeCard.lastAwayScore;
+  const awayScoredAny = awayCard.lastHomeScore ?? awayCard.lastAwayScore;
+
+  const homeConcededAny = homeCard.lastHomeDate !== null
+    ? homeCard.lastGoalsConceded
+    : homeCard.lastAwayDate !== null
+      ? homeCard.lastGoalsConceded
+      : null;
+  const awayConcededAny = awayCard.lastHomeDate !== null
+    ? awayCard.lastGoalsConceded
+    : awayCard.lastAwayDate !== null
+      ? awayCard.lastGoalsConceded
+      : null;
+
+  const homePlayedHome = homeCard.lastHomeDate !== null;
+  const homePlayedAway = homeCard.lastAwayDate !== null;
+  const awayPlayedHome = awayCard.lastHomeDate !== null;
+  const awayPlayedAway = awayCard.lastAwayDate !== null;
+
+  const homeSwitched = (homePlayedHome && !homePlayedAway) || (homePlayedAway && !homePlayedHome);
+  const awaySwitched = (awayPlayedHome && !awayPlayedAway) || (awayPlayedAway && !awayPlayedHome);
+
+  const homeScoredYesterday = homeCard.lastHomeScore ?? homeCard.lastAwayScore ?? 0;
+  const awayScoredYesterday = awayCard.lastHomeScore ?? awayCard.lastAwayScore ?? 0;
+
+  const homeHighYesterday = homeScoredYesterday >= 3;
+  const awayHighYesterday = awayScoredYesterday >= 3;
+
+  const homeFlip = homeSwitched && homeHighYesterday;
+  const awayFlip = awaySwitched && awayHighYesterday;
+
+  if (homeScoredAny !== null && homeScoredAny === 0) {
+    return { skip: true, reason: `${homeTeam} scored 0 - zero trap` };
   }
 
-  // Skip 3: Cooldown (scored 3+) - but now we allow it (high scoring)
-  // REMOVED - cooldown teams actually score
+  if (awayScoredAny !== null && awayScoredAny === 0) {
+    return { skip: true, reason: `${awayTeam} scored 0 - zero trap` };
+  }
 
-  // NEW PATTERN: Score compression - after high score, flip position = under
-  // Home team scored 3+ at home, now playing away
-  if (homeCard && homeCard.lastHomeScore !== null && homeCard.lastHomeScore >= 3) {
-    const hasAwayHistory = homeCard.lastAwayDate !== null;
-    if (!hasAwayHistory) {
-      return {
-        skip: true,
-        reason: `${homeTeam} scored ${homeCard.lastHomeScore} at home, now away — score compression`,
-      };
+  if (homeConcededAny !== null && homeConcededAny >= 4) {
+    return { skip: true, reason: `${homeTeam} conceded 4+ - repair mode` };
+  }
+
+  if (awayConcededAny !== null && awayConcededAny >= 4) {
+    return { skip: true, reason: `${awayTeam} conceded 4+ - repair mode` };
+  }
+
+  if (homeFlip || awayFlip) {
+    if (homeFlip && awayFlip) {
+      return { skip: true, reason: "Both teams flipping after 3+ scores" };
     }
-  }
-
-  // Away team scored 3+ away, now playing home
-  if (awayCard && awayCard.lastAwayScore !== null && awayCard.lastAwayScore >= 3) {
-    const hasHomeHistory = awayCard.lastHomeDate !== null;
-    if (!hasHomeHistory) {
-      return {
-        skip: true,
-        reason: `${awayTeam} scored ${awayCard.lastAwayScore} away, now home — score compression`,
-      };
+    if (homeFlip) {
+      return { skip: true, reason: `${homeTeam} scored 3+ and switched positions - compression` };
     }
+    return { skip: true, reason: `${awayTeam} scored 3+ and switched positions - compression` };
   }
 
-  // NEW PATTERN: Position flip - high score at home, now away = under
-  if (homeCard?.lastHomeDate !== null && homeCard?.lastAwayDate === null) {
-    const homePrevHome = homeCard?.lastHomeScore ?? 0;
-    if (homePrevHome >= 2) {
-      return {
-        skip: true,
-        reason: `${homeTeam} scored ${homePrevHome} at home, now away — position flip risk`,
-      };
-    }
+  if (homeScoredYesterday === 1 && awayScoredYesterday === 1) {
+    return { skip: true, reason: "Both scored exactly 1 - combined low energy" };
   }
 
-  // Away team scored high, now home
-  if (awayCard?.lastAwayDate !== null && awayCard?.lastHomeDate === null) {
-    const awayPrevAway = awayCard?.lastAwayScore ?? 0;
-    if (awayPrevAway >= 2) {
-      return {
-        skip: true,
-        reason: `${awayTeam} scored ${awayPrevAway} away, now home — position flip risk`,
-      };
-    }
-  }
-
-  // NEW PATTERN: Both low total goals in same position
-  const bothHomeLow = homeCard?.lastHomeDate !== null && awayCard?.lastHomeDate !== null;
-  if (bothHomeLow) {
-    const homeTotal = homeCard?.lastHomeTotalGoals ?? 0;
-    const awayTotal = awayCard?.lastHomeTotalGoals ?? 0;
-    if (homeTotal <= 1 && awayTotal <= 1) {
-      return {
-        skip: true,
-        reason: `Both low total at home (${homeTotal}, ${awayTotal})`,
-      };
-    }
-  }
-
-  const bothAwayLow = homeCard?.lastAwayDate !== null && awayCard?.lastAwayDate !== null;
-  if (bothAwayLow) {
-    const homeTotal = homeCard?.lastAwayTotalGoals ?? 0;
-    const awayTotal = awayCard?.lastAwayTotalGoals ?? 0;
-    if (homeTotal <= 1 && awayTotal <= 1) {
-      return {
-        skip: true,
-        reason: `Both low total away (${homeTotal}, ${awayTotal})`,
-      };
-    }
-  }
-
-  // NEW PATTERN: Both teams scored <=1 (different positions) = strong UNDER
-  const homeScoreAny = homeCard?.lastHomeScore ?? homeCard?.lastAwayScore ?? 2;
-  const awayScoreAny = awayCard?.lastHomeScore ?? awayCard?.lastAwayScore ?? 2;
-  if (homeScoreAny <= 1 && awayScoreAny <= 1) {
-    return {
-      skip: true,
-      reason: `Both scored low (${homeScoreAny}, ${awayScoreAny}) - strong UNDER`,
-    };
-  }
-
-  // NEW PATTERN: Same fixture repeat with low score
   const sameFixture = yesterdayResults.find(
     (r) =>
-      ((r.home === homeTeam && r.away === awayTeam) ||
-        (r.home === awayTeam && r.away === homeTeam))
+      (r.home === homeTeam && r.away === awayTeam) ||
+      (r.home === awayTeam && r.away === homeTeam)
   );
+
   if (sameFixture) {
     const total = sameFixture.homeScore + sameFixture.awayScore;
     if (total <= 1) {
-      return { skip: true, reason: `Same fixture yesterday scored ${total}` };
+      return { skip: true, reason: `Same fixture scored ${total} total - low repeat` };
     }
-  }
-
-  // NEW PATTERN: Double position switch with high scores = unstable
-  const homeSwitched = (homeCard?.lastHomeDate !== null && homeCard?.lastAwayDate === null) ||
-    (homeCard?.lastAwayDate !== null && homeCard?.lastHomeDate === null);
-  const awaySwitched = (awayCard?.lastHomeDate !== null && awayCard?.lastAwayDate === null) ||
-    (awayCard?.lastAwayDate !== null && awayCard?.lastHomeDate === null);
-  if (homeSwitched && awaySwitched) {
-    const homePrev = homeCard?.lastHomeScore ?? homeCard?.lastAwayScore ?? 0;
-    const awayPrev = awayCard?.lastHomeScore ?? awayCard?.lastAwayScore ?? 0;
-    if (homePrev >= 2 && awayPrev >= 2) {
-      return {
-        skip: true,
-        reason: `Both scored 2+ but switched positions`,
-      };
-    }
-  }
-
-  // NEW PATTERN: Both drew (1:1 or 2:2) = draw trap
-  const homeDrew = homeCard && 
-    homeCard.lastGoalsScored !== null && 
-    homeCard.lastGoalsConceded !== null &&
-    homeCard.lastGoalsScored === homeCard.lastGoalsConceded;
-  const awayDrew = awayCard && 
-    awayCard.lastGoalsScored !== null && 
-    awayCard.lastGoalsConceded !== null &&
-    awayCard.lastGoalsScored === awayCard.lastGoalsConceded;
-  if (homeDrew && awayDrew) {
-    return {
-      skip: true,
-      reason: "Both teams drew yesterday — draw trap",
-    };
   }
 
   return { skip: false, reason: null };
 }
 
-function evaluateYesterdayRules(
+function evaluateScoringRules(
   homeTeam: string,
   awayTeam: string,
   homeCard: TeamEnergyCard | undefined,
@@ -279,150 +213,102 @@ function evaluateYesterdayRules(
 ): RuleResult[] {
   const rules: RuleResult[] = [];
 
-  // A1 — Home team scored at home
-  const homeScored = (homeCard?.lastHomeScore ?? 0) >= 1;
-  rules.push({
-    rule: "A1",
-    label: "Home Team Scored",
-    passed: homeScored,
-    points: homeScored ? 2 : 0,
-    maxPoints: 2,
-    detail: homeScored
-      ? `${homeTeam} scored ${homeCard?.lastHomeScore} at home`
-      : `${homeTeam} scored 0 at home`,
-  });
+  if (!homeCard || !awayCard) {
+    return rules;
+  }
 
-  // A2 — Away team scored
-  const awayScored = (awayCard?.lastAwayScore ?? 0) >= 1;
-  rules.push({
-    rule: "A2",
-    label: "Away Team Scored",
-    passed: awayScored,
-    points: awayScored ? 2 : 0,
-    maxPoints: 2,
-    detail: awayScored
-      ? `${awayTeam} scored ${awayCard?.lastAwayScore} away`
-      : `${awayTeam} scored 0 away`,
-  });
+  const homeScored = homeCard.lastHomeScore ?? homeCard.lastAwayScore ?? 0;
+  const awayScored = awayCard.lastHomeScore ?? awayCard.lastAwayScore ?? 0;
 
-  // A3 — Both teams scored (most important - OVER indicator)
-  const bothScored = homeScored && awayScored;
+  const bothScored = homeScored >= 1 && awayScored >= 1;
   rules.push({
-    rule: "A3",
+    rule: "R1",
     label: "Both Teams Scored",
     passed: bothScored,
     points: bothScored ? 4 : 0,
     maxPoints: 4,
-    detail: bothScored
-      ? "Both scored - high OVER probability"
-      : "One or both failed to score",
+    detail: bothScored ? "Strongest OVER indicator" : "One or both failed",
   });
 
-  // A4 — Total goals from both teams in last match >= 2
-  const homeTotal = homeCard?.lastHomeTotalGoals ?? 0;
-  const awayTotal = awayCard?.lastAwayTotalGoals ?? 0;
-  const totalGoalsOk = (homeTotal + awayTotal) >= 2;
+  const homeTotal = homeCard.lastHomeTotalGoals ?? homeCard.lastAwayTotalGoals ?? 0;
+  const homeHighTotal = homeTotal >= 3;
   rules.push({
-    rule: "A4",
-    label: "Total Goals >= 2",
-    passed: totalGoalsOk,
-    points: totalGoalsOk ? 2 : 0,
+    rule: "R2",
+    label: "Home Team High Total",
+    passed: homeHighTotal,
+    points: homeHighTotal ? 2 : 0,
     maxPoints: 2,
-    detail: `Total: ${homeTotal + awayTotal} goals`,
+    detail: homeHighTotal ? `Home total: ${homeTotal} goals` : `Home total: ${homeTotal}`,
   });
 
-  // A5 — No repair mode
-  const homeRepair = homeCard?.flags.includes("REPAIR") ?? false;
-  const awayRepair = awayCard?.flags.includes("REPAIR") ?? false;
-  const noRepair = !homeRepair && !awayRepair;
+  const awayTotal = awayCard.lastHomeTotalGoals ?? awayCard.lastAwayTotalGoals ?? 0;
+  const awayHighTotal = awayTotal >= 3;
   rules.push({
-    rule: "A5",
-    label: "No Repair Mode",
-    passed: noRepair,
-    points: noRepair ? 1 : 0,
+    rule: "R3",
+    label: "Away Team High Total",
+    passed: awayHighTotal,
+    points: awayHighTotal ? 2 : 0,
+    maxPoints: 2,
+    detail: awayHighTotal ? `Away total: ${awayTotal} goals` : `Away total: ${awayTotal}`,
+  });
+
+  const homeScored2 = homeScored >= 2;
+  rules.push({
+    rule: "R4",
+    label: "Home Team 2+",
+    passed: homeScored2,
+    points: homeScored2 ? 2 : 0,
+    maxPoints: 2,
+    detail: homeScored2 ? `${homeTeam} scored ${homeScored}` : `${homeTeam} scored ${homeScored}`,
+  });
+
+  const awayScored2 = awayScored >= 2;
+  rules.push({
+    rule: "R5",
+    label: "Away Team 2+",
+    passed: awayScored2,
+    points: awayScored2 ? 2 : 0,
+    maxPoints: 2,
+    detail: awayScored2 ? `${awayTeam} scored ${awayScored}` : `${awayTeam} scored ${awayScored}`,
+  });
+
+  const homePlayedHome = homeCard.lastHomeDate !== null;
+  const homeConsistent = homePlayedHome && homeScored >= 1;
+  rules.push({
+    rule: "R6",
+    label: "Home Consistent Position",
+    passed: homeConsistent,
+    points: homeConsistent ? 1 : 0,
     maxPoints: 1,
-    detail: noRepair ? "No defense issues" : "Defense concerns",
+    detail: homeConsistent ? "Same position, scored 1+" : "Position inconsistent",
   });
 
-  // A6 — High scoring (cooldown = strong attack)
-  const homeCooldown = homeCard?.flags.includes("COOLDOWN") ?? false;
-  const awayCooldown = awayCard?.flags.includes("COOLDOWN") ?? false;
+  const bothHaveData = (homeCard.lastHomeDate !== null || homeCard.lastAwayDate !== null) &&
+    (awayCard.lastHomeDate !== null || awayCard.lastAwayDate !== null);
   rules.push({
-    rule: "A6",
-    label: "High Scoring Form",
-    passed: homeCooldown || awayCooldown,
-    points: (homeCooldown || awayCooldown) ? 3 : 0,
-    maxPoints: 3,
-    detail: homeCooldown || awayCooldown ? "Strong attack - OVER likely" : "Normal scoring",
-  });
-
-  // A7 — Both have data
-  const homeHasData = homeCard?.lastHomeDate !== null || homeCard?.lastAwayDate !== null;
-  const awayHasData = awayCard?.lastHomeDate !== null || awayCard?.lastAwayDate !== null;
-  const bothHaveData = homeHasData && awayHasData;
-  rules.push({
-    rule: "A7",
-    label: "Both Have History",
+    rule: "R7",
+    label: "Both Have Data",
     passed: bothHaveData,
-    points: bothHaveData ? 2 : 0,
-    maxPoints: 2,
-    detail: bothHaveData ? "Reliable data" : "Limited data",
-  });
-
-  // A8 — POSITIVE: Away team won away (momentum carry)
-  const awayWonAway = awayCard && awayCard.lastAwayScore !== null && 
-                      awayCard.lastAwayScore >= 1 && 
-                      (awayCard.lastGoalsScored ?? 0) > (awayCard.lastGoalsConceded ?? 0);
-  rules.push({
-    rule: "A8",
-    label: "Away Win Momentum",
-    passed: !!awayWonAway,
-    points: awayWonAway ? 2 : 0,
-    maxPoints: 2,
-    detail: awayWonAway ? "Away winner carries momentum" : "No away win momentum",
-  });
-
-  // A9 — POSITIVE: Home team won at home (strong home form)
-  const homeWonHome = homeCard && homeCard.lastHomeScore !== null && 
-                      homeCard.lastHomeScore >= 1 &&
-                      (homeCard.lastGoalsScored ?? 0) > (homeCard.lastGoalsConceded ?? 0);
-  rules.push({
-    rule: "A9",
-    label: "Home Win Form",
-    passed: !!homeWonHome,
-    points: homeWonHome ? 2 : 0,
-    maxPoints: 2,
-    detail: homeWonHome ? "Strong home form" : "No strong home form",
-  });
-
-  // A10 — POSITIVE: Both teams scored in DIFFERENT positions (balanced attack)
-  const homeScoredAway = (homeCard?.lastAwayScore ?? 0) >= 1;
-  const awayScoredHome = (awayCard?.lastHomeScore ?? 0) >= 1;
-  const mixedScoring = (homeScored && awayScoredHome) || (awayScored && homeScoredAway);
-  rules.push({
-    rule: "A10",
-    label: "Mixed Position Scoring",
-    passed: mixedScoring,
-    points: mixedScoring ? 2 : 0,
-    maxPoints: 2,
-    detail: mixedScoring ? "Both score in different positions - OVER likely" : "Limited mixed scoring",
+    points: bothHaveData ? 1 : 0,
+    maxPoints: 1,
+    detail: bothHaveData ? "Reliable data for both" : "Missing data",
   });
 
   return rules;
 }
 
-function resolveDecision(yesterdayScore: number, instantSkip: boolean): MatchAnalysis["decision"] {
+function resolveDecision(score: number, instantSkip: boolean): MatchAnalysis["decision"] {
   if (instantSkip) return "SKIP";
-  if (yesterdayScore >= 14) return "LOCK";
-  if (yesterdayScore >= 9) return "PICK";
-  if (yesterdayScore >= 5) return "CONSIDER";
+  if (score >= 10) return "LOCK";
+  if (score >= 6) return "PICK";
+  if (score >= 3) return "CONSIDER";
   return "SKIP";
 }
 
-function resolveConfidence(yesterdayScore: number, instantSkip: boolean): MatchAnalysis["confidence"] {
+function resolveConfidence(score: number, instantSkip: boolean): MatchAnalysis["confidence"] {
   if (instantSkip) return "LOW";
-  if (yesterdayScore >= 14) return "HIGH";
-  if (yesterdayScore >= 9) return "MEDIUM";
+  if (score >= 10) return "HIGH";
+  if (score >= 6) return "MEDIUM";
   return "LOW";
 }
 
