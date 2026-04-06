@@ -184,6 +184,11 @@ function checkInstantSkips(
     return { skip: true, reason: `${awayTeam} scored 3+ and switched positions - compression` };
   }
 
+  const awayTeamStrongHome = awayPlayedHome && !awayPlayedAway && (awayCard.lastHomeScore ?? 0) >= 2;
+  if (awayTeamStrongHome) {
+    return { skip: true, reason: `${awayTeam} scored 2+ at home, now away - home-to-away suppression` };
+  }
+
   if (homeScoredYesterday === 1 && awayScoredYesterday === 1) {
     return { skip: true, reason: "Both scored exactly 1 - combined low energy" };
   }
