@@ -206,6 +206,11 @@ function checkInstantSkips(
     return { skip: true, reason: "Both teams switched positions - double position switch" };
   }
 
+  const awayTeamLowHomeScorer = awayPlayedHome && !awayPlayedAway && (awayCard.lastHomeScore ?? 0) === 1;
+  if (awayTeamLowHomeScorer) {
+    return { skip: true, reason: `${awayTeam} scored 1 at home, now away - low home output switch` };
+  }
+
   if (homeScoredYesterday === 1 && awayScoredYesterday === 1) {
     return { skip: true, reason: "Both scored exactly 1 - combined low energy" };
   }
