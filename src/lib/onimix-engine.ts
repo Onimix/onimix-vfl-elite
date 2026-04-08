@@ -158,20 +158,24 @@ function checkInstantSkips(
   const homeFlip = homeSwitched && homeHighYesterday;
   const awayFlip = awaySwitched && awayHighYesterday;
 
-  if (homeScoredAny !== null && homeScoredAny === 0) {
-    return { skip: true, reason: `${homeTeam} scored 0 - zero trap` };
+  const homeSamePositionZero = homePlayedHome && !homePlayedAway && (homeCard.lastHomeScore ?? 0) === 0;
+  if (homeSamePositionZero) {
+    const awayScored3Plus = (awayCard.lastHomeScore ?? 0) >= 3 || (awayCard.lastAwayScore ?? 0) >= 3;
+    if (!awayScored3Plus) {
+      return { skip: true, reason: `${homeTeam} scored 0 at home, same position - zero trap` };
+    }
   }
 
-  if (awayScoredAny !== null && awayScoredAny === 0) {
-    return { skip: true, reason: `${awayTeam} scored 0 - zero trap` };
+  const awaySamePositionZero = awayPlayedAway && !awayPlayedHome && (awayCard.lastAwayScore ?? 0) === 0;
+  if (awaySamePositionZero) {
+    const homeScored3Plus = (homeCard.lastHomeScore ?? 0) >= 3 || (homeCard.lastAwayScore ?? 0) >= 3;
+    if (!homeScored3Plus) {
+      return { skip: true, reason: `${awayTeam} scored 0 away, same position - zero trap` };
+    }
   }
 
   if (homeConcededAny !== null && homeConcededAny >= 4) {
-    return { skip: true, reason: `${homeTeam} conceded 4+ - repair mode` };
-  }
-
-  if (awayConcededAny !== null && awayConcededAny >= 4) {
-    return { skip: true, reason: `${awayTeam} conceded 4+ - repair mode` };
+    return { skip: true, reason: `${homeTeam} conceded 4+ - home repair mode` };
   }
 
   if (homeFlip || awayFlip) {
@@ -209,6 +213,11 @@ function checkInstantSkips(
   const awayTeamLowHomeScorer = awayPlayedHome && !awayPlayedAway && (awayCard.lastHomeScore ?? 0) === 1;
   if (awayTeamLowHomeScorer) {
     return { skip: true, reason: `${awayTeam} scored 1 at home, now away - low home output switch` };
+  }
+
+  const homeTeamLowAwayScorer = homePlayedAway && !homePlayedHome && (homeCard.lastAwayScore ?? 0) === 1;
+  if (homeTeamLowAwayScorer) {
+    return { skip: true, reason: `${homeTeam} scored 1 away, now home - low away output switch` };
   }
 
   if (homeScoredYesterday === 1 && awayScoredYesterday === 1) {
