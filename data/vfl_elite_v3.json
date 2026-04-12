@@ -1,0 +1,3229 @@
+{
+  "BOUvTOT": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "FORvSUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LIVvMUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "WOLvNEW": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CRYvCHE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "WOLvBUR": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ASTvARS": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "BREvTOT": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CRYvMCI": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "MUNvCHE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "SUNvNEW": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "NEWvARS": {
+    "lg": "England",
+    "g": 9,
+    "r": 1.0,
+    "o15": 9,
+    "tier": "DIAMOND"
+  },
+  "CHEvEVE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CRYvWOL": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "NEWvBUR": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "TOTvARS": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ASTvFUL": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LIVvWOL": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "NEWvLEE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CHEvFUL": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "BOUvCHE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CRYvSUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LIVvBRE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ARSvLEE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ARSvFUL": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CRYvTOT": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "MUNvNEW": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "WHUvLEE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "WOLvMCI": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "MUNvTOT": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "BREvMCI": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LIVvLEE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "NEWvCHE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CHEvTOT": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "NEWvEVE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ARSvCRY": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CHEvBUR": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LIVvWHU": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ASTvBHA": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LIVvCRY": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "TOTvMCI": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ASTvWHU": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ASTvCRY": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CHEvWHU": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ASTvLIV": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "NEWvFOR": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ARSvSUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CHEvAST": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ARSvCHE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "FULvLIV": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ARSvTOT": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "EVEvCHE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "FULvAST": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LEEvNEW": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "FULvCHE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "MCIvEVE": {
+    "lg": "England",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "OVIvELC": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "BILvELC": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "RAYvLEV": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ATMvRMA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "MALvGIR": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "SEVvRAY": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "RBBvRMA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "RBBvFCB": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ALAvVIL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "OVIvFCB": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "SEVvLEV": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "BILvOVI": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ATMvLEV": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CELvFCB": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "VCFvOVI": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "VCFvELC": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "INTvUSC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "UDIvINT": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ROMvNAP": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ATAvBFC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "FIOvGEN": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "PISvGEN": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ATAvUSC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CAGvINT": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "PISvLAZ": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ATAvUDI": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "VERvFIO": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "UDIvUSC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "FIOvCOM": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ATAvNAP": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CAGvUSC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "PISvFIO": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CAGvLAZ": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ACMvSAS": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "PARvATA": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "NAPvCAG": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "FIOvLAZ": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LEVvHDH": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "TSGvRBL": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "UNIvHSV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "KOEvRBL": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "HDHvBMU": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "MAIvSVW": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "SCFvTSG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "BVBvTSG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "SCFvKOE": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "SVWvBMU": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "MAIvHSV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "WOBvTSG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "TSGvHSV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "BVBvBMG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "KOEvHSV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "BVBvFCA": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "KOEvTSG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LEVvVFB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "SCFvRBL": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "WOBvBMG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "BVBvRBL": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LEVvTSG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "BVBvSCF": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "BMGvTSG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "UNIvSGE": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "RENvMET": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "STRvOLM": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ANGvLIL": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LENvAUX": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "OLMvLIL": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LORvLYO": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ANGvLOR": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "TOUvNCE": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LYOvMET": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "NANvAUX": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "PSGvAMO": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "ANGvAUX": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LYOvAMO": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "OLMvMET": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "PSGvREN": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LEHvAUX": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "PSGvANG": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "AUXvB29": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LILvAMO": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "OLMvANG": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "AMOvB29": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "AUXvTOU": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LENvPFC": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "LILvLYO": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "AUXvLOR": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "NCEvOLM": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "PSGvNCE": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "NANvLOR": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "AMOvLEN": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "NANvPFC": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "TOUvSTR": {
+    "lg": "France",
+    "g": 8,
+    "r": 1.0,
+    "o15": 8,
+    "tier": "DIAMOND"
+  },
+  "CHEvNEW": {
+    "lg": "England",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "CRYvARS": {
+    "lg": "England",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "CHEvSUN": {
+    "lg": "England",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "CRYvLIV": {
+    "lg": "England",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "BOUvARS": {
+    "lg": "England",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "EVEvNEW": {
+    "lg": "England",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "FULvFOR": {
+    "lg": "England",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "WHUvMUN": {
+    "lg": "England",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "NEWvAST": {
+    "lg": "England",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "BOUvSUN": {
+    "lg": "England",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "WHUvLIV": {
+    "lg": "England",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "FCBvELC": {
+    "lg": "Spain",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "ATMvRBB": {
+    "lg": "Spain",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "LAZvPAR": {
+    "lg": "Italy",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "ACMvLEC": {
+    "lg": "Italy",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "USCvGEN": {
+    "lg": "Italy",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "USCvNAP": {
+    "lg": "Italy",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "INTvACM": {
+    "lg": "Italy",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "BVBvBMU": {
+    "lg": "Germany",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "HDHvMAI": {
+    "lg": "Germany",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "SCFvBVB": {
+    "lg": "Germany",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "RBLvBMU": {
+    "lg": "Germany",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "KOEvBMU": {
+    "lg": "Germany",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "LENvOLM": {
+    "lg": "France",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "AUXvOLM": {
+    "lg": "France",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "LILvREN": {
+    "lg": "France",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "AUXvSTR": {
+    "lg": "France",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "LILvMET": {
+    "lg": "France",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "LILvLEN": {
+    "lg": "France",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "B29vLEN": {
+    "lg": "France",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "NANvPSG": {
+    "lg": "France",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "RENvLOR": {
+    "lg": "France",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "NANvSTR": {
+    "lg": "France",
+    "g": 7,
+    "r": 1.0,
+    "o15": 7,
+    "tier": "DIAMOND"
+  },
+  "CRYvAST": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FULvBUR": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "WOLvTOT": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "WOLvLEE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ASTvCHE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LIVvMCI": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MUNvEVE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ASTvEVE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "CRYvBOU": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LIVvFUL": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "NEWvTOT": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LIVvBOU": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MUNvFUL": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "CHEvMCI": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "EVEvARS": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FORvCRY": {
+    "lg": "England",
+    "g": 9,
+    "r": 0.8889,
+    "o15": 8,
+    "tier": "GOLD"
+  },
+  "MUNvBOU": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ASTvBOU": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BREvCRY": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LIVvFOR": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MUNvWOL": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "TOTvLEE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FORvMUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FULvEVE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BHAvBUR": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FULvMCI": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BOUvMCI": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LIVvNEW": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MUNvSUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "WOLvEVE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BREvCHE": {
+    "lg": "England",
+    "g": 9,
+    "r": 0.8889,
+    "o15": 8,
+    "tier": "GOLD"
+  },
+  "LIVvBUR": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "WHUvBHA": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "CRYvBHA": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MUNvBUR": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FORvBOU": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MUNvLEE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ASTvLEE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SUNvFUL": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "CHEvLEE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MUNvWHU": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ARSvLIV": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BURvMCI": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "CHEvBHA": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SUNvWOL": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BURvFUL": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MUNvLIV": {
+    "lg": "England",
+    "g": 9,
+    "r": 0.8889,
+    "o15": 8,
+    "tier": "GOLD"
+  },
+  "ARSvMUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LEEvFUL": {
+    "lg": "England",
+    "g": 9,
+    "r": 0.8889,
+    "o15": 8,
+    "tier": "GOLD"
+  },
+  "TOTvWOL": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ASTvMUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "EVEvCRY": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FULvBHA": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LEEvBOU": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "TOTvFOR": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BURvFOR": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "CHEvMUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MCIvCRY": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "TOTvBRE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BHAvFOR": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BOUvCRY": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BURvSUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FULvMUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "WHUvFOR": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "WOLvCRY": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BHAvSUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BURvTOT": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MCIvCHE": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "WOLvLIV": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BHAvNEW": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FORvLIV": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "WHUvSUN": {
+    "lg": "England",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "GETvATM": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "GETvRMA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RBBvCEL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BILvVCF": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RBBvLEV": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RSOvVIL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SEVvATM": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ELCvVCF": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ESPvRBB": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SEVvRMA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ESPvRAY": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RSOvRMA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "VILvATM": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RSOvRBB": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "VILvFCB": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "GETvELC": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LEVvMAL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "OSAvALA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "GIRvFCB": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "GETvCEL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RAYvRMA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RSOvELC": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ESPvLEV": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RAYvRBB": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SEVvMAL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BILvRBB": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "OSAvGET": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "OVIvRAY": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RSOvCEL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ATMvMAL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BILvRAY": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "GIRvOVI": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "OSAvESP": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "VCFvRMA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "VILvCEL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ATMvCEL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "GIRvOSA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MALvFCB": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ATMvGET": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "GIRvSEV": {
+    "lg": "Spain",
+    "g": 9,
+    "r": 0.8889,
+    "o15": 8,
+    "tier": "GOLD"
+  },
+  "MALvRAY": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ELCvALA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FCBvGET": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "CELvOVI": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RMAvOSA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "CELvALA": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LEVvBIL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "CELvELC": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "GETvBIL": {
+    "lg": "Spain",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "VERvPAR": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "GENvCOM": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LAZvNAP": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PISvBFC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FIOvUSC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PISvACM": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PISvUSC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "VERvCOM": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "TORvUSC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LECvCOM": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ROMvFIO": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PISvVER": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FIOvLEC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PARvUSC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PISvCAG": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ROMvTOR": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "UDIvACM": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PISvINT": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ROMvUSC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "CAGvACM": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ATAvCOM": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "TORvINT": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ACMvCOM": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BFCvINT": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ATAvFIO": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BFCvJUV": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PARvSAS": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ACMvJUV": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ATAvPIS": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ATAvSAS": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "NAPvLAZ": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PARvTOR": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BFCvSAS": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "USCvFIO": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LECvCAG": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "COMvVER": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "INTvVER": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "COMvLEC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "GENvSAS": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "USCvATA": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LAZvSAS": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "USCvBFC": {
+    "lg": "Italy",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LEVvBMU": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "TSGvBMG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "KOEvBMG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SCFvSVW": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "UNIvVFB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "KOEvFCA": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SGEvBMG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "WOBvMAI": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MAIvBMU": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BVBvHSV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LEVvRBL": {
+    "lg": "Germany",
+    "g": 9,
+    "r": 0.8889,
+    "o15": 8,
+    "tier": "GOLD"
+  },
+  "BVBvKOE": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "HDHvFCA": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SGEvSCF": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "STPvRBL": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SVWvVFB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BMUvVFB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SGEvBVB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "UNIvSTP": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BVBvLEV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SCFvSTP": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SGEvWOB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SCFvHDH": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BMUvRBL": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "KOEvVFB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "WOBvSTP": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BMUvTSG": {
+    "lg": "Germany",
+    "g": 9,
+    "r": 0.8889,
+    "o15": 8,
+    "tier": "GOLD"
+  },
+  "SCFvFCA": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "UNIvRBL": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "MAIvBMG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BVBvUNI": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SGEvKOE": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "STPvHSV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SVWvBMG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BMGvVFB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BMUvSGE": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "HDHvHSV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LEVvSGE": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "VFBvRBL": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "WOBvBVB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BMGvKOE": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "STPvLEV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "HDHvLEV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "HSVvUNI": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RBLvTSG": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "VFBvSCF": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BMUvMAI": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "SVWvWOB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "FCAvLEV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "VFBvWOB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "BMGvHDH": {
+    "lg": "Germany",
+    "g": 9,
+    "r": 0.8889,
+    "o15": 8,
+    "tier": "GOLD"
+  },
+  "KOEvSCF": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RBLvLEV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RBLvSTP": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "TSGvWOB": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "UNIvLEV": {
+    "lg": "Germany",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "AMOvLIL": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ANGvOLM": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "STRvPSG": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "TOUvMET": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "NANvLIL": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LYOvLIL": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "NANvB29": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "RENvAUX": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "STRvNCE": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LENvPSG": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LORvAUX": {
+    "lg": "France",
+    "g": 9,
+    "r": 0.8889,
+    "o15": 8,
+    "tier": "GOLD"
+  },
+  "LYOvB29": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "STRvLEH": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LORvAMO": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "NCEvPSG": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LORvNAN": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "NCEvLEH": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PFCvAMO": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "STRvB29": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "METvAUX": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LILvLEH": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ANGvMET": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LYOvAUX": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "NANvAMO": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PSGvB29": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "TOUvLIL": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LENvNCE": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PFCvLEH": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LENvLEH": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LORvB29": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PSGvLYO": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "ANGvLYO": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LORvTOU": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "METvLEH": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "STRvNAN": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LORvREN": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "NCEvAMO": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PFCvTOU": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "STRvLYO": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LENvTOU": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PSGvLOR": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "STRvANG": {
+    "lg": "France",
+    "g": 9,
+    "r": 0.8889,
+    "o15": 8,
+    "tier": "GOLD"
+  },
+  "LENvREN": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PFCvLOR": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LEHvLYO": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "NCEvANG": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "OLMvSTR": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PSGvPFC": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "AMOvTOU": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "AUXvREN": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "AUXvPFC": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "B29vANG": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "NANvREN": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LYOvREN": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "TOUvANG": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "AUXvMET": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "B29vOLM": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "LYOvLOR": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "PSGvLEH": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  },
+  "METvOLM": {
+    "lg": "France",
+    "g": 8,
+    "r": 0.875,
+    "o15": 7,
+    "tier": "GOLD"
+  }
+}
