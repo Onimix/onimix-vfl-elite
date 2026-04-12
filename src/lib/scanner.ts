@@ -3,7 +3,7 @@ import eliteData from "@/data/elite-matchups.json";
 
 const SPORT_ID = "sr:sport:202120001";
 const SPORTYBET_API = "https://www.sportybet.com/api/ng/factsCenter/liveOrPrematchEvents";
-const ALERT_WINDOW_MINUTES = 10;
+const ALERT_WINDOW_MINUTES = 20;
 
 // Build flat lookup: "AST vs ARS" -> { league, rate }
 function buildEliteLookup(): Map<string, { league: string; rate: number }> {
