@@ -1,0 +1,912 @@
+{
+  "Liverpool SRL": {
+    "tournament": "Premier League SRL",
+    "total": 40,
+    "o15_rate": 0.925,
+    "o25_rate": 0.625,
+    "btts_rate": 0.65,
+    "avg_gf": 1.95,
+    "avg_ga": 1.23,
+    "avg_total": 3.17
+  },
+  "Bournemouth SRL": {
+    "tournament": "Premier League SRL",
+    "total": 40,
+    "o15_rate": 0.9,
+    "o25_rate": 0.625,
+    "btts_rate": 0.625,
+    "avg_gf": 1.6,
+    "avg_ga": 1.62,
+    "avg_total": 3.23
+  },
+  "Brighton SRL": {
+    "tournament": "Premier League SRL",
+    "total": 39,
+    "o15_rate": 0.897,
+    "o25_rate": 0.692,
+    "btts_rate": 0.59,
+    "avg_gf": 1.74,
+    "avg_ga": 1.54,
+    "avg_total": 3.28
+  },
+  "Crystal Palace SRL": {
+    "tournament": "Premier League SRL",
+    "total": 39,
+    "o15_rate": 0.897,
+    "o25_rate": 0.564,
+    "btts_rate": 0.615,
+    "avg_gf": 1.26,
+    "avg_ga": 1.56,
+    "avg_total": 2.82
+  },
+  "Kocaelispor Srl": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 29,
+    "o15_rate": 0.897,
+    "o25_rate": 0.655,
+    "btts_rate": 0.793,
+    "avg_gf": 1.21,
+    "avg_ga": 1.97,
+    "avg_total": 3.17
+  },
+  "UD Las Palmas Srl": {
+    "tournament": "LaLiga SRL",
+    "total": 9,
+    "o15_rate": 0.889,
+    "o25_rate": 0.444,
+    "btts_rate": 0.333,
+    "avg_gf": 1.11,
+    "avg_ga": 1.78,
+    "avg_total": 2.89
+  },
+  "Valladolid SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 8,
+    "o15_rate": 0.875,
+    "o25_rate": 0.5,
+    "btts_rate": 0.25,
+    "avg_gf": 0.5,
+    "avg_ga": 2.25,
+    "avg_total": 2.75
+  },
+  "Tottenham SRL": {
+    "tournament": "Premier League SRL",
+    "total": 39,
+    "o15_rate": 0.872,
+    "o25_rate": 0.667,
+    "btts_rate": 0.667,
+    "avg_gf": 1.28,
+    "avg_ga": 1.87,
+    "avg_total": 3.15
+  },
+  "Trabzonspor SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 37,
+    "o15_rate": 0.865,
+    "o25_rate": 0.541,
+    "btts_rate": 0.622,
+    "avg_gf": 1.76,
+    "avg_ga": 1.24,
+    "avg_total": 3.0
+  },
+  "Leicester SRL": {
+    "tournament": "Premier League SRL",
+    "total": 7,
+    "o15_rate": 0.857,
+    "o25_rate": 0.857,
+    "btts_rate": 0.714,
+    "avg_gf": 1.14,
+    "avg_ga": 2.71,
+    "avg_total": 3.86
+  },
+  "Southampton SRL": {
+    "tournament": "Premier League SRL",
+    "total": 7,
+    "o15_rate": 0.857,
+    "o25_rate": 0.857,
+    "btts_rate": 0.571,
+    "avg_gf": 1.29,
+    "avg_ga": 2.43,
+    "avg_total": 3.71
+  },
+  "Ipswich Town Srl": {
+    "tournament": "Premier League SRL",
+    "total": 7,
+    "o15_rate": 0.857,
+    "o25_rate": 0.286,
+    "btts_rate": 0.143,
+    "avg_gf": 0.57,
+    "avg_ga": 1.71,
+    "avg_total": 2.29
+  },
+  "Barcelona SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 40,
+    "o15_rate": 0.85,
+    "o25_rate": 0.725,
+    "btts_rate": 0.55,
+    "avg_gf": 2.98,
+    "avg_ga": 1.05,
+    "avg_total": 4.03
+  },
+  "Celta SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 39,
+    "o15_rate": 0.846,
+    "o25_rate": 0.59,
+    "btts_rate": 0.615,
+    "avg_gf": 1.51,
+    "avg_ga": 1.23,
+    "avg_total": 2.74
+  },
+  "Kasimpasa SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 38,
+    "o15_rate": 0.842,
+    "o25_rate": 0.658,
+    "btts_rate": 0.632,
+    "avg_gf": 1.58,
+    "avg_ga": 1.61,
+    "avg_total": 3.18
+  },
+  "Gaziantep SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 36,
+    "o15_rate": 0.833,
+    "o25_rate": 0.583,
+    "btts_rate": 0.583,
+    "avg_gf": 1.14,
+    "avg_ga": 1.69,
+    "avg_total": 2.83
+  },
+  "Aston Villa SRL": {
+    "tournament": "Premier League SRL",
+    "total": 40,
+    "o15_rate": 0.825,
+    "o25_rate": 0.5,
+    "btts_rate": 0.525,
+    "avg_gf": 1.35,
+    "avg_ga": 1.35,
+    "avg_total": 2.7
+  },
+  "Wolves SRL": {
+    "tournament": "Premier League SRL",
+    "total": 39,
+    "o15_rate": 0.821,
+    "o25_rate": 0.59,
+    "btts_rate": 0.513,
+    "avg_gf": 1.13,
+    "avg_ga": 1.79,
+    "avg_total": 2.92
+  },
+  "Roma SRL": {
+    "tournament": "Serie A SRL",
+    "total": 39,
+    "o15_rate": 0.821,
+    "o25_rate": 0.59,
+    "btts_rate": 0.513,
+    "avg_gf": 1.95,
+    "avg_ga": 0.95,
+    "avg_total": 2.9
+  },
+  "Nottingham Forest SRL": {
+    "tournament": "Premier League SRL",
+    "total": 39,
+    "o15_rate": 0.821,
+    "o25_rate": 0.487,
+    "btts_rate": 0.538,
+    "avg_gf": 1.38,
+    "avg_ga": 1.49,
+    "avg_total": 2.87
+  },
+  "Brentford SRL": {
+    "tournament": "Premier League SRL",
+    "total": 39,
+    "o15_rate": 0.821,
+    "o25_rate": 0.513,
+    "btts_rate": 0.59,
+    "avg_gf": 1.15,
+    "avg_ga": 1.54,
+    "avg_total": 2.69
+  },
+  "Inter SRL": {
+    "tournament": "Serie A SRL",
+    "total": 39,
+    "o15_rate": 0.821,
+    "o25_rate": 0.462,
+    "btts_rate": 0.513,
+    "avg_gf": 1.74,
+    "avg_ga": 0.77,
+    "avg_total": 2.51
+  },
+  "Rizespor SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 38,
+    "o15_rate": 0.816,
+    "o25_rate": 0.526,
+    "btts_rate": 0.632,
+    "avg_gf": 1.16,
+    "avg_ga": 1.63,
+    "avg_total": 2.79
+  },
+  "Sunderland AFC Srl": {
+    "tournament": "Premier League SRL",
+    "total": 32,
+    "o15_rate": 0.812,
+    "o25_rate": 0.406,
+    "btts_rate": 0.375,
+    "avg_gf": 1.22,
+    "avg_ga": 1.28,
+    "avg_total": 2.5
+  },
+  "Leeds United SRL": {
+    "tournament": "Premier League SRL",
+    "total": 31,
+    "o15_rate": 0.806,
+    "o25_rate": 0.516,
+    "btts_rate": 0.516,
+    "avg_gf": 1.29,
+    "avg_ga": 1.84,
+    "avg_total": 3.13
+  },
+  "Galatasaray SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 36,
+    "o15_rate": 0.806,
+    "o25_rate": 0.556,
+    "btts_rate": 0.361,
+    "avg_gf": 2.28,
+    "avg_ga": 0.5,
+    "avg_total": 2.78
+  },
+  "Fulham SRL": {
+    "tournament": "Premier League SRL",
+    "total": 40,
+    "o15_rate": 0.8,
+    "o25_rate": 0.625,
+    "btts_rate": 0.625,
+    "avg_gf": 1.48,
+    "avg_ga": 1.5,
+    "avg_total": 2.98
+  },
+  "Eyupspor Srl": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 35,
+    "o15_rate": 0.8,
+    "o25_rate": 0.514,
+    "btts_rate": 0.514,
+    "avg_gf": 1.14,
+    "avg_ga": 1.71,
+    "avg_total": 2.86
+  },
+  "West Ham SRL": {
+    "tournament": "Premier League SRL",
+    "total": 39,
+    "o15_rate": 0.795,
+    "o25_rate": 0.538,
+    "btts_rate": 0.538,
+    "avg_gf": 1.33,
+    "avg_ga": 1.67,
+    "avg_total": 3.0
+  },
+  "Fenerbahce SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 39,
+    "o15_rate": 0.795,
+    "o25_rate": 0.615,
+    "btts_rate": 0.564,
+    "avg_gf": 2.05,
+    "avg_ga": 0.9,
+    "avg_total": 2.95
+  },
+  "Arsenal SRL": {
+    "tournament": "Premier League SRL",
+    "total": 39,
+    "o15_rate": 0.795,
+    "o25_rate": 0.564,
+    "btts_rate": 0.538,
+    "avg_gf": 1.9,
+    "avg_ga": 0.82,
+    "avg_total": 2.72
+  },
+  "Burnley SRL": {
+    "tournament": "Premier League SRL",
+    "total": 32,
+    "o15_rate": 0.781,
+    "o25_rate": 0.438,
+    "btts_rate": 0.469,
+    "avg_gf": 1.12,
+    "avg_ga": 1.62,
+    "avg_total": 2.75
+  },
+  "Atalanta SRL": {
+    "tournament": "Serie A SRL",
+    "total": 40,
+    "o15_rate": 0.775,
+    "o25_rate": 0.575,
+    "btts_rate": 0.525,
+    "avg_gf": 1.6,
+    "avg_ga": 1.12,
+    "avg_total": 2.73
+  },
+  "Juventus SRL": {
+    "tournament": "Serie A SRL",
+    "total": 39,
+    "o15_rate": 0.769,
+    "o25_rate": 0.538,
+    "btts_rate": 0.462,
+    "avg_gf": 1.97,
+    "avg_ga": 0.79,
+    "avg_total": 2.77
+  },
+  "Girona FC SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 39,
+    "o15_rate": 0.769,
+    "o25_rate": 0.41,
+    "btts_rate": 0.538,
+    "avg_gf": 1.21,
+    "avg_ga": 1.38,
+    "avg_total": 2.59
+  },
+  "Man Utd SRL": {
+    "tournament": "Premier League SRL",
+    "total": 38,
+    "o15_rate": 0.763,
+    "o25_rate": 0.553,
+    "btts_rate": 0.632,
+    "avg_gf": 1.53,
+    "avg_ga": 1.45,
+    "avg_total": 2.97
+  },
+  "Valencia SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 38,
+    "o15_rate": 0.763,
+    "o25_rate": 0.395,
+    "btts_rate": 0.5,
+    "avg_gf": 1.13,
+    "avg_ga": 1.26,
+    "avg_total": 2.39
+  },
+  "Genclerbirligi SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 29,
+    "o15_rate": 0.759,
+    "o25_rate": 0.414,
+    "btts_rate": 0.552,
+    "avg_gf": 1.28,
+    "avg_ga": 1.34,
+    "avg_total": 2.62
+  },
+  "Goztepe SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 37,
+    "o15_rate": 0.757,
+    "o25_rate": 0.486,
+    "btts_rate": 0.486,
+    "avg_gf": 1.51,
+    "avg_ga": 1.27,
+    "avg_total": 2.78
+  },
+  "Alanyaspor SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 37,
+    "o15_rate": 0.757,
+    "o25_rate": 0.486,
+    "btts_rate": 0.459,
+    "avg_gf": 1.0,
+    "avg_ga": 1.49,
+    "avg_total": 2.49
+  },
+  "Villarreal SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 41,
+    "o15_rate": 0.756,
+    "o25_rate": 0.561,
+    "btts_rate": 0.561,
+    "avg_gf": 1.66,
+    "avg_ga": 1.2,
+    "avg_total": 2.85
+  },
+  "Udinese SRL": {
+    "tournament": "Serie A SRL",
+    "total": 41,
+    "o15_rate": 0.756,
+    "o25_rate": 0.585,
+    "btts_rate": 0.537,
+    "avg_gf": 1.32,
+    "avg_ga": 1.44,
+    "avg_total": 2.76
+  },
+  "Newcastle SRL": {
+    "tournament": "Premier League SRL",
+    "total": 41,
+    "o15_rate": 0.756,
+    "o25_rate": 0.512,
+    "btts_rate": 0.537,
+    "avg_gf": 1.41,
+    "avg_ga": 1.27,
+    "avg_total": 2.68
+  },
+  "Adana Demirspor SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 8,
+    "o15_rate": 0.75,
+    "o25_rate": 0.75,
+    "btts_rate": 0.5,
+    "avg_gf": 0.62,
+    "avg_ga": 3.0,
+    "avg_total": 3.62
+  },
+  "Hatayspor SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 8,
+    "o15_rate": 0.75,
+    "o25_rate": 0.625,
+    "btts_rate": 0.5,
+    "avg_gf": 1.62,
+    "avg_ga": 1.75,
+    "avg_total": 3.38
+  },
+  "Samsunspor Srl": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 36,
+    "o15_rate": 0.75,
+    "o25_rate": 0.5,
+    "btts_rate": 0.667,
+    "avg_gf": 1.56,
+    "avg_ga": 1.25,
+    "avg_total": 2.81
+  },
+  "Everton SRL": {
+    "tournament": "Premier League SRL",
+    "total": 40,
+    "o15_rate": 0.75,
+    "o25_rate": 0.525,
+    "btts_rate": 0.525,
+    "avg_gf": 1.1,
+    "avg_ga": 1.55,
+    "avg_total": 2.65
+  },
+  "Bologna SRL": {
+    "tournament": "Serie A SRL",
+    "total": 40,
+    "o15_rate": 0.75,
+    "o25_rate": 0.525,
+    "btts_rate": 0.475,
+    "avg_gf": 1.15,
+    "avg_ga": 1.3,
+    "avg_total": 2.45
+  },
+  "Espanyol SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 40,
+    "o15_rate": 0.75,
+    "o25_rate": 0.425,
+    "btts_rate": 0.475,
+    "avg_gf": 1.0,
+    "avg_ga": 1.35,
+    "avg_total": 2.35
+  },
+  "Milan SRL": {
+    "tournament": "Serie A SRL",
+    "total": 39,
+    "o15_rate": 0.744,
+    "o25_rate": 0.513,
+    "btts_rate": 0.538,
+    "avg_gf": 1.62,
+    "avg_ga": 1.18,
+    "avg_total": 2.79
+  },
+  "Torino SRL": {
+    "tournament": "Serie A SRL",
+    "total": 39,
+    "o15_rate": 0.744,
+    "o25_rate": 0.59,
+    "btts_rate": 0.564,
+    "avg_gf": 0.95,
+    "avg_ga": 1.85,
+    "avg_total": 2.79
+  },
+  "Betis SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 39,
+    "o15_rate": 0.744,
+    "o25_rate": 0.462,
+    "btts_rate": 0.564,
+    "avg_gf": 1.46,
+    "avg_ga": 1.13,
+    "avg_total": 2.59
+  },
+  "Man City SRL": {
+    "tournament": "Premier League SRL",
+    "total": 38,
+    "o15_rate": 0.737,
+    "o25_rate": 0.526,
+    "btts_rate": 0.395,
+    "avg_gf": 2.18,
+    "avg_ga": 0.68,
+    "avg_total": 2.87
+  },
+  "Fatih Karagumruk SK SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 30,
+    "o15_rate": 0.733,
+    "o25_rate": 0.467,
+    "btts_rate": 0.5,
+    "avg_gf": 1.1,
+    "avg_ga": 1.43,
+    "avg_total": 2.53
+  },
+  "Real Madrid SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 40,
+    "o15_rate": 0.725,
+    "o25_rate": 0.55,
+    "btts_rate": 0.525,
+    "avg_gf": 1.9,
+    "avg_ga": 1.07,
+    "avg_total": 2.98
+  },
+  "Lecce SRL": {
+    "tournament": "Serie A SRL",
+    "total": 40,
+    "o15_rate": 0.725,
+    "o25_rate": 0.525,
+    "btts_rate": 0.5,
+    "avg_gf": 0.93,
+    "avg_ga": 1.48,
+    "avg_total": 2.4
+  },
+  "US Cremonese SRL": {
+    "tournament": "Serie A SRL",
+    "total": 32,
+    "o15_rate": 0.719,
+    "o25_rate": 0.594,
+    "btts_rate": 0.531,
+    "avg_gf": 1.0,
+    "avg_ga": 1.81,
+    "avg_total": 2.81
+  },
+  "Real Oviedo Srl": {
+    "tournament": "LaLiga SRL",
+    "total": 32,
+    "o15_rate": 0.719,
+    "o25_rate": 0.531,
+    "btts_rate": 0.594,
+    "avg_gf": 1.22,
+    "avg_ga": 1.47,
+    "avg_total": 2.69
+  },
+  "Pisa SC Srl": {
+    "tournament": "Serie A SRL",
+    "total": 32,
+    "o15_rate": 0.719,
+    "o25_rate": 0.406,
+    "btts_rate": 0.406,
+    "avg_gf": 0.81,
+    "avg_ga": 1.53,
+    "avg_total": 2.34
+  },
+  "Istanbul BB SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 39,
+    "o15_rate": 0.718,
+    "o25_rate": 0.513,
+    "btts_rate": 0.615,
+    "avg_gf": 1.59,
+    "avg_ga": 1.44,
+    "avg_total": 3.03
+  },
+  "Chelsea SRL": {
+    "tournament": "Premier League SRL",
+    "total": 39,
+    "o15_rate": 0.718,
+    "o25_rate": 0.436,
+    "btts_rate": 0.436,
+    "avg_gf": 1.59,
+    "avg_ga": 0.82,
+    "avg_total": 2.41
+  },
+  "BB Bodrumspor Srl": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 7,
+    "o15_rate": 0.714,
+    "o25_rate": 0.571,
+    "btts_rate": 0.571,
+    "avg_gf": 1.0,
+    "avg_ga": 1.57,
+    "avg_total": 2.57
+  },
+  "AC Monza SRL": {
+    "tournament": "Serie A SRL",
+    "total": 7,
+    "o15_rate": 0.714,
+    "o25_rate": 0.571,
+    "btts_rate": 0.143,
+    "avg_gf": 0.29,
+    "avg_ga": 1.86,
+    "avg_total": 2.14
+  },
+  "Venezia FC SRL": {
+    "tournament": "Serie A SRL",
+    "total": 7,
+    "o15_rate": 0.714,
+    "o25_rate": 0.286,
+    "btts_rate": 0.429,
+    "avg_gf": 1.14,
+    "avg_ga": 1.0,
+    "avg_total": 2.14
+  },
+  "Fiorentina SRL": {
+    "tournament": "Serie A SRL",
+    "total": 38,
+    "o15_rate": 0.711,
+    "o25_rate": 0.474,
+    "btts_rate": 0.447,
+    "avg_gf": 1.24,
+    "avg_ga": 1.29,
+    "avg_total": 2.53
+  },
+  "Atletico Madrid SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 39,
+    "o15_rate": 0.692,
+    "o25_rate": 0.462,
+    "btts_rate": 0.462,
+    "avg_gf": 1.56,
+    "avg_ga": 1.05,
+    "avg_total": 2.62
+  },
+  "Alaves SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 39,
+    "o15_rate": 0.692,
+    "o25_rate": 0.436,
+    "btts_rate": 0.513,
+    "avg_gf": 1.05,
+    "avg_ga": 1.44,
+    "avg_total": 2.49
+  },
+  "Mallorca SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 39,
+    "o15_rate": 0.692,
+    "o25_rate": 0.487,
+    "btts_rate": 0.41,
+    "avg_gf": 1.0,
+    "avg_ga": 1.44,
+    "avg_total": 2.44
+  },
+  "Athletic Bilbao SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 39,
+    "o15_rate": 0.692,
+    "o25_rate": 0.41,
+    "btts_rate": 0.436,
+    "avg_gf": 1.26,
+    "avg_ga": 1.1,
+    "avg_total": 2.36
+  },
+  "Genoa SRL": {
+    "tournament": "Serie A SRL",
+    "total": 39,
+    "o15_rate": 0.692,
+    "o25_rate": 0.462,
+    "btts_rate": 0.436,
+    "avg_gf": 0.82,
+    "avg_ga": 1.44,
+    "avg_total": 2.26
+  },
+  "Como 1907 Srl": {
+    "tournament": "Serie A SRL",
+    "total": 39,
+    "o15_rate": 0.692,
+    "o25_rate": 0.385,
+    "btts_rate": 0.41,
+    "avg_gf": 1.41,
+    "avg_ga": 0.77,
+    "avg_total": 2.18
+  },
+  "Levante SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 31,
+    "o15_rate": 0.677,
+    "o25_rate": 0.419,
+    "btts_rate": 0.452,
+    "avg_gf": 0.9,
+    "avg_ga": 1.55,
+    "avg_total": 2.45
+  },
+  "Konyaspor SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 37,
+    "o15_rate": 0.676,
+    "o25_rate": 0.541,
+    "btts_rate": 0.568,
+    "avg_gf": 1.32,
+    "avg_ga": 1.41,
+    "avg_total": 2.73
+  },
+  "Osasuna SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 40,
+    "o15_rate": 0.675,
+    "o25_rate": 0.45,
+    "btts_rate": 0.55,
+    "avg_gf": 1.2,
+    "avg_ga": 1.43,
+    "avg_total": 2.62
+  },
+  "Napoli SRL": {
+    "tournament": "Serie A SRL",
+    "total": 40,
+    "o15_rate": 0.675,
+    "o25_rate": 0.45,
+    "btts_rate": 0.425,
+    "avg_gf": 1.6,
+    "avg_ga": 0.97,
+    "avg_total": 2.58
+  },
+  "Besiktas JK SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 39,
+    "o15_rate": 0.667,
+    "o25_rate": 0.513,
+    "btts_rate": 0.487,
+    "avg_gf": 1.77,
+    "avg_ga": 1.08,
+    "avg_total": 2.85
+  },
+  "Kayserispor SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 39,
+    "o15_rate": 0.667,
+    "o25_rate": 0.41,
+    "btts_rate": 0.462,
+    "avg_gf": 0.9,
+    "avg_ga": 1.56,
+    "avg_total": 2.46
+  },
+  "Sassuolo SRL": {
+    "tournament": "Serie A SRL",
+    "total": 29,
+    "o15_rate": 0.655,
+    "o25_rate": 0.517,
+    "btts_rate": 0.414,
+    "avg_gf": 1.1,
+    "avg_ga": 1.31,
+    "avg_total": 2.41
+  },
+  "Parma SRL": {
+    "tournament": "Serie A SRL",
+    "total": 40,
+    "o15_rate": 0.65,
+    "o25_rate": 0.425,
+    "btts_rate": 0.5,
+    "avg_gf": 0.97,
+    "avg_ga": 1.5,
+    "avg_total": 2.48
+  },
+  "Antalyaspor SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 37,
+    "o15_rate": 0.649,
+    "o25_rate": 0.324,
+    "btts_rate": 0.459,
+    "avg_gf": 0.84,
+    "avg_ga": 1.22,
+    "avg_total": 2.05
+  },
+  "CF Elche SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 31,
+    "o15_rate": 0.645,
+    "o25_rate": 0.484,
+    "btts_rate": 0.452,
+    "avg_gf": 0.97,
+    "avg_ga": 1.65,
+    "avg_total": 2.61
+  },
+  "Real Sociedad SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 39,
+    "o15_rate": 0.641,
+    "o25_rate": 0.487,
+    "btts_rate": 0.538,
+    "avg_gf": 1.26,
+    "avg_ga": 1.36,
+    "avg_total": 2.62
+  },
+  "Sevilla SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 38,
+    "o15_rate": 0.632,
+    "o25_rate": 0.395,
+    "btts_rate": 0.474,
+    "avg_gf": 1.03,
+    "avg_ga": 1.39,
+    "avg_total": 2.42
+  },
+  "Getafe SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 38,
+    "o15_rate": 0.632,
+    "o25_rate": 0.395,
+    "btts_rate": 0.395,
+    "avg_gf": 0.97,
+    "avg_ga": 1.16,
+    "avg_total": 2.13
+  },
+  "Leganes SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 8,
+    "o15_rate": 0.625,
+    "o25_rate": 0.375,
+    "btts_rate": 0.375,
+    "avg_gf": 0.88,
+    "avg_ga": 2.0,
+    "avg_total": 2.88
+  },
+  "Lazio SRL": {
+    "tournament": "Serie A SRL",
+    "total": 39,
+    "o15_rate": 0.615,
+    "o25_rate": 0.41,
+    "btts_rate": 0.513,
+    "avg_gf": 1.03,
+    "avg_ga": 1.15,
+    "avg_total": 2.18
+  },
+  "Cagliari SRL": {
+    "tournament": "Serie A SRL",
+    "total": 39,
+    "o15_rate": 0.615,
+    "o25_rate": 0.333,
+    "btts_rate": 0.385,
+    "avg_gf": 0.85,
+    "avg_ga": 1.21,
+    "avg_total": 2.05
+  },
+  "Empoli FC SRL": {
+    "tournament": "Serie A SRL",
+    "total": 7,
+    "o15_rate": 0.571,
+    "o25_rate": 0.571,
+    "btts_rate": 0.571,
+    "avg_gf": 1.29,
+    "avg_ga": 1.14,
+    "avg_total": 2.43
+  },
+  "Verona SRL": {
+    "tournament": "Serie A SRL",
+    "total": 40,
+    "o15_rate": 0.55,
+    "o25_rate": 0.3,
+    "btts_rate": 0.275,
+    "avg_gf": 0.82,
+    "avg_ga": 1.1,
+    "avg_total": 1.93
+  },
+  "Rayo Vallecano SRL": {
+    "tournament": "LaLiga SRL",
+    "total": 40,
+    "o15_rate": 0.525,
+    "o25_rate": 0.35,
+    "btts_rate": 0.375,
+    "avg_gf": 0.95,
+    "avg_ga": 1.18,
+    "avg_total": 2.12
+  },
+  "Sivasspor SRL": {
+    "tournament": "Turkey Super Lig SRL",
+    "total": 7,
+    "o15_rate": 0.429,
+    "o25_rate": 0.429,
+    "btts_rate": 0.286,
+    "avg_gf": 0.57,
+    "avg_ga": 1.29,
+    "avg_total": 1.86
+  }
+}
