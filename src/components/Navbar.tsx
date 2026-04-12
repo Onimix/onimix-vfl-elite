@@ -6,7 +6,7 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-lg font-black text-white tracking-tight">ONIMIX</span>
-          <span className="text-xs text-neutral-500 font-mono bg-neutral-800 px-1.5 py-0.5 rounded">v1</span>
+          <span className="text-xs text-emerald-400 font-mono bg-emerald-950/40 border border-emerald-800/30 px-1.5 py-0.5 rounded">ELITE</span>
         </Link>
         <div className="flex items-center gap-1">
           <Link
@@ -20,6 +20,12 @@ export function Navbar() {
             className="px-3 py-1.5 text-sm text-neutral-400 hover:text-white hover:bg-neutral-800 rounded-lg transition-colors"
           >
             Analyze
+          </Link>
+          <Link
+            href="/elite"
+            className="px-3 py-1.5 text-sm text-emerald-400 hover:text-emerald-300 hover:bg-emerald-950/30 rounded-lg transition-colors font-semibold"
+          >
+            🎯 ELITE
           </Link>
           <Link
             href="/tracker"
