@@ -2,20 +2,29 @@ import { NextResponse } from "next/server";
 import { scanForElite } from "@/lib/scanner";
 import { sendTelegramAlert } from "@/lib/telegram";
 
-// Verify cron secret to prevent unauthorized access
-function isAuthorized(request: Request): boolean {
+// Rate limiting: track last scan time (in-memory, resets on cold start)
+let lastScanTime = 0;
+const MIN_SCAN_INTERVAL_MS = 60_000; // 1 minute minimum between scans
+
+// Verify cron secret for Vercel Cron calls
+function isCronAuthorized(request: Request): boolean {
   const authHeader = request.headers.get("authorization");
   const cronSecret = process.env.CRON_SECRET;
-
-  // Allow if no secret is configured (development mode)
-  if (!cronSecret) return true;
-
+  if (!cronSecret) return false;
   return authHeader === `Bearer ${cronSecret}`;
 }
 
-export async function GET(request: Request) {
-  if (!isAuthorized(request)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+async function handleScan(request: Request, source: "cron" | "client" | "external") {
+  // Rate limit client-side requests (not cron)
+  if (source === "client") {
+    const now = Date.now();
+    if (now - lastScanTime < MIN_SCAN_INTERVAL_MS) {
+      return NextResponse.json(
+        { error: "Rate limited. Please wait 60 seconds between scans.", retryAfterMs: MIN_SCAN_INTERVAL_MS - (now - lastScanTime) },
+        { status: 429 }
+      );
+    }
+    lastScanTime = now;
   }
 
   const result = await scanForElite();
@@ -34,10 +43,19 @@ export async function GET(request: Request) {
     }
   }
 
-  return NextResponse.json(result);
+  return NextResponse.json({ ...result, source });
 }
 
-// Vercel Cron calls GET, but support POST for manual triggers
+// GET: Vercel Cron (daily health check) OR external cron service
+export async function GET(request: Request) {
+  const source = isCronAuthorized(request) ? "cron" : "external";
+
+  // External cron services (cron-job.org) can call without secret
+  // They're rate-limited by the service itself
+  return handleScan(request, source);
+}
+
+// POST: Client-side polling from the dashboard (rate-limited)
 export async function POST(request: Request) {
-  return GET(request);
+  return handleScan(request, "client");
 }

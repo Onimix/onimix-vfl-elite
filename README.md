@@ -38,10 +38,10 @@ npm install
 cp .env.example .env.local
 ```
 
-Edit `.env.local` with your Telegram bot credentials:
+Edit `.env.local`:
 - `TELEGRAM_BOT_TOKEN` — Your Telegram bot token
 - `TELEGRAM_CHAT_ID` — Your Telegram chat ID
-- `CRON_SECRET` — A random string to protect the scan endpoint
+- `CRON_SECRET` — (Optional) Protects the scan endpoint from abuse
 
 ### 3. Run Locally
 
@@ -51,7 +51,7 @@ npm run dev
 
 Open [http://localhost:3000/elite](http://localhost:3000/elite) to see the ELITE dashboard.
 
-## 🌐 Deploy to Vercel
+## 🌐 Deploy to Vercel (Free Plan)
 
 ### One-Click Deploy
 
@@ -64,20 +64,30 @@ Open [http://localhost:3000/elite](http://localhost:3000/elite) to see the ELITE
 3. Add environment variables in Vercel Dashboard:
    - `TELEGRAM_BOT_TOKEN`
    - `TELEGRAM_CHAT_ID`
-   - `CRON_SECRET`
 4. Deploy!
 
-### Vercel Cron (Pro Plan)
+### ⚡ How Scanning Works (Free Plan)
 
-The `vercel.json` configures automatic scanning every 5 minutes:
+This app is designed to work on Vercel's **free Hobby plan** with 3 scanning methods:
 
-```json
-{
-  "crons": [{ "path": "/api/scan", "schedule": "*/5 * * * *" }]
-}
-```
+| Method | How It Works | Setup |
+|--------|-------------|-------|
+| **Dashboard Auto-Scan** | Opens the `/elite` page → auto-polls every 5 min | Just keep the tab open |
+| **Free External Cron** | cron-job.org pings `/api/scan` every 5 min | Free, set up in 2 min (see below) |
+| **AutoGPT Agent** | Background agent scans 24/7 independently | Already running |
 
-> ⚠️ Cron jobs require a Vercel Pro plan ($20/mo). On the free plan, the dashboard's "Auto-Scan" button provides client-side polling instead.
+#### Option A: Dashboard (Easiest)
+Just open your deployed site at `/elite`. Auto-scan starts automatically and polls every 5 minutes. Alerts appear in real-time and are sent to Telegram.
+
+#### Option B: Free External Cron (Recommended for 24/7)
+1. Go to [cron-job.org](https://cron-job.org) (free account)
+2. Create a new cron job:
+   - **URL**: `https://your-app.vercel.app/api/scan`
+   - **Schedule**: Every 5 minutes
+   - **Method**: GET
+3. Done! The endpoint will scan and send Telegram alerts automatically.
+
+> 💡 The daily Vercel cron (`0 0 * * *` in `vercel.json`) runs once at midnight as a health check. The real scanning comes from the dashboard or external cron.
 
 ## 🛠 API Routes
 
@@ -94,7 +104,7 @@ src/
 │   ├── api/
 │   │   ├── scan/route.ts      # Live scanner endpoint
 │   │   └── elite/route.ts     # ELITE data endpoint
-│   ├── elite/page.tsx          # ELITE dashboard
+│   ├── elite/page.tsx          # ELITE dashboard (auto-scan)
 │   ├── analyze/page.tsx        # ONIMIX analysis engine
 │   └── tracker/page.tsx        # Pick tracker
 ├── components/
@@ -120,7 +130,7 @@ src/
 - **Next.js 16** — React framework with App Router
 - **TypeScript** — Full type safety
 - **Tailwind CSS 4** — Styling
-- **Vercel** — Hosting + Cron
+- **Vercel** — Hosting (Free Hobby plan)
 - **SportyBet API** — Live match data
 - **Telegram Bot API** — Alert delivery
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { Navbar } from "@/components/Navbar";
 
 interface EliteAlert {
@@ -26,6 +26,7 @@ interface ScanResult {
   leaguesScanned: string[];
   scanDurationMs: number;
   telegramSent: boolean;
+  source?: string;
 }
 
 interface LeagueStats {
@@ -58,6 +59,8 @@ const leagueColors: Record<string, string> = {
   France: "border-blue-700 bg-blue-950/20 text-blue-300",
 };
 
+const SCAN_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
+
 function HitRateBar({ rate }: { rate: number }) {
   const color =
     rate >= 95
@@ -83,12 +86,44 @@ function HitRateBar({ rate }: { rate: number }) {
   );
 }
 
+function CountdownTimer({ targetMs, onComplete }: { targetMs: number; onComplete?: () => void }) {
+  const [remaining, setRemaining] = useState(targetMs - Date.now());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const r = targetMs - Date.now();
+      setRemaining(r);
+      if (r <= 0) {
+        clearInterval(timer);
+        onComplete?.();
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [targetMs, onComplete]);
+
+  if (remaining <= 0) return <span className="text-emerald-400 text-xs">Scanning...</span>;
+
+  const mins = Math.floor(remaining / 60000);
+  const secs = Math.floor((remaining % 60000) / 1000);
+  return (
+    <span className="text-xs font-mono text-neutral-400">
+      Next scan in {mins}:{secs.toString().padStart(2, "0")}
+    </span>
+  );
+}
+
 export default function ElitePage() {
   const [eliteData, setEliteData] = useState<EliteData | null>(null);
   const [scanResult, setScanResult] = useState<ScanResult | null>(null);
+  const [scanHistory, setScanHistory] = useState<ScanResult[]>([]);
+  const [allAlerts, setAllAlerts] = useState<EliteAlert[]>([]);
   const [scanning, setScanning] = useState(false);
   const [selectedLeague, setSelectedLeague] = useState<string>("all");
-  const [autoScan, setAutoScan] = useState(false);
+  const [autoScan, setAutoScan] = useState(true); // ON by default
+  const [nextScanTime, setNextScanTime] = useState<number>(0);
+  const [scanCount, setScanCount] = useState(0);
+  const [error, setError] = useState<string | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Load ELITE database
   useEffect(() => {
@@ -98,26 +133,66 @@ export default function ElitePage() {
       .catch(console.error);
   }, []);
 
-  // Manual scan
+  // Scan function
   const runScan = useCallback(async () => {
+    if (scanning) return;
     setScanning(true);
+    setError(null);
     try {
       const res = await fetch("/api/scan", { method: "POST" });
-      const data = await res.json();
+      if (res.status === 429) {
+        const data = await res.json();
+        setError(`Rate limited — retry in ${Math.ceil((data.retryAfterMs || 60000) / 1000)}s`);
+        setScanning(false);
+        return;
+      }
+      if (!res.ok) throw new Error(`Scan failed: ${res.status}`);
+      
+      const data: ScanResult = await res.json();
       setScanResult(data);
-    } catch (error) {
-      console.error("Scan failed:", error);
+      setScanCount((c) => c + 1);
+      
+      // Add to history (keep last 20)
+      setScanHistory((prev) => [data, ...prev].slice(0, 20));
+
+      // Merge new alerts (deduplicate by matchup key + kickoff time)
+      if (data.eliteFound.length > 0) {
+        setAllAlerts((prev) => {
+          const existing = new Set(prev.map((a) => `${a.matchup.key}-${a.event.kickoffFormatted}`));
+          const newAlerts = data.eliteFound.filter(
+            (a) => !existing.has(`${a.matchup.key}-${a.event.kickoffFormatted}`)
+          );
+          return [...newAlerts, ...prev].slice(0, 50);
+        });
+      }
+
+      // Schedule next scan
+      setNextScanTime(Date.now() + SCAN_INTERVAL_MS);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Scan failed");
     }
     setScanning(false);
-  }, []);
+  }, [scanning]);
 
-  // Auto-scan every 5 minutes
+  // Auto-scan effect
   useEffect(() => {
-    if (!autoScan) return;
+    if (!autoScan) {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      intervalRef.current = null;
+      return;
+    }
+
+    // Run immediately on enable
     runScan();
-    const interval = setInterval(runScan, 5 * 60 * 1000);
-    return () => clearInterval(interval);
-  }, [autoScan, runScan]);
+
+    intervalRef.current = setInterval(() => {
+      runScan();
+    }, SCAN_INTERVAL_MS);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [autoScan]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Filter matchups by league
   const filteredMatchups = eliteData
@@ -142,18 +217,33 @@ export default function ElitePage() {
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 pt-10 pb-8">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="inline-flex items-center gap-2 bg-emerald-950/40 border border-emerald-800/40 rounded-full px-4 py-1.5 text-xs text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            ELITE System Active
+        {/* Status Bar */}
+        <div className="flex items-center gap-3 mb-4 flex-wrap">
+          <div
+            className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs ${
+              autoScan
+                ? "bg-emerald-950/40 border border-emerald-800/40 text-emerald-400"
+                : "bg-neutral-900 border border-neutral-700 text-neutral-400"
+            }`}
+          >
+            <span
+              className={`w-1.5 h-1.5 rounded-full ${
+                autoScan ? "bg-emerald-400 animate-pulse" : "bg-neutral-600"
+              }`}
+            />
+            {autoScan ? "Auto-Scan Active" : "Auto-Scan Paused"}
           </div>
-          {scanResult && (
+          {scanCount > 0 && (
             <span className="text-xs text-neutral-500">
-              Last scan:{" "}
-              {new Date(scanResult.timestamp).toLocaleTimeString("en-NG", {
-                timeZone: "Africa/Lagos",
-              })}{" "}
-              ({scanResult.scanDurationMs}ms)
+              {scanCount} scans completed
+            </span>
+          )}
+          {autoScan && nextScanTime > 0 && !scanning && (
+            <CountdownTimer targetMs={nextScanTime} />
+          )}
+          {scanning && (
+            <span className="text-xs text-emerald-400 animate-pulse">
+              ⏳ Scanning SportyBet...
             </span>
           )}
         </div>
@@ -164,13 +254,13 @@ export default function ElitePage() {
         </h1>
         <p className="text-neutral-400 text-sm max-w-xl mb-6">
           353 verified ELITE matchups across 5 VFL leagues. Average 78.5% hit
-          rate for Over 1.5 Goals. Real-time scanning with Telegram alerts.
+          rate for Over 1.5 Goals. Auto-scanning every 5 minutes with Telegram alerts.
         </p>
 
         {/* Controls */}
-        <div className="flex gap-3 flex-wrap mb-8">
+        <div className="flex gap-3 flex-wrap mb-4">
           <button
-            onClick={runScan}
+            onClick={() => { runScan(); }}
             disabled={scanning}
             className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-neutral-700 text-white font-bold rounded-xl transition-colors text-sm"
           >
@@ -188,16 +278,38 @@ export default function ElitePage() {
           </button>
         </div>
 
-        {/* Live Alerts */}
-        {scanResult && scanResult.eliteFound.length > 0 && (
+        {/* Error message */}
+        {error && (
+          <div className="mb-4 p-3 bg-red-950/30 border border-red-800/40 rounded-lg text-red-400 text-sm">
+            ⚠️ {error}
+          </div>
+        )}
+
+        {/* Last scan info */}
+        {scanResult && (
+          <div className="mb-6 text-xs text-neutral-500">
+            Last scan:{" "}
+            {new Date(scanResult.timestamp).toLocaleTimeString("en-NG", {
+              timeZone: "Africa/Lagos",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+            })}{" "}
+            WAT · {scanResult.scanDurationMs}ms · {scanResult.totalEventsScanned} events ·{" "}
+            {scanResult.leaguesScanned.length} leagues
+          </div>
+        )}
+
+        {/* Live Alerts — from ALL accumulated scans */}
+        {allAlerts.length > 0 && (
           <div className="mb-8 p-4 bg-emerald-950/30 border border-emerald-800/40 rounded-xl">
             <h2 className="text-lg font-bold text-emerald-400 mb-3">
-              🎯 LIVE ELITE ALERTS ({scanResult.eliteFound.length})
+              🎯 ELITE ALERTS ({allAlerts.length})
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {scanResult.eliteFound.map((alert, i) => (
+              {allAlerts.map((alert, i) => (
                 <div
-                  key={i}
+                  key={`${alert.matchup.key}-${alert.event.kickoffFormatted}-${i}`}
                   className="bg-neutral-900 border border-emerald-800/30 rounded-lg p-4"
                 >
                   <div className="flex justify-between items-start mb-2">
@@ -219,7 +331,7 @@ export default function ElitePage() {
                 </div>
               ))}
             </div>
-            {scanResult.telegramSent && (
+            {scanResult?.telegramSent && (
               <p className="text-xs text-emerald-600 mt-2">
                 ✅ Telegram alert sent
               </p>
@@ -227,14 +339,56 @@ export default function ElitePage() {
           </div>
         )}
 
-        {scanResult && scanResult.eliteFound.length === 0 && (
+        {scanResult && allAlerts.length === 0 && (
           <div className="mb-8 p-4 bg-neutral-900 border border-neutral-800 rounded-xl text-center">
             <p className="text-neutral-500 text-sm">
               No ELITE matches in the 10-minute window right now. Scanned{" "}
               {scanResult.totalEventsScanned} events across{" "}
               {scanResult.leaguesScanned.length} leagues.
+              {autoScan && " Auto-scanning every 5 minutes — you'll see alerts here automatically."}
             </p>
           </div>
+        )}
+
+        {/* Scan History */}
+        {scanHistory.length > 1 && (
+          <details className="mb-8">
+            <summary className="text-xs text-neutral-500 cursor-pointer hover:text-neutral-300 transition-colors">
+              📋 Scan History ({scanHistory.length} recent scans)
+            </summary>
+            <div className="mt-2 space-y-1 max-h-40 overflow-y-auto">
+              {scanHistory.map((s, i) => (
+                <div
+                  key={i}
+                  className="flex justify-between items-center text-xs px-3 py-1.5 bg-neutral-900/50 rounded"
+                >
+                  <span className="text-neutral-400">
+                    {new Date(s.timestamp).toLocaleTimeString("en-NG", {
+                      timeZone: "Africa/Lagos",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      second: "2-digit",
+                    })}
+                  </span>
+                  <span className="text-neutral-500">
+                    {s.totalEventsScanned} events
+                  </span>
+                  <span
+                    className={
+                      s.eliteFound.length > 0
+                        ? "text-emerald-400 font-bold"
+                        : "text-neutral-600"
+                    }
+                  >
+                    {s.eliteFound.length > 0
+                      ? `🎯 ${s.eliteFound.length} ELITE`
+                      : "—"}
+                  </span>
+                  <span className="text-neutral-600">{s.scanDurationMs}ms</span>
+                </div>
+              ))}
+            </div>
+          </details>
         )}
       </section>
 
@@ -270,12 +424,18 @@ export default function ElitePage() {
           </div>
 
           {/* Global Stats Bar */}
-          <div className="flex gap-4 mb-6 text-sm text-neutral-400">
+          <div className="flex gap-4 mb-6 text-sm text-neutral-400 flex-wrap">
             <span>
-              📊 Total: <strong className="text-white">{eliteData.totalMatchups}</strong> matchups
+              📊 Total:{" "}
+              <strong className="text-white">{eliteData.totalMatchups}</strong>{" "}
+              matchups
             </span>
             <span>
-              🎯 Overall: <strong className="text-emerald-400">{eliteData.overallAvgHitRate}%</strong> avg
+              🎯 Overall:{" "}
+              <strong className="text-emerald-400">
+                {eliteData.overallAvgHitRate}%
+              </strong>{" "}
+              avg
             </span>
             <span>
               🏆 Showing:{" "}
@@ -320,9 +480,39 @@ export default function ElitePage() {
         </section>
       )}
 
+      {/* How It Works - Free Plan Info */}
+      <section className="max-w-6xl mx-auto px-4 pb-8">
+        <div className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6">
+          <h3 className="text-sm font-bold text-neutral-300 mb-3">
+            ⚡ How Scanning Works
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-neutral-500">
+            <div>
+              <span className="text-emerald-400 font-bold">Dashboard</span>
+              <p className="mt-1">
+                Keep this page open — auto-scan polls every 5 minutes and shows alerts in real time.
+              </p>
+            </div>
+            <div>
+              <span className="text-blue-400 font-bold">Telegram Bot</span>
+              <p className="mt-1">
+                Alerts sent automatically to your Telegram when ELITE matches are detected.
+              </p>
+            </div>
+            <div>
+              <span className="text-yellow-400 font-bold">AutoGPT Agent</span>
+              <p className="mt-1">
+                Background agent scans 24/7 independently — no browser needed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-neutral-800 py-6 text-center text-xs text-neutral-600">
-        ONIMIX ELITE Engine · 73,081 matches analyzed · 5 VFL Leagues · Built by ONIMIX TECH
+        ONIMIX ELITE Engine · 73,081 matches analyzed · 5 VFL Leagues · Built
+        by ONIMIX TECH
       </footer>
     </div>
   );
