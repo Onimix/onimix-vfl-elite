@@ -1,0 +1,5474 @@
+[
+  {
+    "matchup": "AST vs MUN",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CHE vs NEW",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "CRY vs BOU",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WOL vs BUR",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BRE vs NEW",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CHE vs WHU",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "LIV vs LEE",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WOL vs SUN",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "AST vs ARS",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BHA vs MUN",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "CHE vs FUL",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CRY vs TOT",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FOR vs SUN",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WOL vs LEE",
+    "result": "HIT",
+    "score": "3:3",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "AST vs LIV",
+    "result": "HIT",
+    "score": "2:4",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BOU vs NEW",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "CHE vs BUR",
+    "result": "HIT",
+    "score": "4:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CRY vs ARS",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "EVE vs SUN",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "WOL vs MCI",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "AST vs WOL",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "BRE vs TOT",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CHE vs SUN",
+    "result": "HIT",
+    "score": "3:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "CRY vs LIV",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "BOU vs TOT",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CHE vs LEE",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CRY vs WOL",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "EVE vs MCI",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FUL vs BUR",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MUN vs NEW",
+    "result": "HIT",
+    "score": "5:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WHU vs SUN",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BOU vs ARS",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "CHE vs MCI",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MUN vs TOT",
+    "result": "HIT",
+    "score": "4:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WHU vs LEE",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BHA vs FOR",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BUR vs SUN",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CHE vs AST",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "EVE vs CRY",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "TOT vs NEW",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BOU vs WOL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "FUL vs MCI",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MUN vs LIV",
+    "result": "HIT",
+    "score": "4:2",
+    "predicted_pct": 87.5,
+    "cat": "202120001",
+    "games": 8
+  },
+  {
+    "matchup": "SUN vs NEW",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "TOT vs ARS",
+    "result": "HIT",
+    "score": "2:4",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WHU vs AST",
+    "result": "HIT",
+    "score": "4:2",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "BUR vs MCI",
+    "result": "HIT",
+    "score": "3:6",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CHE vs BHA",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FUL vs AST",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MUN vs WOL",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "TOT vs LIV",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "ARS vs LIV",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BRE vs CHE",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 87.5,
+    "cat": "202120001",
+    "games": 8
+  },
+  {
+    "matchup": "LEE vs NEW",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MUN vs FOR",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "TOT vs WOL",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WHU vs BHA",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BOU vs CHE",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FUL vs BHA",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "LIV vs NEW",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MUN vs EVE",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "TOT vs FOR",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FUL vs BRE",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "LIV vs WOL",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MCI vs NEW",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "MUN vs CHE",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FUL vs BOU",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "LEE vs CRY",
+    "result": "HIT",
+    "score": "1:4",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "LIV vs FOR",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MUN vs WHU",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "TOT vs CHE",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "WOL vs NEW",
+    "result": "HIT",
+    "score": "0:4",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "ARS vs CHE",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MCI vs CRY",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MUN vs FUL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "AST vs CRY",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BUR vs MUN",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "WOL vs EVE",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "ARS vs FUL",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "AST vs BHA",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CRY vs NEW",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "LEE vs BOU",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "LIV vs WHU",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MCI vs BRE",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "AST vs BRE",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "CRY vs BHA",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "EVE vs NEW",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "LEE vs MUN",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "LIV vs FUL",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BRE vs CRY",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BUR vs LIV",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "CHE vs EVE",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FUL vs WOL",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "TOT vs LEE",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WHU vs FOR",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "ARS vs LEE",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BOU vs CRY",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FUL vs FOR",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "NEW vs CHE",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "TOT vs MCI",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "ARS vs MCI",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BUR vs FOR",
+    "result": "HIT",
+    "score": "1:6",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FUL vs EVE",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "SUN vs WOL",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "TOT vs AST",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "BOU vs BRE",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "FUL vs CHE",
+    "result": "HIT",
+    "score": "1:4",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "LIV vs MCI",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "NEW vs WHU",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "TOT vs CRY",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "ARS vs CRY",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "LEE vs FOR",
+    "result": "HIT",
+    "score": "4:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MCI vs WOL",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "MUN vs BRE",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "TOT vs BHA",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "LIV vs CRY",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MCI vs FOR",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "MUN vs BOU",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "NEW vs FUL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "TOT vs BRE",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "AST vs FOR",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "BUR vs FUL",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MCI vs EVE",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "NEW vs MUN",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "TOT vs BOU",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WOL vs CRY",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "AST vs EVE",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FOR vs CRY",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 87.5,
+    "cat": "202120001",
+    "games": 8
+  },
+  {
+    "matchup": "LEE vs WHU",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "LIV vs BRE",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MCI vs CHE",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "NEW vs BUR",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "SUN vs FUL",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "TOT vs MUN",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "ARS vs MUN",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "AST vs CHE",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "LEE vs FUL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 87.5,
+    "cat": "202120001",
+    "games": 8
+  },
+  {
+    "matchup": "LIV vs BOU",
+    "result": "HIT",
+    "score": "4:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MCI vs WHU",
+    "result": "HIT",
+    "score": "1:4",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "NEW vs TOT",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WOL vs BRE",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "ARS vs TOT",
+    "result": "HIT",
+    "score": "4:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "AST vs WHU",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CRY vs CHE",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FOR vs BRE",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "LIV vs MUN",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "AST vs FUL",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FOR vs BOU",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MCI vs BUR",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "NEW vs ARS",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 8
+  },
+  {
+    "matchup": "CHE vs BRE",
+    "result": "HIT",
+    "score": "4:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "EVE vs BOU",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "FOR vs MUN",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "LIV vs ARS",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "NEW vs LEE",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WOL vs TOT",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "AST vs SUN",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "NEW vs LIV",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "WOL vs ARS",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "AST vs LEE",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BHA vs BUR",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CHE vs MUN",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CRY vs SUN",
+    "result": "HIT",
+    "score": "4:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "EVE vs TOT",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "FOR vs ARS",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "NEW vs MCI",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WOL vs LIV",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BHA vs SUN",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CHE vs TOT",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CRY vs LEE",
+    "result": "HIT",
+    "score": "4:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "EVE vs ARS",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FOR vs LIV",
+    "result": "HIT",
+    "score": "2:4",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WHU vs MUN",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "BHA vs LEE",
+    "result": "HIT",
+    "score": "3:3",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CHE vs ARS",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CRY vs MCI",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FUL vs MUN",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "NEW vs AST",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "BOU vs SUN",
+    "result": "HIT",
+    "score": "5:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "CRY vs AST",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "EVE vs WOL",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "MUN vs BUR",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "NEW vs FOR",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "WHU vs ARS",
+    "result": "HIT",
+    "score": "4:2",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "BRE vs MCI",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BUR vs TOT",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "FUL vs ARS",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "MUN vs SUN",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "NEW vs CRY",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 83.33,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "WHU vs LIV",
+    "result": "HIT",
+    "score": "1:4",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "BOU vs MCI",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CHE vs FOR",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 6
+  },
+  {
+    "matchup": "FUL vs LIV",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MUN vs LEE",
+    "result": "HIT",
+    "score": "4:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "NEW vs EVE",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "ARS vs LIV",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "BUR vs FUL",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "CHE vs TOT",
+    "result": "HIT",
+    "score": "3:3",
+    "predicted_pct": 100.0,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "MCI vs CRY",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "SUN vs WOL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120001",
+    "games": 7
+  },
+  {
+    "matchup": "ATM vs MAL",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RBB vs FCB",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "VCF vs RSO",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "RBB vs ELC",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "OSA vs ALA",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "VCF vs ELC",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "GIR vs SEV",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 87.5,
+    "cat": "202120002",
+    "games": 8
+  },
+  {
+    "matchup": "RSO vs ELC",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "FCB vs ELC",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "VCF vs ALA",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "FCB vs MAL",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "RBB vs OVI",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "RSO vs ALA",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "FCB vs ALA",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "SEV vs LEV",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "VCF vs OVI",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "CEL vs GET",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ELC vs ALA",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ESP vs RBB",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "FCB vs BIL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "GIR vs OSA",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RSO vs OVI",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "RMA vs OSA",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RSO vs RAY",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "CEL vs OSA",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "RMA vs RBB",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "SEV vs ATM",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RMA vs VCF",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "VIL vs ATM",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "BIL vs LEV",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ELC vs ESP",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "GET vs ATM",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "MAL vs RAY",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ATM vs LEV",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "BIL vs OVI",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "MAL vs ESP",
+    "result": "HIT",
+    "score": "4:2",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "ALA vs ESP",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "BIL vs RAY",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "CEL vs FCB",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "MAL vs GIR",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ATM vs RBB",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "OVI vs RAY",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RAY vs LEV",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "VIL vs FCB",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RBB vs LEV",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ESP vs LEV",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "GET vs ELC",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RBB vs VCF",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "CEL vs OVI",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "FCB vs OSA",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RSO vs RBB",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "VIL vs BIL",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "GET vs BIL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "LEV vs RSO",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "SEV vs RAY",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ALA vs OSA",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "CEL vs GIR",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "ELC vs VCF",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "LEV vs RMA",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ATM vs OVI",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "ELC vs RSO",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "ATM vs RAY",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "BIL vs RBB",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "LEV vs CEL",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "MAL vs RSO",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "SEV vs RMA",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "BIL vs VCF",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "MAL vs FCB",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "GET vs RMA",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "OSA vs ESP",
+    "result": "HIT",
+    "score": "3:3",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RAY vs RBB",
+    "result": "HIT",
+    "score": "3:3",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "VIL vs CEL",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ATM vs RMA",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "GET vs CEL",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "LEV vs MAL",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ATM vs CEL",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "BIL vs ELC",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "GET vs SEV",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "LEV vs VIL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "OVI vs FCB",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RBB vs GIR",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "GET vs VIL",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "OSA vs CEL",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "OVI vs ELC",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RBB vs RMA",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RBB vs CEL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "VCF vs RMA",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ATM vs GET",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "GIR vs FCB",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "LEV vs BIL",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RSO vs RMA",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "LEV vs ATM",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "OSA vs GET",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "OVI vs BIL",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "RAY vs ALA",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "RMA vs FCB",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "RSO vs CEL",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RMA vs ELC",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "CEL vs ELC",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RAY vs OVI",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "RSO vs VIL",
+    "result": "HIT",
+    "score": "2:4",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "VCF vs GET",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "ELC vs SEV",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "RMA vs ALA",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "CEL vs ALA",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ESP vs RAY",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "FCB vs GET",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "GIR vs OVI",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "SEV vs MAL",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "ELC vs GET",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "CEL vs ELC",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120002",
+    "games": 7
+  },
+  {
+    "matchup": "RAY vs OVI",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120002",
+    "games": 6
+  },
+  {
+    "matchup": "ATA vs ROM",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "PAR vs USC",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ATA vs GEN",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "CAG vs COM",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "FIO vs VER",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "JUV vs PIS",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "TOR vs USC",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ATA vs NAP",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "CAG vs PIS",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "GEN vs ROM",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "ATA vs USC",
+    "result": "HIT",
+    "score": "4:1",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "INT vs PIS",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "BFC vs JUV",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "CAG vs TOR",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "INT vs VER",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "LEC vs FIO",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "NAP vs LAZ",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "SAS vs PAR",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "ATA vs FIO",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "COM vs VER",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "INT vs TOR",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "LEC vs CAG",
+    "result": "HIT",
+    "score": "3:3",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ATA vs CAG",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "PIS vs VER",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "USC vs ROM",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "ATA vs SAS",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "NAP vs JUV",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "ACM vs ROM",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "GEN vs SAS",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "NAP vs CAG",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "USC vs FIO",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "VER vs PAR",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "COM vs LEC",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "PIS vs BFC",
+    "result": "HIT",
+    "score": "3:4",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ACM vs JUV",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "COM vs ATA",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "LAZ vs SAS",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "NAP vs INT",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "PAR vs TOR",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "UDI vs GEN",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "TOR vs ROM",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "ACM vs SAS",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "PIS vs GEN",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ACM vs INT",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "BFC vs ROM",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "PAR vs ATA",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "PIS vs LAZ",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ATA vs BFC",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "COM vs ACM",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "PIS vs USC",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "INT vs CAG",
+    "result": "HIT",
+    "score": "4:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "LAZ vs PAR",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "PIS vs ACM",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "PIS vs FIO",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "VER vs FIO",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "PIS vs CAG",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "UDI vs INT",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "USC vs BFC",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "COM vs INT",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "ACM vs LEC",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "FIO vs BFC",
+    "result": "HIT",
+    "score": "0:4",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "PIS vs INT",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ROM vs NAP",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "USC vs ATA",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "FIO vs LEC",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "LAZ vs NAP",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "PAR vs SAS",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ROM vs COM",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "USC vs GEN",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "BFC vs CAG",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "FIO vs ATA",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "JUV vs LEC",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "USC vs NAP",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "VER vs UDI",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "BFC vs SAS",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "FIO vs GEN",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "TOR vs INT",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "VER vs COM",
+    "result": "HIT",
+    "score": "5:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "BFC vs INT",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "CAG vs ATA",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "JUV vs GEN",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "LEC vs SAS",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "ROM vs USC",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ACM vs USC",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "FIO vs LAZ",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "FIO vs USC",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ATA vs UDI",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "CAG vs LAZ",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "LEC vs COM",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ATA vs COM",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "CAG vs USC",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ROM vs FIO",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ATA vs PIS",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "CAG vs ACM",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "GEN vs COM",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ROM vs TOR",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "ATA vs VER",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "CAG vs FIO",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "INT vs USC",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "INT vs ACM",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "UDI vs USC",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "INT vs FIO",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120003",
+    "games": 6
+  },
+  {
+    "matchup": "UDI vs ACM",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "PIS vs ACM",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "CAG vs ACM",
+    "result": "HIT",
+    "score": "3:4",
+    "predicted_pct": 85.71,
+    "cat": "202120003",
+    "games": 7
+  },
+  {
+    "matchup": "FCA vs BMU",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "HSV vs TSG",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "KOE vs SGE",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "BVB vs BMU",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "FCA vs RBL",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "KOE vs SCF",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "MAI vs TSG",
+    "result": "HIT",
+    "score": "1:4",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "SVW vs BMG",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "VFB vs SGE",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "BVB vs RBL",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "MAI vs LEV",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "UNI vs TSG",
+    "result": "HIT",
+    "score": "5:3",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BVB vs BMG",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "FCA vs HSV",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "KOE vs TSG",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "MAI vs SVW",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "STP vs RBL",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "UNI vs LEV",
+    "result": "HIT",
+    "score": "0:4",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "VFB vs BMU",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "BVB vs HSV",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "HDH vs BMU",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SCF vs TSG",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "VFB vs RBL",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BMU vs SGE",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "HDH vs RBL",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "STP vs HSV",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "WOB vs TSG",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BMU vs RBL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "KOE vs FCA",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SCF vs SVW",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "VFB vs HSV",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "WOB vs LEV",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "HDH vs HSV",
+    "result": "HIT",
+    "score": "0:4",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SCF vs FCA",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "TSG vs LEV",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "HDH vs MAI",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "LEV vs SGE",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SCF vs BVB",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "BMU vs MAI",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SCF vs STP",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "WOB vs BVB",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "WOB vs STP",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "LEV vs BVB",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "TSG vs STP",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "RBL vs KOE",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BMG vs KOE",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "HSV vs UNI",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "LEV vs VFB",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "MAI vs SGE",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "TSG vs HDH",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "BMG vs SCF",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "BVB vs SGE",
+    "result": "HIT",
+    "score": "2:4",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "LEV vs HDH",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SVW vs VFB",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "LEV vs BMU",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "RBL vs TSG",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SVW vs HDH",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "UNI vs SGE",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "HDH vs FCA",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "RBL vs LEV",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "TSG vs BMG",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "VFB vs BVB",
+    "result": "HIT",
+    "score": "5:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SGE vs KOE",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "TSG vs HSV",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "WOB vs MAI",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SCF vs KOE",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BMG vs FCA",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "RBL vs BVB",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "SGE vs SCF",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "TSG vs UNI",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BMU vs VFB",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "RBL vs STP",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "TSG vs KOE",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "SGE vs WOB",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BMG vs VFB",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "LEV vs SCF",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "TSG vs WOB",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BMG vs HDH",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 87.5,
+    "cat": "202120004",
+    "games": 8
+  },
+  {
+    "matchup": "BVB vs UNI",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "RBL vs BMU",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "BMG vs BMU",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BVB vs KOE",
+    "result": "HIT",
+    "score": "4:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "LEV vs TSG",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SGE vs RBL",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SVW vs WOB",
+    "result": "HIT",
+    "score": "5:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "UNI vs STP",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BMG vs RBL",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "BVB vs SCF",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SGE vs LEV",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "SVW vs TSG",
+    "result": "HIT",
+    "score": "3:3",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "UNI vs VFB",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "KOE vs VFB",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "MAI vs BMU",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SGE vs BMG",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "STP vs SCF",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "UNI vs HDH",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BVB vs TSG",
+    "result": "HIT",
+    "score": "8:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "FCA vs LEV",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "UNI vs BMU",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "VFB vs SCF",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BVB vs LEV",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "FCA vs SVW",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "KOE vs BMU",
+    "result": "HIT",
+    "score": "1:4",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "MAI vs BMG",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SCF vs HDH",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "UNI vs RBL",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "VFB vs WOB",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "HDH vs WOB",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "KOE vs RBL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "MAI vs HSV",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SCF vs BMU",
+    "result": "HIT",
+    "score": "4:3",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "STP vs LEV",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BVB vs FCA",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "KOE vs BMG",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SCF vs RBL",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "UNI vs HSV",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "BMU vs TSG",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 87.5,
+    "cat": "202120004",
+    "games": 8
+  },
+  {
+    "matchup": "HDH vs LEV",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "KOE vs HSV",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SGE vs BVB",
+    "result": "HIT",
+    "score": "2:4",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "TSG vs RBL",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "WOB vs BMG",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 100.0,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "RBL vs STP",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "SGE vs SCF",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "TSG vs LEV",
+    "result": "HIT",
+    "score": "1:4",
+    "predicted_pct": 83.33,
+    "cat": "202120004",
+    "games": 6
+  },
+  {
+    "matchup": "UNI vs VFB",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "WOB vs MAI",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120004",
+    "games": 7
+  },
+  {
+    "matchup": "LEN vs PSG",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "MET vs AUX",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PFC vs LEH",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "B29 vs PSG",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LEN vs AUX",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "MET vs OLM",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NAN vs LIL",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "STR vs ANG",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 87.5,
+    "cat": "202120005",
+    "games": 8
+  },
+  {
+    "matchup": "TOU vs REN",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LEN vs OLM",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LOR vs AMO",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "MET vs LEH",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NAN vs ANG",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "PSG vs REN",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "B29 vs OLM",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LEN vs LEH",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LYO vs REN",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NAN vs PFC",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NCE vs ANG",
+    "result": "HIT",
+    "score": "4:2",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "TOU vs LIL",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AUX vs REN",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LYO vs LIL",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "MET vs STR",
+    "result": "HIT",
+    "score": "5:1",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "NAN vs LOR",
+    "result": "HIT",
+    "score": "1:5",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NCE vs PFC",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "TOU vs ANG",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AUX vs OLM",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LIL vs REN",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "NAN vs MET",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NCE vs LOR",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "PSG vs LEH",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LEN vs NAN",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "OLM vs REN",
+    "result": "HIT",
+    "score": "1:5",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "PSG vs AMO",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "TOU vs LOR",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LYO vs LOR",
+    "result": "HIT",
+    "score": "1:4",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "TOU vs MET",
+    "result": "HIT",
+    "score": "0:4",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AUX vs STR",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LYO vs MET",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "TOU vs LEN",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "ANG vs LOR",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AUX vs NAN",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LIL vs MET",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "OLM vs STR",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PFC vs REN",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PSG vs NCE",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "ANG vs MET",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AUX vs NCE",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LIL vs LEN",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LYO vs B29",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PFC vs LOR",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AUX vs TOU",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LIL vs B29",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LOR vs REN",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LYO vs PSG",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "OLM vs NCE",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LOR vs MET",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "STR vs REN",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LIL vs AUX",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "STR vs NAN",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AMO vs TOU",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "ANG vs AUX",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LEH vs LYO",
+    "result": "HIT",
+    "score": "3:4",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LOR vs B29",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NAN vs REN",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "OLM vs LIL",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "STR vs NCE",
+    "result": "HIT",
+    "score": "1:4",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AMO vs LYO",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "ANG vs OLM",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LEN vs REN",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LOR vs PSG",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "NAN vs NCE",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "STR vs TOU",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AUX vs LOR",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "B29 vs LEN",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LIL vs AMO",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AUX vs MET",
+    "result": "HIT",
+    "score": "3:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "OLM vs LOR",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "TOU vs NCE",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "OLM vs MET",
+    "result": "HIT",
+    "score": "4:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PFC vs AMO",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PSG vs B29",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AUX vs B29",
+    "result": "HIT",
+    "score": "2:3",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PFC vs STR",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "AUX vs PSG",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "AMO vs LEN",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LEH vs B29",
+    "result": "HIT",
+    "score": "1:3",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LIL vs LYO",
+    "result": "HIT",
+    "score": "6:0",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LOR vs NAN",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PFC vs NCE",
+    "result": "HIT",
+    "score": "1:4",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "REN vs AUX",
+    "result": "HIT",
+    "score": "3:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AMO vs B29",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "ANG vs LYO",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PFC vs TOU",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "ANG vs LIL",
+    "result": "HIT",
+    "score": "0:4",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LEH vs AUX",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LOR vs TOU",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "MET vs NCE",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "STR vs B29",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LEN vs NCE",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LOR vs LYO",
+    "result": "HIT",
+    "score": "5:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NAN vs B29",
+    "result": "HIT",
+    "score": "2:4",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "STR vs PSG",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LEN vs TOU",
+    "result": "MISS",
+    "score": "0:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NAN vs PSG",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "NCE vs B29",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "REN vs LEH",
+    "result": "HIT",
+    "score": "0:3",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LEN vs LYO",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "LOR vs ANG",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "NAN vs AUX",
+    "result": "HIT",
+    "score": "1:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NCE vs PSG",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "REN vs PFC",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "STR vs OLM",
+    "result": "HIT",
+    "score": "0:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "STR vs LEH",
+    "result": "HIT",
+    "score": "2:4",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "TOU vs PSG",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "NCE vs OLM",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PSG vs LYO",
+    "result": "HIT",
+    "score": "0:4",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "REN vs LOR",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "B29 vs ANG",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LEN vs PFC",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LYO vs AUX",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NAN vs AMO",
+    "result": "HIT",
+    "score": "0:4",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NCE vs LEH",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NAN vs STR",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 6
+  },
+  {
+    "matchup": "NCE vs AMO",
+    "result": "HIT",
+    "score": "3:3",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PSG vs ANG",
+    "result": "HIT",
+    "score": "2:2",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "REN vs MET",
+    "result": "HIT",
+    "score": "4:3",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PSG vs PFC",
+    "result": "MISS",
+    "score": "0:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "AUX vs PFC",
+    "result": "HIT",
+    "score": "3:2",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LIL vs LEH",
+    "result": "MISS",
+    "score": "1:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LYO vs AMO",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NCE vs NAN",
+    "result": "HIT",
+    "score": "2:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "OLM vs ANG",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "PSG vs LOR",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "TOU vs STR",
+    "result": "HIT",
+    "score": "2:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LEN vs AUX",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LIL vs AMO",
+    "result": "HIT",
+    "score": "4:0",
+    "predicted_pct": 100.0,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "LOR vs B29",
+    "result": "HIT",
+    "score": "4:3",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "NAN vs MET",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 85.71,
+    "cat": "202120005",
+    "games": 7
+  },
+  {
+    "matchup": "TOU vs PSG",
+    "result": "HIT",
+    "score": "1:1",
+    "predicted_pct": 83.33,
+    "cat": "202120005",
+    "games": 6
+  }
+]
