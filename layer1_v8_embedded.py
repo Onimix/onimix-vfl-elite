@@ -1,0 +1,307 @@
+#!/usr/bin/env python3
+"""
+ONIMIX VFL ELITE Scanner v8 — Layer 1
+Rebuilt with LIVE VFL API (sr:sport:202120001)
+690 ELITE matchups from 11,822 fresh matches
+Hash-based dedup, prematch booking codes, Telegram delivery
+"""
+import requests, json, hashlib, time, os, sys
+from datetime import datetime, timezone, timedelta
+
+# ─── CONFIG ───
+TG_TOKEN = "8616919960:AAFY5dY8-MyOgahSKpVeDKD_ESPZVVJ-tb8"
+TG_CHAT  = "1745848158"
+BOOK_URL = "https://www.sportybet.com/api/ng/orders/share"
+DEDUP_FILE = "/tmp/vfl_dedup_L1.json"
+DEDUP_TTL  = 3600
+WAT = timezone(timedelta(hours=1))
+HEADERS = {"User-Agent": "Mozilla/5.0", "Accept": "application/json"}
+
+VFL_SPORT = "sr:sport:202120001"
+LEAGUES = {
+    1: ("sv:category:202120001", "sv:league:1", "🏴 ENG"),
+    2: ("sv:category:202120002", "sv:league:2", "🇪🇸 ESP"),
+    3: ("sv:category:202120003", "sv:league:3", "🇮🇹 ITA"),
+    4: ("sv:category:202120004", "sv:league:4", "🇩🇪 GER"),
+    5: ("sv:category:202120005", "sv:league:5", "🇫🇷 FRA"),
+}
+LEAGUE_NAMES = {1: "England", 2: "Spain", 3: "Italy", 4: "Germany", 5: "France"}
+
+# ─── ELITE LOOKUP ───
+ELITE_RAW = json.loads('{"BOUvTOT":{"lg":"England","g":7,"r":1.0,"b":0.5714},"CRYvAST":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"FORvSUN":{"lg":"England","g":7,"r":1.0,"b":0.5714},"FULvBUR":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"LIVvMUN":{"lg":"England","g":7,"r":1.0,"b":0.8571},"WOLvNEW":{"lg":"England","g":7,"r":1.0,"b":0.7143},"CRYvCHE":{"lg":"England","g":7,"r":1.0,"b":0.7143},"WOLvTOT":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"BREvNEW":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"WOLvBUR":{"lg":"England","g":7,"r":1.0,"b":0.7143},"ASTvARS":{"lg":"England","g":7,"r":1.0,"b":0.8571},"BREvTOT":{"lg":"England","g":7,"r":1.0,"b":0.5714},"CRYvMCI":{"lg":"England","g":7,"r":1.0,"b":0.7143},"MUNvCHE":{"lg":"England","g":7,"r":1.0,"b":0.7143},"SUNvNEW":{"lg":"England","g":7,"r":1.0,"b":0.4286},"WOLvLEE":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"ASTvCHE":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"LIVvMCI":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"MUNvEVE":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"NEWvARS":{"lg":"England","g":8,"r":1.0,"b":0.75},"ASTvEVE":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"CHEvARS":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"CRYvBOU":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"LIVvFUL":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"NEWvTOT":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"CHEvEVE":{"lg":"England","g":7,"r":1.0,"b":0.5714},"CRYvWOL":{"lg":"England","g":7,"r":1.0,"b":0.5714},"FORvWHU":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"LIVvBOU":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"MUNvFUL":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"NEWvBUR":{"lg":"England","g":7,"r":1.0,"b":0.8571},"TOTvARS":{"lg":"England","g":7,"r":1.0,"b":0.7143},"ASTvFUL":{"lg":"England","g":7,"r":1.0,"b":0.5714},"CHEvMCI":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"EVEvARS":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"FORvCRY":{"lg":"England","g":8,"r":0.875,"b":0.75},"LIVvWOL":{"lg":"England","g":7,"r":1.0,"b":0.4286},"MUNvBOU":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"NEWvLEE":{"lg":"England","g":7,"r":1.0,"b":0.7143},"ASTvBOU":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"BREvCRY":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"CHEvFUL":{"lg":"England","g":7,"r":1.0,"b":0.5714},"EVEvMCI":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"LIVvFOR":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"MUNvWOL":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"TOTvLEE":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"ARSvMCI":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"BOUvCHE":{"lg":"England","g":7,"r":1.0,"b":0.5714},"CRYvSUN":{"lg":"England","g":7,"r":1.0,"b":1.0},"FORvMUN":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"FULvEVE":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"LIVvBRE":{"lg":"England","g":7,"r":1.0,"b":0.7143},"ARSvLEE":{"lg":"England","g":7,"r":1.0,"b":0.7143},"BHAvBUR":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"CRYvNEW":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"FULvMCI":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"ARSvFUL":{"lg":"England","g":7,"r":1.0,"b":0.8571},"BHAvLEE":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"BOUvMCI":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"CRYvTOT":{"lg":"England","g":7,"r":1.0,"b":0.4286},"LIVvNEW":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"MUNvSUN":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"WOLvEVE":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"BREvCHE":{"lg":"England","g":8,"r":0.875,"b":0.75},"MUNvNEW":{"lg":"England","g":7,"r":1.0,"b":0.7143},"WHUvLEE":{"lg":"England","g":7,"r":1.0,"b":0.8571},"WOLvMCI":{"lg":"England","g":7,"r":1.0,"b":0.5714},"CRYvLEE":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"LIVvBUR":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"MUNvTOT":{"lg":"England","g":7,"r":1.0,"b":0.7143},"WHUvBHA":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"BREvMCI":{"lg":"England","g":7,"r":1.0,"b":0.8571},"CRYvBHA":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"LIVvLEE":{"lg":"England","g":7,"r":1.0,"b":0.5714},"MUNvBUR":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"NEWvCHE":{"lg":"England","g":7,"r":1.0,"b":0.8571},"CHEvTOT":{"lg":"England","g":7,"r":1.0,"b":1.0},"FORvBOU":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"MUNvLEE":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"NEWvEVE":{"lg":"England","g":7,"r":1.0,"b":0.2857},"ARSvCRY":{"lg":"England","g":7,"r":1.0,"b":0.7143},"ASTvLEE":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"CHEvBUR":{"lg":"England","g":7,"r":1.0,"b":0.8571},"LIVvWHU":{"lg":"England","g":7,"r":1.0,"b":0.7143},"NEWvMCI":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"SUNvFUL":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"ASTvBHA":{"lg":"England","g":7,"r":1.0,"b":0.8571},"CHEvLEE":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"LIVvCRY":{"lg":"England","g":7,"r":1.0,"b":0.8571},"MUNvWHU":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"NEWvFUL":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"TOTvMCI":{"lg":"England","g":7,"r":1.0,"b":0.5714},"ARSvLIV":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"ASTvWHU":{"lg":"England","g":7,"r":1.0,"b":0.7143},"BURvMCI":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"CHEvBHA":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"SUNvWOL":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"ASTvCRY":{"lg":"England","g":7,"r":1.0,"b":0.8571},"BURvFUL":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"CHEvWHU":{"lg":"England","g":7,"r":1.0,"b":0.5714},"MUNvLIV":{"lg":"England","g":8,"r":0.875,"b":0.75},"TOTvBOU":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"ARSvMUN":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"ASTvLIV":{"lg":"England","g":7,"r":1.0,"b":0.8571},"LEEvFUL":{"lg":"England","g":8,"r":0.875,"b":0.625},"NEWvFOR":{"lg":"England","g":7,"r":1.0,"b":1.0},"TOTvWOL":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"ARSvSUN":{"lg":"England","g":7,"r":1.0,"b":0.7143},"ASTvMUN":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"EVEvCRY":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"FULvBHA":{"lg":"England","g":7,"r":0.8571,"b":0.2857},"LEEvBOU":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"MCIvWHU":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"TOTvFOR":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"BURvFOR":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"CHEvMUN":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"MCIvCRY":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"TOTvBRE":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"CHEvAST":{"lg":"England","g":7,"r":1.0,"b":0.7143},"LEEvFOR":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"ARSvCHE":{"lg":"England","g":7,"r":1.0,"b":0.5714},"BHAvFOR":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"BOUvCRY":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"BURvSUN":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"FULvLIV":{"lg":"England","g":7,"r":1.0,"b":0.5714},"TOTvNEW":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"ARSvTOT":{"lg":"England","g":7,"r":1.0,"b":0.8571},"EVEvCHE":{"lg":"England","g":7,"r":1.0,"b":0.5714},"FULvMUN":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"WHUvFOR":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"WOLvCRY":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"BHAvSUN":{"lg":"England","g":7,"r":0.8571,"b":0.2857},"BURvTOT":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"FULvAST":{"lg":"England","g":7,"r":1.0,"b":1.0},"LEEvNEW":{"lg":"England","g":7,"r":1.0,"b":0.7143},"MCIvCHE":{"lg":"England","g":7,"r":0.8571,"b":0.4286},"WOLvLIV":{"lg":"England","g":7,"r":0.8571,"b":0.7143},"BHAvNEW":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"FORvLIV":{"lg":"England","g":7,"r":0.8571,"b":0.8571},"FULvCHE":{"lg":"England","g":7,"r":1.0,"b":0.7143},"MCIvEVE":{"lg":"England","g":7,"r":1.0,"b":0.7143},"WHUvSUN":{"lg":"England","g":7,"r":0.8571,"b":0.5714},"GETvATM":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"LEVvRMA":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"OVIvELC":{"lg":"Spain","g":7,"r":1.0,"b":0.8571},"BILvELC":{"lg":"Spain","g":7,"r":1.0,"b":0.8571},"GETvRMA":{"lg":"Spain","g":7,"r":0.8571,"b":0.4286},"RBBvCEL":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"BILvVCF":{"lg":"Spain","g":7,"r":0.8571,"b":0.4286},"RBBvLEV":{"lg":"Spain","g":7,"r":0.8571,"b":0.8571},"RAYvLEV":{"lg":"Spain","g":7,"r":1.0,"b":0.8571},"RSOvVIL":{"lg":"Spain","g":7,"r":0.8571,"b":0.8571},"SEVvATM":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"ELCvVCF":{"lg":"Spain","g":7,"r":0.8571,"b":0.4286},"ESPvRBB":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"SEVvRMA":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"BILvLEV":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"ESPvRAY":{"lg":"Spain","g":7,"r":0.8571,"b":0.8571},"RSOvRMA":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"VILvATM":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"ATMvRMA":{"lg":"Spain","g":7,"r":1.0,"b":0.4286},"MALvGIR":{"lg":"Spain","g":7,"r":1.0,"b":0.8571},"RSOvRBB":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"SEVvRAY":{"lg":"Spain","g":7,"r":1.0,"b":0.8571},"VILvFCB":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"GETvELC":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"LEVvMAL":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"OSAvALA":{"lg":"Spain","g":7,"r":0.8571,"b":0.4286},"GIRvFCB":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"LEVvCEL":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"RBBvRMA":{"lg":"Spain","g":7,"r":1.0,"b":1.0},"GETvCEL":{"lg":"Spain","g":7,"r":0.8571,"b":0.8571},"RAYvRMA":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"RBBvFCB":{"lg":"Spain","g":7,"r":1.0,"b":0.5714},"ALAvVIL":{"lg":"Spain","g":7,"r":1.0,"b":0.8571},"RSOvELC":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"ESPvLEV":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"OSAvCEL":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"OVIvFCB":{"lg":"Spain","g":7,"r":1.0,"b":0.4286},"RAYvRBB":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"SEVvMAL":{"lg":"Spain","g":7,"r":0.8571,"b":0.2857},"BILvRBB":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"OSAvGET":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"OVIvRAY":{"lg":"Spain","g":7,"r":0.8571,"b":0.4286},"RSOvCEL":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"SEVvLEV":{"lg":"Spain","g":7,"r":1.0,"b":0.5714},"ATMvMAL":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"BILvRAY":{"lg":"Spain","g":7,"r":0.8571,"b":0.4286},"GIRvOVI":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"OSAvESP":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"VCFvRMA":{"lg":"Spain","g":7,"r":0.8571,"b":0.8571},"VILvCEL":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"ATMvCEL":{"lg":"Spain","g":7,"r":0.8571,"b":0.4286},"BILvOVI":{"lg":"Spain","g":7,"r":1.0,"b":0.7143},"GIRvOSA":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"ATMvLEV":{"lg":"Spain","g":7,"r":1.0,"b":0.8571},"MALvFCB":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"ATMvGET":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"CELvFCB":{"lg":"Spain","g":7,"r":1.0,"b":0.5714},"GIRvSEV":{"lg":"Spain","g":8,"r":0.875,"b":0.5},"MALvRAY":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"VCFvOVI":{"lg":"Spain","g":7,"r":1.0,"b":0.5714},"ELCvALA":{"lg":"Spain","g":7,"r":0.8571,"b":0.2857},"FCBvGET":{"lg":"Spain","g":7,"r":0.8571,"b":0.4286},"CELvOVI":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"RMAvOSA":{"lg":"Spain","g":7,"r":0.8571,"b":0.7143},"VCFvALA":{"lg":"Spain","g":7,"r":0.8571,"b":0.4286},"FCBvOSA":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"VCFvELC":{"lg":"Spain","g":7,"r":1.0,"b":0.5714},"CELvALA":{"lg":"Spain","g":7,"r":0.8571,"b":0.2857},"LEVvBIL":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"CELvELC":{"lg":"Spain","g":7,"r":0.8571,"b":0.5714},"GETvBIL":{"lg":"Spain","g":7,"r":0.8571,"b":0.8571},"ESPvGIR":{"lg":"Spain","g":6,"r":0.8333,"b":0.5},"VCFvLEV":{"lg":"Spain","g":6,"r":0.8333,"b":0.3333},"FIOvBFC":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"INTvUSC":{"lg":"Italy","g":7,"r":1.0,"b":0.8571},"VERvPAR":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"GENvCOM":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"LAZvNAP":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"PISvBFC":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"UDIvINT":{"lg":"Italy","g":7,"r":1.0,"b":0.4286},"FIOvUSC":{"lg":"Italy","g":7,"r":0.8571,"b":0.8571},"PISvACM":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"ROMvNAP":{"lg":"Italy","g":7,"r":1.0,"b":0.8571},"FIOvUDI":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"PISvUSC":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"ROMvCOM":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"ATAvBFC":{"lg":"Italy","g":7,"r":1.0,"b":0.7143},"FIOvGEN":{"lg":"Italy","g":7,"r":1.0,"b":0.8571},"VERvCOM":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"CAGvCOM":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"PISvGEN":{"lg":"Italy","g":7,"r":1.0,"b":0.8571},"TORvUSC":{"lg":"Italy","g":7,"r":0.8571,"b":0.2857},"ATAvUSC":{"lg":"Italy","g":7,"r":1.0,"b":0.7143},"CAGvINT":{"lg":"Italy","g":7,"r":1.0,"b":1.0},"LECvCOM":{"lg":"Italy","g":7,"r":0.8571,"b":0.8571},"PISvLAZ":{"lg":"Italy","g":7,"r":1.0,"b":0.5714},"ROMvFIO":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"ATAvUDI":{"lg":"Italy","g":7,"r":1.0,"b":0.7143},"VERvFIO":{"lg":"Italy","g":7,"r":1.0,"b":0.5714},"JUVvLEC":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"PISvVER":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"FIOvLEC":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"PARvUSC":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"PISvCAG":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"ROMvTOR":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"UDIvACM":{"lg":"Italy","g":7,"r":0.8571,"b":0.8571},"UDIvUSC":{"lg":"Italy","g":7,"r":1.0,"b":0.7143},"FIOvCOM":{"lg":"Italy","g":7,"r":1.0,"b":1.0},"CAGvATA":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"PISvINT":{"lg":"Italy","g":7,"r":0.8571,"b":0.2857},"ROMvUSC":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"ATAvNAP":{"lg":"Italy","g":7,"r":1.0,"b":0.7143},"CAGvACM":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"ATAvCOM":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"CAGvUSC":{"lg":"Italy","g":7,"r":1.0,"b":1.0},"PISvFIO":{"lg":"Italy","g":7,"r":1.0,"b":0.8571},"TORvINT":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"VERvUDI":{"lg":"Italy","g":7,"r":0.8571,"b":0.8571},"ACMvCOM":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"BFCvINT":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"ACMvINT":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"ATAvFIO":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"BFCvJUV":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"CAGvLAZ":{"lg":"Italy","g":7,"r":1.0,"b":0.7143},"PARvSAS":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"ACMvJUV":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"ATAvPIS":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"ATAvSAS":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"NAPvLAZ":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"PARvTOR":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"BFCvSAS":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"USCvFIO":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"ACMvSAS":{"lg":"Italy","g":7,"r":1.0,"b":0.7143},"JUVvGEN":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"LECvCAG":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"PARvATA":{"lg":"Italy","g":7,"r":1.0,"b":0.8571},"COMvVER":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"NAPvCAG":{"lg":"Italy","g":7,"r":1.0,"b":0.5714},"FIOvLAZ":{"lg":"Italy","g":7,"r":1.0,"b":0.7143},"INTvVER":{"lg":"Italy","g":7,"r":0.8571,"b":0.8571},"COMvLEC":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"GENvSAS":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"INTvCAG":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"USCvATA":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"FIOvVER":{"lg":"Italy","g":7,"r":0.8571,"b":0.7143},"LAZvSAS":{"lg":"Italy","g":7,"r":0.8571,"b":0.5714},"USCvBFC":{"lg":"Italy","g":7,"r":0.8571,"b":0.4286},"CAGvSAS":{"lg":"Italy","g":6,"r":0.8333,"b":0.8333},"LECvATA":{"lg":"Italy","g":6,"r":0.8333,"b":0.3333},"LEVvBMU":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"TSGvBMG":{"lg":"Germany","g":7,"r":0.8571,"b":0.8571},"KOEvBMG":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"SCFvSVW":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"UNIvVFB":{"lg":"Germany","g":7,"r":0.8571,"b":0.2857},"KOEvFCA":{"lg":"Germany","g":7,"r":0.8571,"b":0.8571},"LEVvHDH":{"lg":"Germany","g":7,"r":1.0,"b":0.4286},"SGEvBMG":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"TSGvRBL":{"lg":"Germany","g":7,"r":1.0,"b":0.7143},"UNIvHSV":{"lg":"Germany","g":7,"r":1.0,"b":0.8571},"WOBvMAI":{"lg":"Germany","g":7,"r":0.8571,"b":0.2857},"KOEvRBL":{"lg":"Germany","g":7,"r":1.0,"b":0.7143},"MAIvBMU":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"UNIvTSG":{"lg":"Germany","g":7,"r":0.8571,"b":0.8571},"BVBvHSV":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"HDHvBMU":{"lg":"Germany","g":7,"r":1.0,"b":0.8571},"MAIvSVW":{"lg":"Germany","g":7,"r":1.0,"b":0.5714},"SCFvTSG":{"lg":"Germany","g":7,"r":1.0,"b":0.7143},"SGEvRBL":{"lg":"Germany","g":7,"r":0.8571,"b":0.4286},"BVBvTSG":{"lg":"Germany","g":7,"r":1.0,"b":0.7143},"LEVvRBL":{"lg":"Germany","g":8,"r":0.875,"b":0.75},"SCFvKOE":{"lg":"Germany","g":7,"r":1.0,"b":0.8571},"SVWvBMU":{"lg":"Germany","g":7,"r":1.0,"b":0.5714},"BMGvBMU":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"BVBvKOE":{"lg":"Germany","g":7,"r":0.8571,"b":0.2857},"HDHvFCA":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"MAIvHSV":{"lg":"Germany","g":7,"r":1.0,"b":0.2857},"SGEvSCF":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"STPvRBL":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"SVWvVFB":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"WOBvTSG":{"lg":"Germany","g":7,"r":1.0,"b":0.5714},"BMUvVFB":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"SGEvBVB":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"UNIvSTP":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"BVBvLEV":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"SCFvSTP":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"SGEvWOB":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"UNIvHDH":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"SCFvHDH":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"BMUvRBL":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"KOEvVFB":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"TSGvHSV":{"lg":"Germany","g":7,"r":1.0,"b":0.7143},"WOBvSTP":{"lg":"Germany","g":7,"r":0.8571,"b":0.8571},"BMUvTSG":{"lg":"Germany","g":8,"r":0.875,"b":0.625},"BVBvBMG":{"lg":"Germany","g":7,"r":1.0,"b":0.7143},"KOEvHSV":{"lg":"Germany","g":7,"r":1.0,"b":0.7143},"SCFvFCA":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"UNIvRBL":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"BVBvFCA":{"lg":"Germany","g":7,"r":1.0,"b":0.7143},"KOEvTSG":{"lg":"Germany","g":7,"r":1.0,"b":0.7143},"LEVvVFB":{"lg":"Germany","g":7,"r":1.0,"b":0.8571},"SCFvRBL":{"lg":"Germany","g":7,"r":1.0,"b":0.5714},"WOBvBMG":{"lg":"Germany","g":7,"r":1.0,"b":1.0},"BVBvRBL":{"lg":"Germany","g":7,"r":1.0,"b":0.4286},"MAIvBMG":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"BVBvUNI":{"lg":"Germany","g":7,"r":0.8571,"b":0.4286},"LEVvTSG":{"lg":"Germany","g":7,"r":1.0,"b":0.8571},"SGEvKOE":{"lg":"Germany","g":7,"r":0.8571,"b":0.8571},"STPvHSV":{"lg":"Germany","g":7,"r":0.8571,"b":0.4286},"SVWvBMG":{"lg":"Germany","g":7,"r":0.8571,"b":0.4286},"BMGvVFB":{"lg":"Germany","g":7,"r":0.8571,"b":0.4286},"BMUvSGE":{"lg":"Germany","g":7,"r":0.8571,"b":0.2857},"BVBvSCF":{"lg":"Germany","g":7,"r":1.0,"b":0.7143},"HDHvHSV":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"LEVvSGE":{"lg":"Germany","g":7,"r":0.8571,"b":0.1429},"BMGvTSG":{"lg":"Germany","g":7,"r":1.0,"b":0.5714},"FCAvHSV":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"VFBvRBL":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"WOBvBVB":{"lg":"Germany","g":7,"r":0.8571,"b":0.4286},"BMGvKOE":{"lg":"Germany","g":7,"r":0.8571,"b":0.4286},"STPvLEV":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"HDHvLEV":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"HSVvUNI":{"lg":"Germany","g":7,"r":0.8571,"b":0.2857},"RBLvTSG":{"lg":"Germany","g":7,"r":0.8571,"b":0.2857},"VFBvSCF":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"BMUvMAI":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"RBLvKOE":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"SVWvWOB":{"lg":"Germany","g":7,"r":0.8571,"b":0.8571},"TSGvUNI":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"VFBvBVB":{"lg":"Germany","g":7,"r":0.8571,"b":0.8571},"FCAvLEV":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"VFBvWOB":{"lg":"Germany","g":7,"r":0.8571,"b":0.4286},"BMGvHDH":{"lg":"Germany","g":8,"r":0.875,"b":0.625},"KOEvSCF":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"RBLvLEV":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"UNIvSGE":{"lg":"Germany","g":7,"r":1.0,"b":0.7143},"RBLvSTP":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"TSGvWOB":{"lg":"Germany","g":7,"r":0.8571,"b":0.7143},"UNIvLEV":{"lg":"Germany","g":7,"r":0.8571,"b":0.5714},"AMOvLIL":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"ANGvOLM":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"STRvPSG":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"TOUvMET":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"NANvLIL":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"RENvMET":{"lg":"France","g":7,"r":1.0,"b":1.0},"STRvOLM":{"lg":"France","g":7,"r":1.0,"b":0.8571},"LORvMET":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"LYOvLIL":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"NANvB29":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"RENvAUX":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"STRvNCE":{"lg":"France","g":7,"r":0.8571,"b":0.8571},"ANGvLIL":{"lg":"France","g":7,"r":1.0,"b":0.5714},"LENvPSG":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"LORvAUX":{"lg":"France","g":8,"r":0.875,"b":0.625},"LYOvB29":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"OLMvNCE":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"STRvLEH":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"LORvAMO":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"NCEvPSG":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"LENvAUX":{"lg":"France","g":7,"r":1.0,"b":0.8571},"LORvNAN":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"NCEvLEH":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"OLMvLIL":{"lg":"France","g":7,"r":1.0,"b":0.5714},"PFCvAMO":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"STRvB29":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"LORvLYO":{"lg":"France","g":7,"r":1.0,"b":0.8571},"METvAUX":{"lg":"France","g":7,"r":0.8571,"b":0.8571},"STRvTOU":{"lg":"France","g":7,"r":0.8571,"b":0.8571},"ANGvLOR":{"lg":"France","g":7,"r":1.0,"b":0.7143},"LILvLEH":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"NANvMET":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"TOUvNCE":{"lg":"France","g":7,"r":1.0,"b":0.4286},"LYOvMET":{"lg":"France","g":7,"r":1.0,"b":0.7143},"NANvAUX":{"lg":"France","g":7,"r":1.0,"b":0.5714},"PSGvAMO":{"lg":"France","g":7,"r":1.0,"b":0.8571},"ANGvMET":{"lg":"France","g":7,"r":0.8571,"b":0.2857},"LYOvAUX":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"NANvAMO":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"PFCvOLM":{"lg":"France","g":7,"r":0.8571,"b":0.2857},"PSGvB29":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"RENvLEH":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"TOUvLIL":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"ANGvAUX":{"lg":"France","g":7,"r":1.0,"b":0.8571},"LYOvAMO":{"lg":"France","g":7,"r":1.0,"b":0.4286},"PFCvNCE":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"LENvNCE":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"OLMvMET":{"lg":"France","g":7,"r":1.0,"b":0.7143},"PFCvLEH":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"LENvLEH":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"LORvB29":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"PSGvLYO":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"ANGvLYO":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"LORvTOU":{"lg":"France","g":7,"r":0.8571,"b":0.1429},"METvLEH":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"PSGvREN":{"lg":"France","g":7,"r":1.0,"b":0.7143},"STRvNAN":{"lg":"France","g":7,"r":0.8571,"b":0.8571},"LEHvAUX":{"lg":"France","g":7,"r":1.0,"b":0.5714},"LENvB29":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"LORvREN":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"NCEvAMO":{"lg":"France","g":7,"r":0.8571,"b":0.8571},"PFCvTOU":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"PSGvANG":{"lg":"France","g":7,"r":1.0,"b":0.4286},"STRvLYO":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"LENvTOU":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"NCEvNAN":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"PFCvREN":{"lg":"France","g":7,"r":0.8571,"b":0.8571},"PSGvLOR":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"STRvANG":{"lg":"France","g":8,"r":0.875,"b":0.5},"AUXvB29":{"lg":"France","g":7,"r":1.0,"b":0.4286},"LENvREN":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"LILvAMO":{"lg":"France","g":7,"r":1.0,"b":0.7143},"OLMvANG":{"lg":"France","g":7,"r":1.0,"b":1.0},"PFCvLOR":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"AMOvB29":{"lg":"France","g":7,"r":1.0,"b":0.5714},"AUXvTOU":{"lg":"France","g":7,"r":1.0,"b":0.8571},"LEHvLYO":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"NCEvANG":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"OLMvSTR":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"PSGvPFC":{"lg":"France","g":7,"r":0.8571,"b":0.8571},"AMOvTOU":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"AUXvREN":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"LENvPFC":{"lg":"France","g":7,"r":1.0,"b":0.8571},"LILvLYO":{"lg":"France","g":7,"r":1.0,"b":0.7143},"AUXvLOR":{"lg":"France","g":7,"r":1.0,"b":0.4286},"NCEvOLM":{"lg":"France","g":7,"r":1.0,"b":0.7143},"AUXvPFC":{"lg":"France","g":7,"r":0.8571,"b":0.4286},"B29vANG":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"NANvREN":{"lg":"France","g":7,"r":0.8571,"b":0.2857},"PSGvNCE":{"lg":"France","g":7,"r":1.0,"b":0.5714},"LYOvREN":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"NANvLOR":{"lg":"France","g":7,"r":1.0,"b":0.7143},"TOUvANG":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"AMOvLEN":{"lg":"France","g":7,"r":1.0,"b":0.8571},"AUXvMET":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"B29vOLM":{"lg":"France","g":7,"r":0.8571,"b":0.5714},"LYOvLOR":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"NANvPFC":{"lg":"France","g":7,"r":1.0,"b":1.0},"PSGvLEH":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"TOUvSTR":{"lg":"France","g":7,"r":1.0,"b":0.8571},"NCEvREN":{"lg":"France","g":6,"r":0.8333,"b":0.6667},"CHEvNEW":{"lg":"England","g":6,"r":1.0,"b":0.5},"WOLvSUN":{"lg":"England","g":6,"r":0.8333,"b":0.5},"BHAvMUN":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"BOUvNEW":{"lg":"England","g":6,"r":1.0,"b":0.5},"CRYvARS":{"lg":"England","g":6,"r":1.0,"b":0.8333},"EVEvSUN":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"ASTvWOL":{"lg":"England","g":6,"r":0.8333,"b":0.8333},"CHEvSUN":{"lg":"England","g":6,"r":1.0,"b":0.8333},"CRYvLIV":{"lg":"England","g":6,"r":1.0,"b":0.8333},"BOUvARS":{"lg":"England","g":6,"r":1.0,"b":0.8333},"BOUvWOL":{"lg":"England","g":6,"r":0.8333,"b":0.8333},"WHUvAST":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"TOTvLIV":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"MUNvFOR":{"lg":"England","g":6,"r":0.8333,"b":0.5},"FULvBRE":{"lg":"England","g":6,"r":0.8333,"b":0.5},"MCIvNEW":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"FULvBOU":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"LEEvCRY":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"TOTvCHE":{"lg":"England","g":6,"r":1.0,"b":0.6667},"BURvMUN":{"lg":"England","g":6,"r":1.0,"b":0.6667},"MCIvBRE":{"lg":"England","g":6,"r":0.8333,"b":0.5},"ASTvBRE":{"lg":"England","g":6,"r":1.0,"b":0.8333},"EVEvNEW":{"lg":"England","g":6,"r":1.0,"b":0.8333},"LEEvMUN":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"BURvLIV":{"lg":"England","g":6,"r":0.8333,"b":0.5},"FULvWOL":{"lg":"England","g":6,"r":0.8333,"b":0.5},"FULvFOR":{"lg":"England","g":6,"r":1.0,"b":0.6667},"TOTvAST":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"BOUvBRE":{"lg":"England","g":6,"r":0.8333,"b":0.8333},"NEWvWHU":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"TOTvCRY":{"lg":"England","g":6,"r":1.0,"b":0.6667},"MCIvWOL":{"lg":"England","g":6,"r":1.0,"b":0.8333},"MUNvBRE":{"lg":"England","g":6,"r":1.0,"b":0.6667},"TOTvBHA":{"lg":"England","g":6,"r":0.8333,"b":0.8333},"MCIvFOR":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"ASTvFOR":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"NEWvMUN":{"lg":"England","g":6,"r":1.0,"b":1.0},"LEEvWHU":{"lg":"England","g":6,"r":0.8333,"b":0.5},"TOTvMUN":{"lg":"England","g":6,"r":0.8333,"b":0.3333},"WOLvBRE":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"FORvBRE":{"lg":"England","g":6,"r":0.8333,"b":0.8333},"MCIvBUR":{"lg":"England","g":6,"r":0.8333,"b":0.5},"CHEvBRE":{"lg":"England","g":6,"r":1.0,"b":0.6667},"EVEvBOU":{"lg":"England","g":6,"r":0.8333,"b":0.3333},"LIVvARS":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"ASTvSUN":{"lg":"England","g":6,"r":0.8333,"b":0.5},"NEWvLIV":{"lg":"England","g":6,"r":1.0,"b":1.0},"WOLvARS":{"lg":"England","g":6,"r":0.8333,"b":0.5},"EVEvTOT":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"FORvARS":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"WHUvMUN":{"lg":"England","g":6,"r":1.0,"b":1.0},"NEWvAST":{"lg":"England","g":6,"r":1.0,"b":0.6667},"BOUvSUN":{"lg":"England","g":6,"r":1.0,"b":0.6667},"EVEvWOL":{"lg":"England","g":6,"r":1.0,"b":0.8333},"WHUvARS":{"lg":"England","g":6,"r":0.8333,"b":0.8333},"FULvARS":{"lg":"England","g":6,"r":0.8333,"b":0.5},"NEWvCRY":{"lg":"England","g":6,"r":0.8333,"b":0.6667},"WHUvLIV":{"lg":"England","g":6,"r":1.0,"b":1.0},"CHEvFOR":{"lg":"England","g":6,"r":1.0,"b":1.0},"VCFvRSO":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"RBBvELC":{"lg":"Spain","g":6,"r":0.8333,"b":0.5},"FCBvELC":{"lg":"Spain","g":6,"r":1.0,"b":0.8333},"FCBvMAL":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"RBBvOVI":{"lg":"Spain","g":6,"r":1.0,"b":0.5},"RSOvALA":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"FCBvALA":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"CELvGET":{"lg":"Spain","g":7,"r":0.8571,"b":0.4286},"FCBvBIL":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"RSOvOVI":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"RSOvRAY":{"lg":"Spain","g":6,"r":1.0,"b":0.6667},"CELvOSA":{"lg":"Spain","g":6,"r":0.8333,"b":0.5},"RMAvRBB":{"lg":"Spain","g":6,"r":0.8333,"b":0.3333},"RMAvVCF":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"ELCvESP":{"lg":"Spain","g":6,"r":0.8333,"b":0.5},"MALvESP":{"lg":"Spain","g":6,"r":1.0,"b":0.5},"ALAvESP":{"lg":"Spain","g":6,"r":0.8333,"b":0.8333},"ATMvRBB":{"lg":"Spain","g":7,"r":1.0,"b":0.8571},"RBBvVCF":{"lg":"Spain","g":6,"r":0.8333,"b":0.3333},"VILvBIL":{"lg":"Spain","g":6,"r":1.0,"b":0.5},"LEVvRSO":{"lg":"Spain","g":6,"r":0.8333,"b":0.5},"ALAvOSA":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"CELvGIR":{"lg":"Spain","g":6,"r":1.0,"b":0.6667},"ATMvOVI":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"ELCvRSO":{"lg":"Spain","g":6,"r":0.8333,"b":0.8333},"ATMvRAY":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"MALvRSO":{"lg":"Spain","g":6,"r":0.8333,"b":0.5},"GETvSEV":{"lg":"Spain","g":6,"r":0.8333,"b":0.8333},"LEVvVIL":{"lg":"Spain","g":6,"r":0.8333,"b":0.5},"RBBvGIR":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"GETvVIL":{"lg":"Spain","g":6,"r":0.8333,"b":0.5},"LEVvATM":{"lg":"Spain","g":6,"r":1.0,"b":0.5},"OVIvBIL":{"lg":"Spain","g":6,"r":0.8333,"b":0.3333},"RAYvALA":{"lg":"Spain","g":6,"r":0.8333,"b":0.5},"RMAvFCB":{"lg":"Spain","g":6,"r":1.0,"b":0.3333},"RMAvELC":{"lg":"Spain","g":6,"r":1.0,"b":0.6667},"RAYvOVI":{"lg":"Spain","g":6,"r":0.8333,"b":0.6667},"VCFvGET":{"lg":"Spain","g":6,"r":0.8333,"b":0.5},"ELCvSEV":{"lg":"Spain","g":6,"r":1.0,"b":0.8333},"RMAvALA":{"lg":"Spain","g":6,"r":0.8333,"b":0.3333},"ELCvGET":{"lg":"Spain","g":6,"r":0.8333,"b":0.3333},"ATAvROM":{"lg":"Italy","g":6,"r":1.0,"b":0.8333},"ATAvGEN":{"lg":"Italy","g":6,"r":0.8333,"b":0.6667},"JUVvPIS":{"lg":"Italy","g":6,"r":0.8333,"b":0.3333},"CAGvPIS":{"lg":"Italy","g":6,"r":0.8333,"b":0.3333},"GENvROM":{"lg":"Italy","g":6,"r":0.8333,"b":0.3333},"INTvPIS":{"lg":"Italy","g":6,"r":0.8333,"b":0.3333},"CAGvTOR":{"lg":"Italy","g":6,"r":0.8333,"b":0.6667},"LECvFIO":{"lg":"Italy","g":6,"r":0.8333,"b":0.8333},"SASvPAR":{"lg":"Italy","g":6,"r":0.8333,"b":0.6667},"INTvTOR":{"lg":"Italy","g":6,"r":0.8333,"b":0.3333},"ATAvCAG":{"lg":"Italy","g":6,"r":0.8333,"b":0.5},"USCvROM":{"lg":"Italy","g":6,"r":0.8333,"b":0.6667},"NAPvJUV":{"lg":"Italy","g":6,"r":1.0,"b":0.6667},"ACMvROM":{"lg":"Italy","g":6,"r":1.0,"b":0.5},"COMvATA":{"lg":"Italy","g":6,"r":0.8333,"b":0.6667},"NAPvINT":{"lg":"Italy","g":6,"r":0.8333,"b":0.3333},"UDIvGEN":{"lg":"Italy","g":6,"r":0.8333,"b":0.3333},"TORvROM":{"lg":"Italy","g":6,"r":0.8333,"b":0.5},"BFCvROM":{"lg":"Italy","g":6,"r":0.8333,"b":0.8333},"COMvACM":{"lg":"Italy","g":6,"r":0.8333,"b":0.6667},"LAZvPAR":{"lg":"Italy","g":6,"r":1.0,"b":0.5},"COMvINT":{"lg":"Italy","g":6,"r":0.8333,"b":0.5},"ACMvLEC":{"lg":"Italy","g":6,"r":1.0,"b":1.0},"USCvGEN":{"lg":"Italy","g":7,"r":1.0,"b":0.8571},"BFCvCAG":{"lg":"Italy","g":6,"r":0.8333,"b":0.5},"FIOvATA":{"lg":"Italy","g":6,"r":0.8333,"b":0.6667},"USCvNAP":{"lg":"Italy","g":6,"r":1.0,"b":0.8333},"LECvSAS":{"lg":"Italy","g":6,"r":1.0,"b":0.8333},"ACMvUSC":{"lg":"Italy","g":6,"r":0.8333,"b":0.8333},"ATAvVER":{"lg":"Italy","g":6,"r":0.8333,"b":0.6667},"CAGvFIO":{"lg":"Italy","g":6,"r":1.0,"b":0.8333},"INTvACM":{"lg":"Italy","g":6,"r":1.0,"b":0.6667},"INTvFIO":{"lg":"Italy","g":6,"r":0.8333,"b":0.3333},"FCAvBMU":{"lg":"Germany","g":6,"r":0.8333,"b":0.6667},"HSVvTSG":{"lg":"Germany","g":6,"r":0.8333,"b":0.6667},"KOEvSGE":{"lg":"Germany","g":6,"r":0.8333,"b":0.8333},"BVBvBMU":{"lg":"Germany","g":6,"r":1.0,"b":0.5},"FCAvRBL":{"lg":"Germany","g":6,"r":1.0,"b":1.0},"MAIvTSG":{"lg":"Germany","g":6,"r":1.0,"b":1.0},"VFBvSGE":{"lg":"Germany","g":6,"r":1.0,"b":1.0},"MAIvLEV":{"lg":"Germany","g":6,"r":0.8333,"b":0.5},"VFBvBMU":{"lg":"Germany","g":6,"r":0.8333,"b":0.5},"HDHvRBL":{"lg":"Germany","g":6,"r":1.0,"b":0.6667},"VFBvHSV":{"lg":"Germany","g":6,"r":0.8333,"b":0.6667},"WOBvLEV":{"lg":"Germany","g":6,"r":0.8333,"b":0.5},"TSGvLEV":{"lg":"Germany","g":6,"r":0.8333,"b":0.6667},"HDHvMAI":{"lg":"Germany","g":6,"r":1.0,"b":0.6667},"SCFvBVB":{"lg":"Germany","g":6,"r":1.0,"b":0.5},"LEVvBVB":{"lg":"Germany","g":6,"r":0.8333,"b":0.5},"TSGvSTP":{"lg":"Germany","g":6,"r":0.8333,"b":0.3333},"MAIvSGE":{"lg":"Germany","g":6,"r":0.8333,"b":0.6667},"TSGvHDH":{"lg":"Germany","g":6,"r":0.8333,"b":0.3333},"BMGvSCF":{"lg":"Germany","g":6,"r":1.0,"b":0.6667},"BVBvSGE":{"lg":"Germany","g":6,"r":1.0,"b":0.3333},"SVWvHDH":{"lg":"Germany","g":6,"r":0.8333,"b":0.5},"BMGvFCA":{"lg":"Germany","g":6,"r":0.8333,"b":0.8333},"RBLvBVB":{"lg":"Germany","g":6,"r":0.8333,"b":0.5},"TSGvKOE":{"lg":"Germany","g":6,"r":0.8333,"b":0.3333},"LEVvSCF":{"lg":"Germany","g":6,"r":0.8333,"b":0.5},"RBLvBMU":{"lg":"Germany","g":6,"r":1.0,"b":0.6667},"BMGvRBL":{"lg":"Germany","g":6,"r":0.8333,"b":0.8333},"SGEvLEV":{"lg":"Germany","g":6,"r":1.0,"b":0.6667},"SVWvTSG":{"lg":"Germany","g":6,"r":0.8333,"b":0.5},"STPvSCF":{"lg":"Germany","g":6,"r":0.8333,"b":0.6667},"UNIvBMU":{"lg":"Germany","g":6,"r":0.8333,"b":0.6667},"FCAvSVW":{"lg":"Germany","g":6,"r":0.8333,"b":0.5},"KOEvBMU":{"lg":"Germany","g":6,"r":1.0,"b":0.8333},"HDHvWOB":{"lg":"Germany","g":6,"r":0.8333,"b":0.3333},"SCFvBMU":{"lg":"Germany","g":6,"r":0.8333,"b":0.8333},"B29vPSG":{"lg":"France","g":6,"r":0.8333,"b":0.1667},"METvOLM":{"lg":"France","g":7,"r":0.8571,"b":0.7143},"TOUvREN":{"lg":"France","g":6,"r":0.8333,"b":0.6667},"LENvOLM":{"lg":"France","g":6,"r":1.0,"b":0.8333},"NANvANG":{"lg":"France","g":6,"r":0.8333,"b":0.6667},"METvSTR":{"lg":"France","g":6,"r":0.8333,"b":0.8333},"NCEvPFC":{"lg":"France","g":6,"r":0.8333,"b":0.6667},"AUXvOLM":{"lg":"France","g":6,"r":1.0,"b":0.6667},"LILvREN":{"lg":"France","g":6,"r":1.0,"b":0.8333},"NCEvLOR":{"lg":"France","g":6,"r":0.8333,"b":0.5},"LENvNAN":{"lg":"France","g":6,"r":0.8333,"b":0.1667},"OLMvREN":{"lg":"France","g":6,"r":0.8333,"b":0.6667},"TOUvLOR":{"lg":"France","g":6,"r":0.8333,"b":0.6667},"AUXvSTR":{"lg":"France","g":6,"r":1.0,"b":0.6667},"TOUvLEN":{"lg":"France","g":6,"r":0.8333,"b":0.5},"AUXvNAN":{"lg":"France","g":6,"r":0.8333,"b":0.5},"LILvMET":{"lg":"France","g":6,"r":1.0,"b":0.5},"AUXvNCE":{"lg":"France","g":6,"r":0.8333,"b":0.3333},"LILvLEN":{"lg":"France","g":6,"r":1.0,"b":0.6667},"LILvB29":{"lg":"France","g":6,"r":0.8333,"b":0.6667},"LYOvPSG":{"lg":"France","g":6,"r":0.8333,"b":0.3333},"STRvREN":{"lg":"France","g":6,"r":1.0,"b":1.0},"LILvAUX":{"lg":"France","g":6,"r":0.8333,"b":0.6667},"AMOvLYO":{"lg":"France","g":6,"r":1.0,"b":0.6667},"LORvPSG":{"lg":"France","g":6,"r":0.8333,"b":0.6667},"NANvNCE":{"lg":"France","g":6,"r":0.8333,"b":0.8333},"B29vLEN":{"lg":"France","g":6,"r":1.0,"b":1.0},"OLMvLOR":{"lg":"France","g":6,"r":1.0,"b":0.8333},"PFCvSTR":{"lg":"France","g":6,"r":1.0,"b":0.5},"AUXvPSG":{"lg":"France","g":6,"r":0.8333,"b":0.5},"LEHvB29":{"lg":"France","g":6,"r":1.0,"b":0.6667},"METvNCE":{"lg":"France","g":6,"r":0.8333,"b":0.6667},"NANvPSG":{"lg":"France","g":6,"r":1.0,"b":0.5},"NCEvB29":{"lg":"France","g":6,"r":0.8333,"b":0.6667},"LENvLYO":{"lg":"France","g":6,"r":0.8333,"b":0.8333},"LORvANG":{"lg":"France","g":6,"r":1.0,"b":0.8333},"RENvPFC":{"lg":"France","g":6,"r":0.8333,"b":0.8333},"TOUvPSG":{"lg":"France","g":6,"r":0.8333,"b":0.8333},"RENvLOR":{"lg":"France","g":6,"r":1.0,"b":1.0},"NANvSTR":{"lg":"France","g":6,"r":1.0,"b":0.6667}}')
+
+def build_elite_index():
+    idx = {}
+    for key, val in ELITE_RAW.items():
+        parts = key.split("v", 1)
+        if len(parts) == 2:
+            lk = f"{val['lg']}|{parts[0]}|{parts[1]}"
+            idx[lk] = val
+    return idx
+
+ELITE = build_elite_index()
+
+# ─── DEDUP ───
+def load_dedup():
+    try:
+        with open(DEDUP_FILE) as f:
+            data = json.load(f)
+        now = time.time()
+        return {k: v for k, v in data.items() if now - v < DEDUP_TTL}
+    except:
+        return {}
+
+def save_dedup(seen):
+    with open(DEDUP_FILE, "w") as f:
+        json.dump(seen, f)
+
+def make_hash(pick):
+    return hashlib.md5(f"{pick['eventId']}|{pick['home']}|{pick['away']}|L1".encode()).hexdigest()
+
+# ─── FETCH UPCOMING + LIVE VFL MATCHES ───
+def fetch_matches():
+    matches = []
+    now_ms = int(time.time() * 1000)
+    seen_ids = set()
+    
+    # 1. Upcoming events (prematch)
+    for lid, (cat_id, tourn_id, flag) in LEAGUES.items():
+        try:
+            url = "https://www.sportybet.com/api/ng/factsCenter/wapConfigurableUpcomingEvents"
+            params = {"sportId": VFL_SPORT, "categoryId": cat_id, "tournamentId": tourn_id, "_t": now_ms}
+            r = requests.get(url, params=params, headers=HEADERS, timeout=15)
+            data = r.json()
+            events = data.get("data", [])
+            if isinstance(events, dict):
+                events = events.get("tournaments", [{}])[0].get("events", []) if "tournaments" in events else []
+            
+            for e in events:
+                eid = e.get("eventId", "")
+                if eid in seen_ids:
+                    continue
+                seen_ids.add(eid)
+                kick_off = e.get("estimateStartTime", 0)
+                if kick_off > now_ms - 300000:  # Not older than 5 min
+                    # Extract O1.5 odds from markets
+                    o15_odds = None
+                    for mkt in e.get("markets", []):
+                        if mkt.get("id") == "18" and mkt.get("specifier") == "total=1.5":
+                            for out in mkt.get("outcomes", []):
+                                if out.get("id") == "12" or out.get("desc") == "Over":
+                                    o15_odds = out.get("odds")
+                    
+                    matches.append({
+                        "eventId": eid,
+                        "home": e.get("homeTeamName", ""),
+                        "away": e.get("awayTeamName", ""),
+                        "kickoff": kick_off,
+                        "league": flag,
+                        "league_id": lid,
+                        "status": e.get("matchStatus", ""),
+                        "gameId": e.get("gameId", ""),
+                        "o15_odds": o15_odds
+                    })
+            time.sleep(0.3)
+        except Exception as ex:
+            print(f"  Upcoming {flag} error: {ex}")
+    
+    # 2. Live events
+    try:
+        url = "https://www.sportybet.com/api/ng/factsCenter/wapConfigurableIndexLiveEvents"
+        params = {"sportId": VFL_SPORT, "_t": now_ms}
+        r = requests.get(url, params=params, headers=HEADERS, timeout=15)
+        data = r.json()
+        events = data.get("data", [])
+        if isinstance(events, dict):
+            events = []
+        
+        for e in events:
+            eid = e.get("eventId", "")
+            if eid in seen_ids:
+                continue
+            seen_ids.add(eid)
+            
+            kick_off = e.get("estimateStartTime", 0)
+            played = e.get("playedSeconds", "0:00")
+            # Skip if >5 min played
+            try:
+                parts = played.split(":")
+                mins_played = int(parts[0])
+                if mins_played > 5:
+                    continue
+            except:
+                pass
+            
+            # Determine league
+            sport = e.get("sport", {})
+            cat = sport.get("category", {})
+            cat_id_val = cat.get("id", "")
+            lid = None
+            for l, (c, _, _) in LEAGUES.items():
+                if c == cat_id_val:
+                    lid = l
+                    break
+            if not lid:
+                continue
+            
+            flag = LEAGUES[lid][2]
+            
+            o15_odds = None
+            for mkt in e.get("markets", []):
+                if mkt.get("id") == "18" and mkt.get("specifier") == "total=1.5":
+                    for out in mkt.get("outcomes", []):
+                        if out.get("id") == "12" or out.get("desc") == "Over":
+                            o15_odds = out.get("odds")
+            
+            matches.append({
+                "eventId": eid,
+                "home": e.get("homeTeamName", ""),
+                "away": e.get("awayTeamName", ""),
+                "kickoff": kick_off,
+                "league": flag,
+                "league_id": lid,
+                "status": e.get("matchStatus", ""),
+                "gameId": e.get("gameId", ""),
+                "o15_odds": o15_odds
+            })
+    except Exception as ex:
+        print(f"  Live error: {ex}")
+    
+    return matches
+
+# ─── SCORE ELITE MATCHES ───
+def score_matches(matches):
+    picks = []
+    for m in matches:
+        lg = LEAGUE_NAMES.get(m["league_id"], "")
+        key = f"{lg}|{m['home']}|{m['away']}"
+        
+        if key in ELITE:
+            stats = ELITE[key]
+            o15_pct = stats["r"] * 100
+            btts_pct = stats["b"] * 100
+            games = stats["g"]
+            
+            if o15_pct >= 90:
+                tier = "🔴 ULTRA"
+            elif o15_pct >= 80:
+                tier = "🟡 ELITE"
+            else:
+                continue
+            
+            picks.append({
+                "eventId": m["eventId"],
+                "home": m["home"],
+                "away": m["away"],
+                "league": m["league"],
+                "kickoff": m["kickoff"],
+                "o15_pct": o15_pct,
+                "btts_pct": btts_pct,
+                "games": games,
+                "tier": tier,
+                "gameId": m["gameId"],
+                "o15_odds": m.get("o15_odds")
+            })
+    
+    picks.sort(key=lambda x: -x["o15_pct"])
+    return picks
+
+# ─── BOOKING CODE ───
+def get_booking_code(picks):
+    if not picks:
+        return None
+    selections = []
+    for p in picks[:10]:
+        selections.append({
+            "eventId": p["eventId"],
+            "marketId": "18",
+            "outcomeId": "12",
+            "specifier": "total=1.5"
+        })
+    try:
+        r = requests.post(BOOK_URL, json={"selections": selections},
+                         headers={**HEADERS, "Content-Type": "application/json"}, timeout=15)
+        data = r.json()
+        return data.get("data", {}).get("code") or data.get("data", {}).get("shareCode")
+    except:
+        return None
+
+# ─── TELEGRAM ───
+def send_telegram(text):
+    try:
+        r = requests.post(f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage",
+                         json={"chat_id": TG_CHAT, "text": text, "parse_mode": "HTML"}, timeout=15)
+        return r.json().get("ok", False)
+    except:
+        return False
+
+# ─── MAIN ───
+def main():
+    now = datetime.now(WAT)
+    print(f"[L1 VFL ELITE v8] {now.strftime('%H:%M:%S WAT')}")
+    print(f"ELITE database: {len(ELITE)} matchups")
+    
+    matches = fetch_matches()
+    print(f"Upcoming/live matches: {len(matches)}")
+    
+    if not matches:
+        print("No matches found. Silent exit.")
+        return
+    
+    picks = score_matches(matches)
+    print(f"ELITE picks: {len(picks)}")
+    
+    if not picks:
+        print("No ELITE matches in current round. Silent exit.")
+        return
+    
+    # Dedup
+    seen = load_dedup()
+    new_picks = [p for p in picks if make_hash(p) not in seen]
+    for p in new_picks:
+        seen[make_hash(p)] = time.time()
+    save_dedup(seen)
+    print(f"New picks after dedup: {len(new_picks)}")
+    
+    if not new_picks:
+        print("All picks already sent. Silent exit.")
+        return
+    
+    booking = get_booking_code(new_picks)
+    
+    ultra = [p for p in new_picks if "ULTRA" in p["tier"]]
+    elite = [p for p in new_picks if "ELITE" in p["tier"]]
+    
+    lines = [f"⚽ <b>ONIMIX VFL ELITE v8</b>", f"📅 {now.strftime('%d %b %Y • %H:%M WAT')}", ""]
+    
+    if ultra:
+        lines.append("🔴 <b>ULTRA PICKS (≥90% O1.5)</b>")
+        for p in ultra:
+            kt = datetime.fromtimestamp(p["kickoff"]/1000, WAT).strftime("%H:%M")
+            odds_str = f" @{p['o15_odds']}" if p.get("o15_odds") else ""
+            lines.append(f"  🔥 {p['league']} {p['home']} vs {p['away']}")
+            lines.append(f"     ⏰ {kt} | O1.5={p['o15_pct']:.0f}% | {p['games']}G{odds_str}")
+        lines.append("")
+    
+    if elite:
+        lines.append("🟡 <b>ELITE PICKS (80-89% O1.5)</b>")
+        for p in elite:
+            kt = datetime.fromtimestamp(p["kickoff"]/1000, WAT).strftime("%H:%M")
+            odds_str = f" @{p['o15_odds']}" if p.get("o15_odds") else ""
+            lines.append(f"  ⚡ {p['league']} {p['home']} vs {p['away']}")
+            lines.append(f"     ⏰ {kt} | O1.5={p['o15_pct']:.0f}% | {p['games']}G{odds_str}")
+        lines.append("")
+    
+    lines.append(f"📊 {len(ultra)} ULTRA + {len(elite)} ELITE = {len(new_picks)} picks")
+    if booking:
+        lines.append(f"\n🎫 <b>BOOKING CODE:</b> <code>{booking}</code>")
+        lines.append("👉 Paste on SportyBet to bet all at once!")
+    lines.append(f"\n🤖 Layer 1 | 690 ELITE from 11,822 matches")
+    
+    msg = "\n".join(lines)
+    print(f"\n{msg}\n")
+    ok = send_telegram(msg)
+    print(f"Telegram sent: {ok}")
+
+if __name__ == "__main__":
+    main()
