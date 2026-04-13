@@ -354,6 +354,14 @@ def build_mega(all_r, min_odds=30000, max_odds=40000):
         if running >= min_odds: break
     return selected
 
+def build_separate(all_r):
+    """Build separate LOCK and PICK accumulators with individual booking codes."""
+    locks = [r for r in all_r if r['verdict']=='LOCK' and r['ou15_odds']>1.0 and r.get('ou15_oid')]
+    picks = [r for r in all_r if r['verdict']=='PICK' and r['ou15_odds']>1.0 and r.get('ou15_oid')]
+    locks.sort(key=lambda x: (x['sweet'], x['cpct']), reverse=True)
+    picks.sort(key=lambda x: (x['sweet'], x['cpct']), reverse=True)
+    return locks, picks
+
 # ── BOOKING CODE ──
 def gen_booking(picks):
     """Generate SportyBet booking code via share API."""
@@ -429,49 +437,52 @@ def tg_get_chat_id():
     except: pass
     return None
 
-def format_mega_msg(mega, code, total_odds, scan_time):
-    """Format the Telegram mega accumulator message."""
-    locks = [p for p in mega if p['verdict']=='LOCK']
-    picks = [p for p in mega if p['verdict']=='PICK']
-    
-    lines = [
-        f"🏆 <b>VFL MEGA — ONIMIX ELITE</b>",
-        f"📅 {scan_time}",
-        f"🎯 {len(mega)} selections | 💰 {total_odds:,.0f}x odds",
-        f"🔒 {len(locks)} LOCKs | ✅ {len(picks)} PICKs",
-        "",
-    ]
-    
-    # Group by league
-    spain = [p for p in mega if 'sv:category:202120002' in str(p.get('eid','')) or any(
-        p['home'] in str(ev) for ev in [])]  # Simplified — use start time grouping
-    
-    # Just list all picks grouped by round time
+def format_section(picks, icon, label, code, total_odds):
+    """Format a single section (LOCKs or PICKs) for Telegram."""
+    if not picks: return []
+    lines = [f"{icon} <b>{label} ({len(picks)} selections | {total_odds:,.0f}x odds)</b>", ""]
     by_time = defaultdict(list)
-    for p in mega:
-        t = p.get('start', 0)
-        by_time[t].append(p)
-    
+    for p in picks:
+        by_time[p.get('start', 0)].append(p)
     for t in sorted(by_time.keys()):
         dt = datetime.fromtimestamp(t/1000, tz=timezone.utc)
         lines.append(f"⏰ <b>{dt.strftime('%H:%M UTC')}</b>")
-        for i, p in enumerate(by_time[t], 1):
-            icon = '🔒' if p['verdict']=='LOCK' else '✅'
+        for p in by_time[t]:
             sw = ' 💎' if p['sweet'] else ''
             fp = ' 🔍' if p['fp11'] else ''
             lines.append(f"  {icon} {p['match']} — O1.5 @{p['ou15_odds']:.2f}{sw}{fp}")
             lines.append(f"      A:{p['a']['pct']}% B:{p['b']['conf']}({p['b']['sc']}/14) C:{p['cpct']}%")
         lines.append("")
-    
-    lines.append(f"💰 <b>TOTAL: {total_odds:,.0f}x</b>")
+    lines.append(f"💰 <b>ODDS: {total_odds:,.0f}x</b>")
     if code:
-        lines.append(f"📋 <b>BOOKING CODE: {code}</b>")
+        lines.append(f"📋 <b>CODE: {code}</b>")
         lines.append(f"🔗 sportybet.com/ng/share/{code}")
     else:
-        lines.append("📋 Booking code: manual entry required")
+        lines.append("📋 Code: manual entry required")
+    return lines
+
+def format_mega_msg(lock_picks, lock_code, lock_odds, pick_picks, pick_code, pick_odds, scan_time):
+    """Format the Telegram message with SEPARATE booking codes for LOCKs and PICKs."""
+    total_sel = len(lock_picks) + len(pick_picks)
+    lines = [
+        f"🏆 <b>VFL MEGA — ONIMIX ELITE</b>",
+        f"📅 {scan_time}",
+        f"🎯 {total_sel} total selections",
+        f"🔒 {len(lock_picks)} LOCKs | ✅ {len(pick_picks)} PICKs",
+        "",
+    ]
+    
+    # ── LOCK SECTION ──
+    if lock_picks:
+        lines.extend(format_section(lock_picks, '🔒', 'LOCK ACCUMULATOR', lock_code, lock_odds))
+        lines.append("")
+    
+    # ── PICK SECTION ──
+    if pick_picks:
+        lines.extend(format_section(pick_picks, '✅', 'PICK ACCUMULATOR', pick_code, pick_odds))
+        lines.append("")
     
     lines.extend([
-        "",
         "⚡ <i>Engine v3.2 | Section A+B | Accuracy ~77.5%</i>",
         "🤖 <i>ONIMIX TECH — Automated VFL Intelligence</i>",
     ])
@@ -508,47 +519,61 @@ def run(chat_id=None):
             tg_send(f"⚠️ VFL Scan {scan_time}\nNo bookable picks this round. Next scan in ~4 min.", cid)
         return {'picks': 0, 'sent': False}
     
-    # Build mega
-    mega = build_mega(all_r)
-    if not mega:
-        print("⚠️ Could not build mega accumulator")
+    # Build SEPARATE lock and pick accumulators
+    lock_picks, pick_picks = build_separate(all_r)
+    all_selected = lock_picks + pick_picks
+    
+    if not all_selected:
+        print("⚠️ No valid selections for accumulators")
         return {'picks': len(bookable), 'sent': False}
     
-    total_odds = 1.0
-    for p in mega: total_odds *= p['ou15_odds']
+    # Calculate odds for each
+    lock_odds = 1.0
+    for p in lock_picks: lock_odds *= p['ou15_odds']
+    pick_odds = 1.0
+    for p in pick_picks: pick_odds *= p['ou15_odds']
     
-    print(f"\n🎰 MEGA: {len(mega)} selections @ {total_odds:,.0f}x")
+    print(f"\n🎰 LOCK ACCA: {len(lock_picks)} selections @ {lock_odds:,.1f}x")
+    print(f"🎰 PICK ACCA: {len(pick_picks)} selections @ {pick_odds:,.1f}x")
     
-    # Dedup check
-    dk = dedup_key(mega)
+    # Dedup check (using combined set)
+    dk = dedup_key(all_selected)
     if already_sent(dk):
         print("🔁 Already sent this exact combo — skipping")
-        return {'picks': len(mega), 'sent': False, 'reason': 'dedup'}
+        return {'picks': len(all_selected), 'sent': False, 'reason': 'dedup'}
     
-    # Generate booking code
-    print("📋 Generating booking code...")
-    code = gen_booking(mega)
-    if code:
-        print(f"  ✅ Code: {code}")
-    else:
-        print("  ⚠️ No booking code (will send without)")
+    # Generate SEPARATE booking codes
+    lock_code, pick_code = None, None
+    if lock_picks:
+        print("📋 Generating LOCK booking code...")
+        lock_code = gen_booking(lock_picks)
+        if lock_code: print(f"  ✅ LOCK Code: {lock_code}")
+        else: print("  ⚠️ No LOCK booking code")
+    
+    if pick_picks:
+        print("📋 Generating PICK booking code...")
+        pick_code = gen_booking(pick_picks)
+        if pick_code: print(f"  ✅ PICK Code: {pick_code}")
+        else: print("  ⚠️ No PICK booking code")
     
     # Format and send
+    msg = format_mega_msg(lock_picks, lock_code, lock_odds, pick_picks, pick_code, pick_odds, scan_time)
+    
     if cid:
-        msg = format_mega_msg(mega, code, total_odds, scan_time)
         ok = tg_send(msg, cid)
         if ok:
             mark_sent(dk)
             print(f"✅ Sent to Telegram!")
         else:
             print(f"❌ Telegram send failed")
-        return {'picks': len(mega), 'sent': ok, 'code': code, 'odds': total_odds}
+        return {'picks': len(all_selected), 'sent': ok, 'lock_code': lock_code, 'pick_code': pick_code,
+                'lock_odds': lock_odds, 'pick_odds': pick_odds}
     else:
         print("⚠️ No chat_id — printing message only:")
-        msg = format_mega_msg(mega, code, total_odds, scan_time)
         print(msg)
         mark_sent(dk)
-        return {'picks': len(mega), 'sent': False, 'code': code, 'odds': total_odds, 'msg': msg}
+        return {'picks': len(all_selected), 'sent': False, 'lock_code': lock_code, 'pick_code': pick_code,
+                'lock_odds': lock_odds, 'pick_odds': pick_odds, 'msg': msg}
 
 # ── MAIN ──
 if __name__ == '__main__':
