@@ -364,7 +364,7 @@ def build_separate(all_r):
 
 # ── BOOKING CODE ──
 def gen_booking(picks):
-    """Generate SportyBet booking code via share API."""
+    """Generate SportyBet booking code via share API (minimal payload — old working format)."""
     if not picks: return None
     outcomes = []
     for p in picks:
@@ -372,32 +372,30 @@ def gen_booking(picks):
         eid = p.get('eid')
         if not oid or not eid: continue
         outcomes.append({
-            'eventId': eid,
-            'productId': '3',
-            'marketId': '18',
-            'outcomeId': oid,
-            'specifier': 'total=1.5',
-            'odds': str(p['ou15_odds']),
-            'sportId': SPORT,
-            'isLive': False,
-            'isBanker': False,
+            "eventId": eid,
+            "marketId": "18",
+            "specifier": "total=1.5",
+            "outcomeId": oid,
         })
     if not outcomes: return None
     
-    payload = {
-        'outcomes': outcomes,
-        'totalOdds': str(round(eval('*'.join(str(p['ou15_odds']) for p in picks)), 2)),
-        'totalStake': '100',
-        'channel': 'WEB',
-    }
+    payload = {"selections": outcomes}
+    print(f"    📦 Booking payload: {len(outcomes)} outcomes")
     try:
         r = requests.post(
             'https://www.sportybet.com/api/ng/orders/share',
             json=payload, headers={**HEADERS, 'Content-Type': 'application/json'}, timeout=15
         )
+        print(f"    📡 Response status: {r.status_code}")
         d = r.json()
-        if d.get('bizCode') == 10000 and d.get('data', {}).get('shareCode'):
-            return d['data']['shareCode']
+        print(f"    📋 Response bizCode: {d.get('bizCode')}, message: {d.get('message','')}")
+        if d.get('bizCode') == 10000:
+            code = d.get('data', {}).get('shareCode')
+            if code:
+                return code
+            print(f"    ⚠️ No shareCode in data: {d.get('data')}")
+        else:
+            print(f"    ⚠️ API rejected: {json.dumps(d, indent=2)[:500]}")
     except Exception as e:
         print(f"  ⚠️ Booking failed: {e}")
     return None
