@@ -1,7 +1,237 @@
-{
- "predictions": {},
- "blacklist": {},
- "results": [],
- "sent": {},
- "updated": 0
-}
+=== VFL ENGINE v3.7 BOOTSTRAP ===
+Time: 2026-04-13 20:33 UTC
+
+[BOOTSTRAP] Loading persisted state from GitHub...
+  Loaded state: 0 predictions, 0 blacklist, 0 results
+
+[BOOTSTRAP] Downloading engine v3.7...
+Downloaded engine: 35040 bytes
+Version verified: v3.7 ✅
+============================================================
+VFL ENGINE v3.7 — ONIMIX TECH
+Section A + Section B + Failure Monitor + GitHub Persist
+2026-04-13 20:33 UTC
+============================================================
+
+[PERSIST] State management via /tmp/vfl_state.json
+
+[PHASE 0] Checking past predictions & accumulating results...
+  No settled predictions to check yet
+  Pending: 0 | New results: 0 | Total history: 0
+
+[PHASE 0.5] Harvesting completed events for Section B...
+  Harvesting 40 recent completed events for Section B...
+  Harvested 37 new completed events
+  Active blacklist: 0 matchups
+  Results history: 37 matches available for Section B
+
+[PHASE 1] Discovering all upcoming VFL events...
+
+  Spain VFL: 90 upcoming matches
+    21:02 UTC (10 matches)
+    21:40 UTC (10 matches)
+    22:18 UTC (10 matches)
+    22:56 UTC (10 matches)
+    23:34 UTC (10 matches)
+    ... +4 more rounds
+  Fetching 90 event details...
+  Got 90 valid events
+  [?] ALA v GET: A:71% B:N/A C:71% O1.5@1.52 HIGH
+  [P] BIL v SEV: A:79% B:N/A C:79% O1.5@1.44 HIGH
+  [?] ELC v FCB: A:71% B:N/A C:71% O1.5@1.38 HIGH
+  [?] ESP v ATM: A:64% B:N/A C:64% O1.5@1.55 HIGH
+  [P] GIR v RAY: A:86% B:N/A C:86% O1.5@1.39 HIGH
+  [P] LEV v CEL: A:79% B:N/A C:79% O1.5@1.43 HIGH
+  [?] MAL v VCF: A:50% B:N/A C:50% O1.5@1.66 HIGH
+  [X] OSA v VIL: A:71% B:N/A C:71% O1.5@1.36 HIGH
+  [X] RBB v RMA: A:86% B:N/A C:86% O1.5@1.33 HIGH
+  [?] RSO v OVI: A:64% B:N/A C:64% O1.5@1.44 HIGH
+  [?] ALA v SEV: A:64% B:N/A C:64% O1.5@1.51 HIGH
+  [X] BIL v CEL: A:86% B:N/A C:86% O1.5@1.36 HIGH
+  [?] ELC v RAY: A:57% B:N/A C:57% O1.5@1.63 HIGH
+  [X] ESP v VIL: A:79% B:N/A C:79% O1.5@1.37 HIGH
+  [P] LEV v FCB: A:79% B:N/A C:79% O1.5@1.39 HIGH
+  [?] MAL v GET: A:64% B:N/A C:64% O1.5@1.55 HIGH
+  [P] OSA v OVI: A:86% B:N/A C:86% O1.5@1.39 HIGH
+  [?] RBB v GIR: A:71% B:N/A C:71% O1.5@1.42 HIGH
+  [?] RSO v RMA: A:64% B:N/A C:64% O1.5@1.43 HIGH
+  [?] VCF v ATM: A:57% B:N/A C:57% O1.5@1.64 HIGH
+  [?] ALA v CEL: A:71% B:N/A C:71% O1.5@1.42 HIGH
+  [?] ATM v GET: A:71% B:N/A C:71% O1.5@1.41 HIGH
+  [X] BIL v FCB: A:86% B:N/A C:86% O1.5@1.33 HIGH
+  [?] ESP v OVI: A:71% B:N/A C:71% O1.5@1.40 HIGH
+  [X] LEV v ELC: A:86% B:N/A C:86% O1.5@1.37 HIGH
+  [?] MAL v SEV: A:64% B:N/A C:64% O1.5@1.55 HIGH
+  [P] OSA v RMA: A:79% B:N/A C:79% O1.5@1.38 HIGH
+  [?] RBB v RAY: A:71% B:N/A C:71% O1.5@1.50 HIGH
+  [?] RSO v GIR: A:64% B:N/A C:64% O1.5@1.57 HIGH
+  [?] VCF v VIL: A:71% B:N/A C:71% O1.5@1.43 HIGH
+  [?] ALA v FCB: A:71% B:N/A C:71% O1.5@1.38 HIGH
+  [P] ATM v SEV: A:79% B:N/A C:79% O1.5@1.41 HIGH
+  [X] BIL v ELC: A:79% B:N/A C:79% O1.5@1.31 HIGH
+  [P] ESP v RMA: A:79% B:N/A C:79% O1.5@1.39 HIGH
+  [X] GET v VIL: A:79% B:N/A C:79% O1.5@1.33 HIGH
+  [?] LEV v RAY: A:50% B:N/A C:50% O1.5@1.65 HIGH
+  [?] MAL v CEL: A:71% B:N/A C:71% O1.5@1.44 HIGH
+  [?] OSA v GIR: A:64% B:N/A C:64% O1.5@1.49 HIGH
+  [?] RSO v RBB: A:64% B:N/A C:64% O1.5@1.52 HIGH
+  [?] VCF v OVI: A:71% B:N/A C:71% O1.5@1.46 HIGH
+  [X] ALA v ELC: A:86% B:N/A C:86% O1.5@1.36 HIGH
+  [X] ATM v CEL: A:79% B:N/A C:79% O1.5@1.33 HIGH
+  [X] BIL v LEV: A:93% B:N/A C:93% O1.5@1.27 MEDIUM
+  [?] ESP v GIR: A:64% B:N/A C:64% O1.5@1.51 HIGH
+  [X] GET v OVI: A:79% B:N/A C:79% O1.5@1.35 HIGH
+  [?] MAL v FCB: A:71% B:N/A C:71% O1.5@1.40 HIGH
+  [?] OSA v RBB: A:71% B:N/A C:71% O1.5@1.46 HIGH
+  [?] RSO v RAY: A:57% B:N/A C:57% O1.5@1.67 HIGH
+  [?] VCF v RMA: A:71% B:N/A C:71% O1.5@1.46 HIGH
+  [P] VIL v SEV: A:79% B:N/A C:79% O1.5@1.39 HIGH
+  [?] CEL v ATM: A:64% B:N/A C:64% O1.5@1.49 HIGH
+  [P] ELC v RMA: A:79% B:N/A C:79% O1.5@1.41 HIGH
+  [?] FCB v VCF: A:71% B:N/A C:71% O1.5@1.51 HIGH
+  [?] GET v BIL: A:57% B:N/A C:57% O1.5@1.52 HIGH
+  [X] GIR v ESP: A:79% B:N/A C:79% O1.5@1.35 HIGH
+  [X] MAL v LEV: A:93% B:N/A C:93% O1.5@1.33 HIGH
+  [?] OSA v ALA: A:64% B:N/A C:64% O1.5@1.54 HIGH
+  [?] RSO v RAY: A:57% B:N/A C:57% O1.5@1.67 HIGH
+  [X] SEV v OVI: A:86% B:N/A C:86% O1.5@1.34 HIGH
+  [X] VIL v RBB: A:79% B:N/A C:79% O1.5@1.37 HIGH
+  [?] ATM v ESP: A:71% B:N/A C:71% O1.5@1.44 HIGH
+  [X] CEL v OVI: A:93% B:N/A C:93% O1.5@1.37 HIGH
+  [?] ELC v ALA: A:57% B:N/A C:57% O1.5@1.58 HIGH
+  [?] GET v RBB: A:64% B:N/A C:64% O1.5@1.42 HIGH
+  [X] GIR v RMA: A:100% B:N/A C:100% O1.5@1.26 HIGH
+  [?] MAL v FCB: A:64% B:N/A C:64% O1.5@1.40 HIGH
+  [X] OSA v LEV: A:86% B:N/A C:86% O1.5@1.29 HIGH
+  [?] RSO v VCF: A:50% B:N/A C:50% O1.5@1.67 HIGH
+  [?] SEV v BIL: A:64% B:N/A C:64% O1.5@1.50 HIGH
+  [?] VIL v RAY: A:64% B:N/A C:64% O1.5@1.46 HIGH
+  [X] ATM v RMA: A:86% B:N/A C:86% O1.5@1.32 HIGH
+  [?] CEL v ESP: A:71% B:N/A C:71% O1.5@1.49 HIGH
+  [X] ELC v LEV: A:79% B:N/A C:79% O1.5@1.31 HIGH
+  [?] GET v RAY: A:64% B:N/A C:64% O1.5@1.53 HIGH
+  [X] GIR v ALA: A:79% B:N/A C:79% O1.5@1.36 HIGH
+  [X] OSA v FCB: A:79% B:N/A C:79% O1.5@1.36 HIGH
+  [?] OVI v BIL: A:57% B:N/A C:57% O1.5@1.72 HIGH
+  [?] RSO v MAL: A:57% B:N/A C:57% O1.5@1.62 HIGH
+  [?] SEV v RBB: A:71% B:N/A C:71% O1.5@1.40 HIGH
+  [?] VIL v VCF: A:71% B:N/A C:71% O1.5@1.46 HIGH
+  [X] ATM v ALA: A:71% B:SKIP(0) C:36% O1.5@1.45 HIGH
+  [X] CEL v BIL: A:64% B:SKIP(0) C:32% O1.5@1.54 HIGH
+  [X] ELC v FCB: A:79% B:SKIP(0) C:39% O1.5@1.39 HIGH
+  [X] ESP v RMA: A:64% B:SKIP(0) C:32% O1.5@1.39 HIGH
+  [X] GET v VCF: A:64% B:SKIP(0) C:32% O1.5@1.53 HIGH
+  [X] GIR v LEV: A:100% B:SKIP(0) C:50% O1.5@1.20 MEDIUM
+  [X] OSA v RSO: A:64% B:SKIP(0) C:32% O1.5@1.48 HIGH
+  [X] OVI v RBB: A:64% B:SKIP(0) C:32% O1.5@1.58 HIGH
+  [X] SEV v RAY: A:64% B:SKIP(0) C:32% O1.5@1.51 HIGH
+  [X] VIL v MAL: A:79% B:SKIP(0) C:39% O1.5@1.42 HIGH
+
+  Germany VFL: 81 upcoming matches
+    20:42 UTC (9 matches)
+    21:24 UTC (9 matches)
+    22:06 UTC (9 matches)
+    22:48 UTC (9 matches)
+    23:30 UTC (9 matches)
+    ... +4 more rounds
+  Fetching 81 event details...
+  Got 81 valid events
+  [X] BMG v FCA: A:93% B:N/A C:93% O1.5@1.32 HIGH
+  [X] BMU v LEV: A:79% B:N/A C:79% O1.5@1.31 HIGH
+  [X] BVB v SGE: A:79% B:N/A C:79% O1.5@1.26 MEDIUM
+  [?] RBL v SCF: A:64% B:N/A C:64% O1.5@1.44 HIGH
+  [?] STP v WOB: A:57% B:N/A C:57% O1.5@1.63 HIGH
+  [X] SVW v HDH: A:79% B:N/A C:79% O1.5@1.35 HIGH
+  [X] TSG v MAI: A:93% B:N/A C:93% O1.5@1.36 HIGH
+  [X] UNI v HSV: A:100% B:N/A C:100% O1.5@1.22 MEDIUM
+  [X] VFB v KOE: A:86% B:N/A C:86% O1.5@1.24 MEDIUM
+  [X] BMG v KOE: A:93% B:N/A C:93% O1.5@1.35 HIGH
+  [X] BMU v HSV: A:86% B:N/A C:86% O1.5@1.22 MEDIUM
+  [X] LEV v MAI: A:86% B:N/A C:86% O1.5@1.37 HIGH
+  [?] RBL v HDH: A:71% B:N/A C:71% O1.5@1.42 HIGH
+  [?] STP v SCF: A:57% B:N/A C:57% O1.5@1.59 HIGH
+  [X] SVW v SGE: A:93% B:N/A C:93% O1.5@1.29 HIGH
+  [X] TSG v WOB: A:86% B:N/A C:86% O1.5@1.35 HIGH
+  [X] UNI v FCA: A:79% B:N/A C:79% O1.5@1.35 HIGH
+  [X] VFB v BVB: A:93% B:N/A C:93% O1.5@1.27 MEDIUM
+  [?] BMG v BVB: A:71% B:N/A C:71% O1.5@1.38 HIGH
+  [X] BMU v FCA: A:79% B:N/A C:79% O1.5@1.35 HIGH
+  [X] LEV v WOB: A:79% B:N/A C:79% O1.5@1.37 HIGH
+  [X] MAI v HSV: A:86% B:N/A C:86% O1.5@1.26 MEDIUM
+  [?] RBL v SVW: A:71% B:N/A C:71% O1.5@1.48 HIGH
+  [?] STP v HDH: A:71% B:N/A C:71% O1.5@1.55 HIGH
+  [X] TSG v SCF: A:79% B:N/A C:79% O1.5@1.34 HIGH
+  [X] UNI v KOE: A:79% B:N/A C:79% O1.5@1.37 HIGH
+  [X] VFB v SGE: A:93% B:N/A C:93% O1.5@1.21 MEDIUM
+  [X] BMG v VFB: A:79% B:N/A C:79% O1.5@1.34 HIGH
+  [P] BMU v KOE: A:79% B:N/A C:79% O1.5@1.38 HIGH
+  [?] HSV v WOB: A:71% B:N/A C:71% O1.5@1.51 HIGH
+  [X] LEV v SCF: A:79% B:N/A C:79% O1.5@1.34 HIGH
+  [?] MAI v FCA: A:71% B:N/A C:71% O1.5@1.42 HIGH
+  [X] RBL v SGE: A:79% B:N/A C:79% O1.5@1.34 HIGH
+  [?] STP v SVW: A:57% B:N/A C:57% O1.5@1.64 HIGH
+  [X] TSG v HDH: A:93% B:N/A C:93% O1.5@1.33 HIGH
+  [P] UNI v BVB: A:79% B:N/A C:79% O1.5@1.41 HIGH
+  [X] BMG v SGE: A:86% B:N/A C:86% O1.5@1.31 HIGH
+  [?] BMU v BVB: A:64% B:N/A C:64% O1.5@1.42 HIGH
+  [?] HSV v SCF: A:64% B:N/A C:64% O1.5@1.48 HIGH
+  [X] LEV v HDH: A:86% B:N/A C:86% O1.5@1.33 HIGH
+  [P] MAI v KOE: A:79% B:N/A C:79% O1.5@1.45 HIGH
+  [X] STP v RBL: A:93% B:N/A C:93% O1.5@1.33 HIGH
+  [X] TSG v SVW: A:86% B:N/A C:86% O1.5@1.37 HIGH
+  [X] UNI v VFB: A:86% B:N/A C:86% O1.5@1.37 HIGH
+  [X] WOB v FCA: A:86% B:N/A C:86% O1.5@1.29 HIGH
+  [X] BMG v BMU: A:100% B:N/A C:100% O1.5@1.16 MEDIUM
+  [?] HSV v BVB: A:64% B:N/A C:64% O1.5@1.48 HIGH
+  [X] KOE v SGE: A:93% B:N/A C:93% O1.5@1.36 HIGH
+  [X] SCF v MAI: A:86% B:N/A C:86% O1.5@1.32 HIGH
+  [X] STP v RBL: A:86% B:N/A C:86% O1.5@1.33 HIGH
+  [?] SVW v UNI: A:64% B:N/A C:64% O1.5@1.47 HIGH
+  [X] TSG v FCA: A:100% B:N/A C:100% O1.5@1.28 HIGH
+  [X] VFB v LEV: A:100% B:N/A C:100% O1.5@1.20 MEDIUM
+  [X] WOB v HDH: A:86% B:N/A C:86% O1.5@1.34 HIGH
+  [X] BMG v HDH: A:86% B:N/A C:86% O1.5@1.37 HIGH
+  [X] HSV v BMU: A:100% B:N/A C:100% O1.5@1.20 MEDIUM
+  [?] KOE v MAI: A:64% B:N/A C:64% O1.5@1.49 HIGH
+  [P] SCF v UNI: A:79% B:N/A C:79% O1.5@1.38 HIGH
+  [?] SGE v BVB: A:71% B:N/A C:71% O1.5@1.39 HIGH
+  [X] STP v TSG: A:79% B:N/A C:79% O1.5@1.30 HIGH
+  [X] SVW v LEV: A:86% B:N/A C:86% O1.5@1.27 MEDIUM
+  [X] VFB v RBL: A:100% B:N/A C:100% O1.5@1.16 MEDIUM
+  [X] WOB v FCA: A:86% B:N/A C:86% O1.5@1.29 HIGH
+  [X] BMG v FCA: A:93% B:N/A C:93% O1.5@1.32 HIGH
+  [?] HSV v HDH: A:71% B:N/A C:71% O1.5@1.46 HIGH
+  [?] KOE v BVB: A:71% B:N/A C:71% O1.5@1.45 HIGH
+  [?] MAI v UNI: A:57% B:N/A C:57% O1.5@1.67 HIGH
+  [X] SCF v LEV: A:93% B:N/A C:93% O1.5@1.22 MEDIUM
+  [X] SGE v BMU: A:100% B:N/A C:100% O1.5@1.17 MEDIUM
+  [X] SVW v RBL: A:93% B:N/A C:93% O1.5@1.21 MEDIUM
+  [X] VFB v TSG: A:100% B:N/A C:100% O1.5@1.14 MEDIUM
+  [X] WOB v STP: A:100% B:N/A C:100% O1.5@1.27 HIGH
+  [X] BMG v STP: A:86% B:N/A C:86% O1.5@1.30 HIGH
+  [X] BVB v BMU: A:100% B:N/A C:100% O1.5@1.14 MEDIUM
+  [?] HSV v FCA: A:71% B:N/A C:71% O1.5@1.39 HIGH
+  [?] KOE v UNI: A:57% B:N/A C:57% O1.5@1.59 HIGH
+  [?] MAI v LEV: A:71% B:N/A C:71% O1.5@1.38 HIGH
+  [X] SCF v RBL: A:93% B:N/A C:93% O1.5@1.18 MEDIUM
+  [P] SGE v HDH: A:79% B:N/A C:79% O1.5@1.38 HIGH
+  [X] SVW v TSG: A:100% B:N/A C:100% O1.5@1.19 MEDIUM
+  [X] VFB v WOB: A:79% B:N/A C:79% O1.5@1.29 MEDIUM
+
+============================================================
+L:0 P:15 ?:69 X:87 | BL:0 | B-active:10/171
+
+LOCK ACCA: 0 @ 1.0x
+PICK ACCA: 15 @ 157.5x
+Generating PICK booking code...
+    Booking: 15 selections
+  PICK Code: RKWTAR
+
+Tracking 15 predictions for monitoring
+
+Scan complete!
+
+[BOOTSTRAP] Reading updated state for persistence...
+State size: 17524 bytes
+
+=== ENGINE v3.7 COMPLETE ===
