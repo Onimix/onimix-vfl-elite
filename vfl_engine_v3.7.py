@@ -6,7 +6,7 @@ Failure Monitoring + Learning System
 v3.7: GitHub-based persistent storage for cross-run tracking
 """
 
-import requests, json, time, hashlib, os, base64
+import requests, json, time, hashlib, os
 import concurrent.futures
 from datetime import datetime, timezone, timedelta
 from collections import defaultdict
@@ -29,114 +29,61 @@ LEAGUES = {
     'germany': {'name': 'Germany VFL', 'catName': 'Germany'},
 }
 
-# ── GITHUB PERSISTENT STORAGE ──
-GH_REPO = 'Onimix/onimix-vfl-elite'
-GH_API = 'https://api.github.com'
-GH_TOKEN = os.environ.get('GH_TOKEN', os.environ.get('GITHUB_TOKEN', ''))
+# ── SINGLE-FILE STATE PERSISTENCE ──
+# State is loaded from /tmp/vfl_state.json (pre-loaded by bootstrap from GitHub)
+# State is saved back to /tmp/vfl_state.json (bootstrap pushes to GitHub after run)
+STATE_FILE = '/tmp/vfl_state.json'
 
-# Local fallback paths
-TRACK_FILE = '/tmp/vfl_predictions.json'
-BLACKLIST_FILE = '/tmp/vfl_blacklist.json'
-RESULTS_FILE = '/tmp/vfl_results_history.json'
-SENT_FILE = '/tmp/vfl_sent.json'
+_state_cache = None
 
-def _gh_headers():
-    h = {'Accept': 'application/vnd.github.v3+json'}
-    if GH_TOKEN:
-        h['Authorization'] = 'token ' + GH_TOKEN
-    return h
-
-def gh_read(path):
-    """Read a JSON file from GitHub repo."""
+def _load_state():
+    global _state_cache
+    if _state_cache is not None:
+        return _state_cache
     try:
-        url = '%s/repos/%s/contents/%s' % (GH_API, GH_REPO, path)
-        r = requests.get(url, headers=_gh_headers(), timeout=15)
-        if r.status_code == 200:
-            d = r.json()
-            content = base64.b64decode(d['content']).decode('utf-8')
-            sha = d.get('sha', '')
-            return json.loads(content), sha
-        elif r.status_code == 404:
-            return None, ''
-    except Exception as e:
-        print("  GH read error (%s): %s" % (path, e))
-    return None, ''
-
-def gh_write(path, data, sha='', msg='auto-update'):
-    """Write a JSON file to GitHub repo."""
-    try:
-        content = base64.b64encode(json.dumps(data, indent=1).encode('utf-8')).decode('utf-8')
-        url = '%s/repos/%s/contents/%s' % (GH_API, GH_REPO, path)
-        payload = {
-            'message': msg,
-            'content': content,
-        }
-        if sha:
-            payload['sha'] = sha
-        r = requests.put(url, json=payload, headers=_gh_headers(), timeout=20)
-        if r.status_code in (200, 201):
-            return True
-        else:
-            print("  GH write error (%s): %d %s" % (path, r.status_code, r.text[:200]))
-    except Exception as e:
-        print("  GH write error (%s): %s" % (path, e))
-    return False
-
-# ── PERSISTENCE WITH GITHUB FALLBACK ──
-def load_json_local(path):
-    try:
-        with open(path) as f:
-            return json.load(f)
+        with open(STATE_FILE) as f:
+            _state_cache = json.load(f)
     except:
-        return {}
+        _state_cache = {'predictions': {}, 'blacklist': {}, 'results': [], 'sent': {}, 'updated': 0}
+    return _state_cache
 
-def save_json_local(path, data):
-    with open(path, 'w') as f:
-        json.dump(data, f, indent=2)
-
-def load_persistent(gh_path, local_path):
-    """Load from GitHub first, fallback to local."""
-    data, sha = gh_read(gh_path)
-    if data is not None:
-        save_json_local(local_path, data)
-        return data, sha
-    data = load_json_local(local_path)
-    return data, ''
-
-def save_persistent(gh_path, local_path, data, sha='', msg='auto-update'):
-    """Save to both local and GitHub."""
-    save_json_local(local_path, data)
-    return gh_write(gh_path, data, sha, msg)
+def _save_state():
+    global _state_cache
+    if _state_cache is None:
+        return
+    _state_cache['updated'] = time.time()
+    with open(STATE_FILE, 'w') as f:
+        json.dump(_state_cache, f, indent=1)
 
 def load_predictions():
-    data, sha = load_persistent('data/predictions.json', TRACK_FILE)
-    if isinstance(data, dict):
-        return data, sha
-    return {}, sha
+    s = _load_state()
+    return s.get('predictions', {}), ''
 
 def save_predictions(preds, sha=''):
-    save_persistent('data/predictions.json', TRACK_FILE, preds, sha, 'update predictions')
+    s = _load_state()
+    s['predictions'] = preds
+    _save_state()
 
 def load_blacklist():
-    data, sha = load_persistent('data/blacklist.json', BLACKLIST_FILE)
-    if isinstance(data, dict):
-        return data, sha
-    return {}, sha
+    s = _load_state()
+    return s.get('blacklist', {}), ''
 
 def save_blacklist(bl, sha=''):
-    save_persistent('data/blacklist.json', BLACKLIST_FILE, bl, sha, 'update blacklist')
+    s = _load_state()
+    s['blacklist'] = bl
+    _save_state()
 
 def load_results_history():
-    data, sha = load_persistent('data/results_history.json', RESULTS_FILE)
-    if isinstance(data, list):
-        return data, sha
-    if isinstance(data, dict) and 'results' in data:
-        return data['results'], sha
-    return [], sha
+    s = _load_state()
+    r = s.get('results', [])
+    if isinstance(r, dict) and 'results' in r:
+        r = r['results']
+    return r, ''
 
 def save_results_history(results, sha=''):
-    save_persistent('data/results_history.json', RESULTS_FILE,
-                    {'results': results, 'updated': time.time()}, sha, 'update results history')
+    s = _load_state()
+    s['results'] = results
+    _save_state()
 
 def matchup_key(home, away):
     h = (home or '').strip().lower()
@@ -145,13 +92,13 @@ def matchup_key(home, away):
 
 # ── DEDUP ──
 def load_sent():
-    data, sha = load_persistent('data/sent.json', SENT_FILE)
-    if isinstance(data, dict):
-        return data, sha
-    return {}, sha
+    s = _load_state()
+    return s.get('sent', {}), ''
 
 def save_sent(d, sha=''):
-    save_persistent('data/sent.json', SENT_FILE, d, sha, 'update sent dedup')
+    s = _load_state()
+    s['sent'] = d
+    _save_state()
 
 def dedup_key(picks):
     ids = sorted(str(p.get('gid','')) for p in picks if p.get('gid'))
@@ -886,11 +833,7 @@ def run():
     print(scan_time)
     print("=" * 60)
 
-    # Check GitHub token
-    if GH_TOKEN:
-        print("\n[PERSIST] GitHub token found — cross-run tracking ACTIVE")
-    else:
-        print("\n[PERSIST] No GitHub token — using local-only (resets each run)")
+    print("\n[PERSIST] State management via /tmp/vfl_state.json")
 
     # ── PHASE 0: Check past predictions + accumulate results ──
     print("\n[PHASE 0] Checking past predictions & accumulating results...")
