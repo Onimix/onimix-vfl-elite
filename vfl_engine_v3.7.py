@@ -53,7 +53,7 @@ def _save_state():
         return
     _state_cache['updated'] = time.time()
     with open(STATE_FILE, 'w') as f:
-        json.dump(_state_cache, f, indent=1)
+        json.dump(_state_cache, f, separators=(',', ':'))
 
 def load_predictions():
     s = _load_state()
