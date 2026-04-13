@@ -355,8 +355,8 @@ def harvest_completed_events():
         
         # Scan backwards from the earliest upcoming gameId to find completed matches
         min_gid = min(all_game_ids)
-        # Look back ~200 matches (covers ~20 rounds across 2 leagues, ~24h)
-        scan_gids = list(range(max(1, min_gid - 200), min_gid))
+        # Look back ~100 matches (covers ~10 rounds across 2 leagues)
+        scan_gids = list(range(max(1, min_gid - 100), min_gid))
         
         # Only check ones we don't already have
         scan_gids = [g for g in scan_gids if str(g) not in existing_gids]
@@ -364,8 +364,8 @@ def harvest_completed_events():
         if not scan_gids:
             return 0
         
-        # Limit to 100 per scan to avoid overloading
-        scan_gids = scan_gids[-100:]
+        # Limit to 40 per scan to stay within timeout
+        scan_gids = scan_gids[-40:]
         
         print("  Harvesting %d recent completed events for Section B..." % len(scan_gids))
         
@@ -373,7 +373,7 @@ def harvest_completed_events():
             return (gid, event_result(gid))
         
         new_count = 0
-        with concurrent.futures.ThreadPoolExecutor(max_workers=15) as ex:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as ex:
             fetched = list(ex.map(lambda g: fetch_ev(g), scan_gids))
         
         for gid, ev in fetched:
