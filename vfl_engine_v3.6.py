@@ -165,7 +165,7 @@ def check_past_predictions():
     existing_gids = set(r.get('gid','') for r in results_history)
 
     if not preds:
-        return {'checked': 0, 'won': 0, 'lost': 0, 'pending': 0, 'new_blacklist': [], 'new_results': 0}
+        return {'checked': 0, 'won': 0, 'lost': 0, 'pending': 0, 'new_blacklist': [], 'new_results': 0, 'total_history': len(results_history)}
 
     checked, won, lost, pending = 0, 0, 0, 0
     new_blacklist_entries = []
