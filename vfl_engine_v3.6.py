@@ -873,7 +873,7 @@ def run():
     else:
         print("  No settled predictions to check yet")
     print("  Pending: %d | New results: %d | Total history: %d" % (
-        monitor['pending'], monitor['new_results'], monitor['total_history']))
+        monitor.get('pending', 0), monitor.get('new_results', 0), monitor.get('total_history', 0)))
 
     # ── PHASE 0.5: Harvest completed events for Section B ──
     print("\n[PHASE 0.5] Harvesting completed events for Section B...")
