@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ONIMIX VFL ELITE — Mega Audit v4.2
+ONIMIX VFL ELITE — Mega Audit v4.3
 =====================================
 PURE ODDS-BASED MEGA ACCUMULATOR + AUTO-BOOKING
 Uses commonThumbnailEvents + individual event markets.
@@ -99,19 +99,64 @@ def load_proven():
     except: return {}
 
 
-def get_boost(odds, league, proven):
-    if not proven: return 0, "No data"
+def get_boost(odds, league, proven, home="", away="", sa=0):
+    """Deep proven odds integration — uses ALL data from odds tracker.
+    Checks: odds_buckets, league_stats, matchup_odds, sa_score_stats.
+    Returns boost (-5 to +5) and reason string."""
+    if not proven: return 0, "No proven data yet"
     boost = 0; reasons = []
-    for b, s in proven.get("by_odds_bucket", {}).items():
+
+    # 1. ODDS BUCKET CHECK (fixed key: "odds_buckets" not "by_odds_bucket")
+    for b, s in proven.get("odds_buckets", {}).items():
         try:
             p = b.replace("[","").replace(")","").split("-")
-            if float(p[0]) <= odds < float(p[1]):
-                hr = s.get("hit_rate", 0)
-                if s.get("total", 0) >= 3:
-                    if hr >= 75: boost += 2; reasons.append(f"Proven {hr:.0f}%")
-                    elif hr < 40: boost -= 3; reasons.append(f"Danger {hr:.0f}%")
+            lo, hi = float(p[0]), float(p[1])
+            if lo <= odds < hi:
+                hr = s.get("hit_rate", 0) * 100 if s.get("hit_rate", 0) <= 1 else s.get("hit_rate", 0)
+                total = s.get("total", 0)
+                if total >= 3:
+                    if hr >= 75: boost += 2; reasons.append(f"Odds bucket {hr:.0f}% ({total} settled)")
+                    elif hr < 40: boost -= 3; reasons.append(f"⚠️ Danger bucket {hr:.0f}%")
+                elif total >= 1:
+                    if hr >= 70: boost += 1; reasons.append(f"Odds bucket early {hr:.0f}%")
                 break
         except: continue
+
+    # 2. LEAGUE STATS CHECK
+    lg_key = league.lower()
+    lg_stats = proven.get("league_stats", {}).get(lg_key, {})
+    if lg_stats:
+        lg_hr = lg_stats.get("hit_rate", 0) * 100 if lg_stats.get("hit_rate", 0) <= 1 else lg_stats.get("hit_rate", 0)
+        lg_total = lg_stats.get("total", 0)
+        if lg_total >= 5:
+            if lg_hr >= 75: boost += 1; reasons.append(f"{league} league {lg_hr:.0f}%")
+            elif lg_hr < 45: boost -= 2; reasons.append(f"⚠️ {league} league weak {lg_hr:.0f}%")
+
+    # 3. MATCHUP CHECK (specific team pairing)
+    if home and away:
+        matchup_key = f"{lg_key}:{home} vs {away}"
+        mu_stats = proven.get("matchup_odds", {}).get(matchup_key, {})
+        if mu_stats:
+            mu_hr = mu_stats.get("hit_rate", 0) * 100 if mu_stats.get("hit_rate", 0) <= 1 else mu_stats.get("hit_rate", 0)
+            mu_total = mu_stats.get("total", 0)
+            if mu_total >= 2:
+                if mu_hr >= 80: boost += 2; reasons.append(f"Matchup proven {mu_hr:.0f}%")
+                elif mu_hr < 30: boost -= 2; reasons.append(f"⚠️ Matchup dangerous {mu_hr:.0f}%")
+            elif mu_total == 1 and mu_hr >= 100:
+                boost += 1; reasons.append(f"Matchup 1/1 ✓")
+
+    # 4. SA SCORE STATS CHECK
+    sa_key = str(sa)
+    sa_stats = proven.get("sa_score_stats", {}).get(sa_key, {})
+    if sa_stats:
+        sa_hr = sa_stats.get("hit_rate", 0) * 100 if sa_stats.get("hit_rate", 0) <= 1 else sa_stats.get("hit_rate", 0)
+        sa_total = sa_stats.get("total", 0)
+        if sa_total >= 3:
+            if sa_hr >= 80: boost += 1; reasons.append(f"SA{sa} proven {sa_hr:.0f}%")
+            elif sa_hr < 40: boost -= 1; reasons.append(f"⚠️ SA{sa} weak {sa_hr:.0f}%")
+
+    # Cap boost
+    boost = max(-5, min(5, boost))
     return boost, " | ".join(reasons) if reasons else "Neutral"
 
 
@@ -248,7 +293,7 @@ def scan_all():
 def build_megas(cands, proven, correction):
     scored = []
     for c in cands:
-        boost, reason = get_boost(c["o15"], c["league"], proven)
+        boost, reason = get_boost(c["o15"], c["league"], proven, c.get("home",""), c.get("away",""), c.get("sa",0))
         ok, msg = correction.check(c["key"], c["league"], c["o15"], c["sa"])
         if not ok: continue
         conf = (c["sa"]/14*50) + max(0, 25-abs(c["o15"]-1.49)*100) + boost*5
@@ -294,7 +339,7 @@ def build_megas(cands, proven, correction):
 
 def format_msg(megas, total):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    msg = f"🚀 *ONIMIX MEGA AUDIT v4.2*\n💎 *ODDS-BASED ENGINE + AUTO-BOOK*\n⏰ {now}\n{'='*35}\n\n"
+    msg = f"🚀 *ONIMIX MEGA AUDIT v4.3*\n💎 *ODDS-BASED ENGINE + AUTO-BOOK*\n⏰ {now}\n{'='*35}\n\n"
     msg += f"🔍 *Scan:* 5 leagues, {total} candidates\n\n"
     if not megas:
         msg += f"⚠️ *Need 10+ candidates for mega, found {total}.*\nWill retry.\n"
@@ -322,11 +367,20 @@ def format_msg(megas, total):
 
 def run():
     print("="*60)
-    print("🚀 ONIMIX MEGA AUDIT v4.2 — ODDS-BASED + AUTO-BOOK")
+    print("🚀 ONIMIX MEGA AUDIT v4.3 — ODDS-BASED + AUTO-BOOK")
     print("="*60)
     start = time.time()
     correction = MegaCorrection()
     proven = load_proven()
+    proven_settled = proven.get("total_settled", 0)
+    proven_hr = proven.get("overall_hit_rate", 0)
+    if proven_settled:
+        print(f"📊 Proven Odds DB: {proven_settled} settled, {proven_hr*100:.1f}% hit rate")
+        print(f"   Leagues: {', '.join(proven.get('league_stats',{}).keys())}")
+        print(f"   Odds buckets: {len(proven.get('odds_buckets',{}))}")
+        print(f"   Matchups tracked: {len(proven.get('matchup_odds',{}))}")
+    else:
+        print("📊 No proven odds data yet — running without backing")
     cands = scan_all()
     print(f"\n📊 Total: {len(cands)}")
     megas, scored = build_megas(cands, proven, correction)
@@ -336,7 +390,7 @@ def run():
     send_telegram(msg)
     elapsed = time.time() - start
     print(f"\n⏱️ Done in {elapsed:.1f}s")
-    return {"status": "success", "version": "4.2", "method": "ODDS-BASED MEGA + AUTOBOOK",
+    return {"status": "success", "version": "4.3", "method": "ODDS-BASED MEGA + AUTOBOOK",
             "candidates": len(cands), "megas": len(megas), "booked": booked,
             "elapsed": round(elapsed,1)}
 
