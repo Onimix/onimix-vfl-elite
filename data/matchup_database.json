@@ -1,0 +1,33 @@
+{
+  "gold": {
+    "Spain:CEL vs FCB": {"rate": 1.0, "sample": 14},
+    "Germany:BVB vs FCA": {"rate": 1.0, "sample": 14},
+    "Germany:SCF vs TSG": {"rate": 1.0, "sample": 14},
+    "Germany:SVW vs BMU": {"rate": 1.0, "sample": 14},
+    "Germany:KOE vs HSV": {"rate": 1.0, "sample": 14}
+  },
+  "silver": {
+    "Spain:ATM vs VAL": {"rate": 0.929}, "Spain:FCB vs RMA": {"rate": 0.929},
+    "Spain:FCB vs GRA": {"rate": 0.929}, "Spain:SEV vs CEL": {"rate": 0.929},
+    "Spain:ATM vs CEL": {"rate": 0.929}, "Spain:VAL vs VIL": {"rate": 0.929},
+    "Spain:SEV vs VIL": {"rate": 0.929}, "Spain:ATM vs GRA": {"rate": 0.929},
+    "Spain:ESP vs ATM": {"rate": 0.929}, "Spain:BET vs SEV": {"rate": 0.929},
+    "Spain:CEL vs SEV": {"rate": 0.929}, "Spain:VAL vs ATM": {"rate": 0.929},
+    "Spain:GRA vs SEV": {"rate": 0.929}, "Spain:VIL vs FCB": {"rate": 0.929},
+    "Spain:RMA vs BET": {"rate": 0.929}, "Spain:CEL vs BET": {"rate": 0.929},
+    "Spain:BET vs VAL": {"rate": 0.929}, "Spain:GRA vs CEL": {"rate": 0.929},
+    "Spain:VIL vs CEL": {"rate": 0.929}, "Spain:ATM vs BET": {"rate": 0.929},
+    "Germany:FCA vs SCF": {"rate": 0.929}, "Germany:BMU vs WOB": {"rate": 0.929},
+    "Germany:BVB vs KOE": {"rate": 0.929}, "Germany:TSG vs BVB": {"rate": 0.929},
+    "Germany:FCA vs SVW": {"rate": 0.929}, "Germany:KOE vs BVB": {"rate": 0.929},
+    "Germany:HSV vs BMU": {"rate": 0.929}, "Germany:WOB vs SCF": {"rate": 0.929},
+    "Germany:BMU vs BVB": {"rate": 0.929}, "Germany:TSG vs SVW": {"rate": 0.929},
+    "Germany:BVB vs SCF": {"rate": 0.929}, "Germany:SCF vs KOE": {"rate": 0.929},
+    "Germany:SVW vs FCA": {"rate": 0.929}, "Germany:HSV vs SCF": {"rate": 0.929},
+    "Germany:FCA vs KOE": {"rate": 0.929}, "Germany:WOB vs BVB": {"rate": 0.929},
+    "Germany:SVW vs KOE": {"rate": 0.929}, "Germany:BMU vs SCF": {"rate": 0.929},
+    "Germany:TSG vs KOE": {"rate": 0.929}, "Germany:HSV vs BVB": {"rate": 0.929}
+  },
+  "traps": ["Spain:OVI vs OSA","Spain:OSA vs OVI","Spain:GRA vs OVI","Spain:SOC vs ESP","Spain:MAL vs SOC","Germany:BMG vs SVW","Germany:SVW vs BMG","Germany:BMG vs WOB","Germany:BMG vs HSV"],
+  "strategy": {"min_sa": 6, "odds_range": [1.38, 1.60], "target_odds": 20000, "target_legs": 26, "min_hist_rate": 0.929}
+}
