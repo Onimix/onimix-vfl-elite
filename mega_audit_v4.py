@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-ONIMIX VFL ELITE — Mega Audit v4.1
+ONIMIX VFL ELITE — Mega Audit v4.2
 =====================================
-PURE ODDS-BASED MEGA ACCUMULATOR (FIXED)
+PURE ODDS-BASED MEGA ACCUMULATOR + AUTO-BOOKING
 Uses commonThumbnailEvents + individual event markets.
 Correct parsing: id=18 exact desc, decimal odds.
+AUTO-BOOKS each mega tier on SportyBet and sends booking codes to Telegram.
 
 Author: ONIMIX TECH
 Date: April 2026
@@ -13,6 +14,7 @@ Date: April 2026
 import json
 import urllib.request
 import urllib.parse
+import urllib.error
 import time
 from datetime import datetime, timezone
 
@@ -20,6 +22,7 @@ TELEGRAM_TOKEN = "8548617749:AAENDPXnXb0Rcr453me-7rIMfE6E28nS_Ow"
 TELEGRAM_CHAT_ID = "1745848158"
 GH_RAW = "https://raw.githubusercontent.com/Onimix/onimix-vfl-elite/main"
 API_BASE = "https://www.sportybet.com/api/ng/factsCenter"
+BOOKING_URL = "https://www.sportybet.com/api/ng/orders/share"
 
 LEAGUES = {
     "Spain": "sv:league:2", "Germany": "sv:league:4",
@@ -65,6 +68,20 @@ def api_get(url, timeout=15):
         return {"error": str(e)}
 
 
+def api_post(url, payload, timeout=15):
+    """POST JSON to SportyBet API."""
+    try:
+        data = json.dumps(payload).encode("utf-8")
+        req = urllib.request.Request(url, data=data, headers={
+            **HEADERS,
+            "Content-Type": "application/json",
+        })
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return json.loads(resp.read().decode())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 def send_telegram(msg):
     try:
         url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
@@ -76,7 +93,7 @@ def send_telegram(msg):
 def load_proven():
     try:
         req = urllib.request.Request(f"{GH_RAW}/data/proven_odds.json",
-            headers={"User-Agent": "ONIMIX/4.1", "Cache-Control": "no-cache"})
+            headers={"User-Agent": "ONIMIX/4.2", "Cache-Control": "no-cache"})
         with urllib.request.urlopen(req, timeout=15) as r:
             return json.loads(r.read().decode())
     except: return {}
@@ -99,12 +116,20 @@ def get_boost(odds, league, proven):
 
 
 def parse_markets(markets):
+    """Parse prematch markets. Extracts O1.5 odds + outcomeId/specifier for booking."""
     o15 = o25 = ho05 = ao05 = btts = 0; sa = 0
+    o15_outcome_id = None
+    o15_specifier = None
     for m in markets:
         mid = str(m.get("id", ""))
+        specifier = m.get("specifier", "")
         for o in m.get("outcomes", []):
             d = str(o.get("desc", "")); v = float(o.get("odds", 0))
-            if mid == "18" and d == "Over 1.5": o15 = v
+            oid = str(o.get("id", ""))
+            if mid == "18" and d == "Over 1.5":
+                o15 = v
+                o15_outcome_id = oid
+                o15_specifier = specifier if specifier else "total=1.5"
             elif mid == "18" and d == "Over 2.5": o25 = v
             elif mid == "19" and d == "Over 0.5": ho05 = v
             elif mid == "20" and d == "Over 0.5": ao05 = v
@@ -124,7 +149,71 @@ def parse_markets(markets):
     if btts > 0:
         if btts <= 1.80: sa += 2
         elif btts <= 2.20: sa += 1
-    return {"o15": o15, "sa": min(sa, 14)}
+    return {"o15": o15, "sa": min(sa, 14),
+            "o15_outcome_id": o15_outcome_id, "o15_specifier": o15_specifier}
+
+
+def generate_booking_code(selections):
+    """Generate SportyBet booking code for a list of selections.
+    Each selection needs: eventId, marketId, specifier, outcomeId.
+    Returns the share/booking code or None on failure."""
+    if not selections:
+        return None
+
+    payload = {"selections": selections}
+
+    # Try SportyBet share endpoint
+    result = api_post(BOOKING_URL, payload)
+    if "error" in result:
+        print(f"  ⚠️ Booking API error: {result['error']}")
+        # Try alternate endpoint format
+        alt_url = "https://www.sportybet.com/api/ng/orders/share"
+        result = api_post(alt_url, {"outcomes": selections})
+        if "error" in result:
+            return None
+
+    # Extract share code from response
+    data = result.get("data", result)
+    if isinstance(data, dict):
+        code = data.get("shareCode") or data.get("code") or data.get("betId")
+        if code:
+            return str(code)
+
+    # Try extracting from top-level
+    code = result.get("shareCode") or result.get("code")
+    if code:
+        return str(code)
+
+    print(f"  ℹ️ Booking response: {json.dumps(result)[:200]}")
+    return None
+
+
+def book_mega(mega_legs):
+    """Book a mega accumulator on SportyBet. Returns booking code or None."""
+    selections = []
+    for leg in mega_legs:
+        event_id = leg.get("event_id", "")
+        outcome_id = leg.get("o15_outcome_id", "")
+        specifier = leg.get("o15_specifier", "total=1.5")
+
+        if not event_id or not outcome_id:
+            print(f"  ⚠️ Missing booking data for {leg.get('match', '?')}")
+            continue
+
+        selections.append({
+            "eventId": event_id,
+            "marketId": "18",
+            "specifier": specifier,
+            "outcomeId": outcome_id,
+        })
+
+    if len(selections) < len(mega_legs):
+        print(f"  ⚠️ Only {len(selections)}/{len(mega_legs)} legs have booking data")
+        if not selections:
+            return None
+
+    code = generate_booking_code(selections)
+    return code
 
 
 def scan_all():
@@ -148,6 +237,8 @@ def scan_all():
             print(f"  ✅ {h} vs {a} — {p['o15']:.2f} SA:{p['sa']}")
             cands.append({"event_id": eid, "league": name, "home": h, "away": a,
                          "match": f"{h} vs {a}", "o15": p["o15"], "sa": p["sa"],
+                         "o15_outcome_id": p["o15_outcome_id"],
+                         "o15_specifier": p["o15_specifier"],
                          "key": f"{name}_{h}_{a}"})
             time.sleep(0.2)
         time.sleep(0.3)
@@ -189,31 +280,49 @@ def build_megas(cands, proven, correction):
                        "avg_conf": round(sum(s["confidence"] for s in sel)/len(sel),1),
                        "avg_sa": round(sum(s["sa"] for s in sel)/len(sel),1),
                        "ret_1k": round(1000*combo), "leagues": dict(lc)}
-        if best: megas.append(best)
+        if best:
+            # Generate booking code for this mega tier
+            booking_code = book_mega(best["legs"])
+            best["booking_code"] = booking_code
+            if booking_code:
+                print(f"  🎫 {best['name']} booked: {booking_code}")
+            else:
+                print(f"  ⚠️ {best['name']} booking failed — picks still valid")
+            megas.append(best)
     return megas, scored
 
 
 def format_msg(megas, total):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    msg = f"🚀 *ONIMIX MEGA AUDIT v4.1*\n💎 *ODDS-BASED ENGINE*\n⏰ {now}\n{'='*35}\n\n"
+    msg = f"🚀 *ONIMIX MEGA AUDIT v4.2*\n💎 *ODDS-BASED ENGINE + AUTO-BOOK*\n⏰ {now}\n{'='*35}\n\n"
     msg += f"🔍 *Scan:* 5 leagues, {total} candidates\n\n"
     if not megas:
         msg += f"⚠️ *Need 10+ candidates for mega, found {total}.*\nWill retry.\n"
         return msg
+    booked_count = sum(1 for m in megas if m.get("booking_code"))
     for m in megas:
         msg += f"\n{m['name']}\n{'─'*30}\n"
         for i, l in enumerate(m["legs"],1):
             msg += f"{i}. {l['match']}\n   {l['league']} | O1.5 @ {l['o15']:.2f} | SA:{l['sa']}\n"
         msg += f"\n💰 *{m['odds']:,.0f}x*\n💵 ₦1,000 → *₦{m['ret_1k']:,}*\n"
         msg += f"📊 Conf: {m['avg_conf']:.0f}% | SA: {m['avg_sa']:.1f}\n"
-        msg += f"🌍 {', '.join(m['leagues'].keys())}\n{'─'*30}\n"
-    msg += f"\n🔒 *Pure odds-based — no matchup dependency*\n⚠️ *Mega = high risk. Gamble responsibly.*"
+        msg += f"🌍 {', '.join(m['leagues'].keys())}\n"
+        # Booking code section
+        if m.get("booking_code"):
+            msg += f"🎫 *BOOKING CODE: {m['booking_code']}*\n"
+            msg += f"📲 Open SportyBet → Load Code → Place Bet\n"
+        else:
+            msg += f"🎫 _Manual booking required (auto-book unavailable)_\n"
+        msg += f"{'─'*30}\n"
+    msg += f"\n🔒 *Pure odds-based — no matchup dependency*\n"
+    msg += f"• Auto-booking enabled 🎫 ({booked_count}/{len(megas)} booked)\n"
+    msg += f"⚠️ *Mega = high risk. Gamble responsibly.*"
     return msg
 
 
 def run():
     print("="*60)
-    print("🚀 ONIMIX MEGA AUDIT v4.1 — ODDS-BASED")
+    print("🚀 ONIMIX MEGA AUDIT v4.2 — ODDS-BASED + AUTO-BOOK")
     print("="*60)
     start = time.time()
     correction = MegaCorrection()
@@ -221,13 +330,15 @@ def run():
     cands = scan_all()
     print(f"\n📊 Total: {len(cands)}")
     megas, scored = build_megas(cands, proven, correction)
-    print(f"📊 Megas: {len(megas)}")
+    booked = sum(1 for m in megas if m.get("booking_code"))
+    print(f"📊 Megas: {len(megas)} | Booked: {booked}/{len(megas)}")
     msg = format_msg(megas, len(cands))
     send_telegram(msg)
     elapsed = time.time() - start
     print(f"\n⏱️ Done in {elapsed:.1f}s")
-    return {"status": "success", "version": "4.1", "method": "ODDS-BASED MEGA",
-            "candidates": len(cands), "megas": len(megas), "elapsed": round(elapsed,1)}
+    return {"status": "success", "version": "4.2", "method": "ODDS-BASED MEGA + AUTOBOOK",
+            "candidates": len(cands), "megas": len(megas), "booked": booked,
+            "elapsed": round(elapsed,1)}
 
 if __name__ == "__main__":
     print(json.dumps(run(), indent=2, default=str))
