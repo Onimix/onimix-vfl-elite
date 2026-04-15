@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ONIMIX VFL ELITE — Slip Picker v3.2
+ONIMIX VFL ELITE — Slip Picker v3.3
 ====================================
 PURE ODDS-BASED PREDICTION ENGINE + AUTO-BOOKING
 Uses commonThumbnailEvents for discovery + individual event detail for markets.
@@ -148,40 +148,66 @@ def send_telegram(message):
 
 
 def load_proven_odds():
+    """Load proven odds from GitHub — handles clean or double-encoded JSON."""
     try:
         url = f"{GH_RAW}/data/proven_odds.json"
-        req = urllib.request.Request(url, headers={"User-Agent": "ONIMIX/3.2", "Cache-Control": "no-cache"})
+        req = urllib.request.Request(url, headers={"User-Agent": "ONIMIX/3.3", "Cache-Control": "no-cache"})
         with urllib.request.urlopen(req, timeout=15) as r:
-            return json.loads(r.read().decode())
-    except:
+            raw = r.read().decode()
+        try:
+            return json.loads(raw)
+        except json.JSONDecodeError:
+            pass
+        try:
+            return json.loads(raw.replace("\\n", "\n").replace("\\t", "\t"))
+        except json.JSONDecodeError:
+            pass
+        try:
+            return json.loads(json.loads(raw))
+        except:
+            pass
+        print("  ⚠️ Could not parse proven_odds.json")
+        return {}
+    except Exception as e:
+        print(f"  ⚠️ Could not load proven odds: {e}")
         return {}
 
 
 def get_proven_boost(odds_value, league, proven_data):
+    """Get boost/penalty from proven odds database. Uses correct keys."""
     if not proven_data:
-        return 0, "No data"
+        return 0, "No proven data"
     boost = 0
     reasons = []
-    for bucket, stats in proven_data.get("by_odds_bucket", {}).items():
+    # 1. ODDS BUCKETS (correct key: "odds_buckets")
+    for bucket, stats in proven_data.get("odds_buckets", {}).items():
         try:
             parts = bucket.replace("[","").replace(")","").split("-")
             lo, hi = float(parts[0]), float(parts[1])
             if lo <= odds_value < hi:
                 hr = stats.get("hit_rate", 0)
+                if hr <= 1: hr *= 100  # convert 0.75 -> 75
                 ct = stats.get("total", 0)
-                if ct >= 3 and hr >= 75:
-                    boost += 3; reasons.append(f"Proven {hr:.0f}%")
-                elif ct >= 3 and hr < 40:
-                    boost -= 3; reasons.append(f"Danger {hr:.0f}%")
+                if ct >= 3:
+                    if hr >= 75: boost += 3; reasons.append(f"Odds bucket {hr:.0f}%")
+                    elif hr < 40: boost -= 3; reasons.append(f"⚠️ Danger bucket {hr:.0f}%")
+                elif ct >= 1 and hr >= 70:
+                    boost += 1; reasons.append(f"Odds early {hr:.0f}%")
                 break
         except: continue
-    for lg, stats in proven_data.get("by_league", {}).items():
+    # 2. LEAGUE STATS (correct key: "league_stats")
+    for lg, stats in proven_data.get("league_stats", {}).items():
         if league.lower() in lg.lower():
             hr = stats.get("hit_rate", 0)
-            if stats.get("total", 0) >= 3 and hr >= 75:
-                boost += 2; reasons.append(f"{league} proven")
+            if hr <= 1: hr *= 100
+            if stats.get("total", 0) >= 5:
+                if hr >= 75: boost += 2; reasons.append(f"{league} league {hr:.0f}%")
+                elif hr < 45: boost -= 2; reasons.append(f"⚠️ {league} weak {hr:.0f}%")
             break
-    return boost, " | ".join(reasons) if reasons else "Neutral"
+    # 3. SA SCORE STATS
+    sa_stats = proven_data.get("sa_score_stats", {})
+    # (SA checked at confidence level in main logic)
+    return max(-5, min(5, boost)), " | ".join(reasons) if reasons else "Neutral"
 
 
 def parse_markets(markets):
@@ -398,7 +424,7 @@ def build_slips(scored):
 
 def format_message(slips, stats):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    msg = f"🎯 *ONIMIX VFL ELITE v3.2*\n📊 *ODDS-BASED ENGINE + AUTO-BOOK*\n⏰ {now}\n{'='*35}\n\n"
+    msg = f"🎯 *ONIMIX VFL ELITE v3.3*\n📊 *ODDS-BASED ENGINE + AUTO-BOOK*\n⏰ {now}\n{'='*35}\n\n"
     msg += f"🔍 *Scan:* {stats['leagues']} leagues, {stats['scanned']} matches\n"
     msg += f"🎯 *Sweet spot:* {stats['candidates']} | After filter: {stats['scored']}\n\n"
     if not slips:
@@ -430,7 +456,7 @@ def format_message(slips, stats):
 
 def run():
     print("="*60)
-    print("🎯 ONIMIX VFL ELITE v3.2 — ODDS-BASED + AUTO-BOOK")
+    print("🎯 ONIMIX VFL ELITE v3.3 — ODDS-BASED + AUTO-BOOK")
     print("="*60)
     start = time.time()
     correction = CorrectionSystem()
@@ -455,7 +481,7 @@ def run():
     send_telegram(msg)
     elapsed = time.time() - start
     print(f"\n⏱️ Done in {elapsed:.1f}s")
-    return {"status": "success", "version": "3.2", "method": "ODDS-BASED+AUTOBOOK",
+    return {"status": "success", "version": "3.3", "method": "ODDS-BASED+AUTOBOOK",
             "stats": stats, "slips_count": len(slips), "booked_count": booked,
             "slips": slips, "scored_picks": scored, "elapsed": round(elapsed, 1)}
 
