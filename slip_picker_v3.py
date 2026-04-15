@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-ONIMIX VFL ELITE — Slip Picker v3.1
+ONIMIX VFL ELITE — Slip Picker v3.2
 ====================================
-PURE ODDS-BASED PREDICTION ENGINE (FIXED)
+PURE ODDS-BASED PREDICTION ENGINE + AUTO-BOOKING
 Uses commonThumbnailEvents for discovery + individual event detail for markets.
 Correct market parsing: id=18 + exact desc match. Odds already decimal.
+AUTO-BOOKS each slip on SportyBet and sends booking codes to Telegram.
 
 Author: ONIMIX TECH
 Date: April 2026
@@ -21,6 +22,7 @@ TELEGRAM_TOKEN = "8548617749:AAENDPXnXb0Rcr453me-7rIMfE6E28nS_Ow"
 TELEGRAM_CHAT_ID = "1745848158"
 GH_RAW = "https://raw.githubusercontent.com/Onimix/onimix-vfl-elite/main"
 API_BASE = "https://www.sportybet.com/api/ng/factsCenter"
+BOOKING_URL = "https://www.sportybet.com/api/ng/orders/share"
 
 LEAGUES = {
     "Spain":   {"league_id": "sv:league:2"},
@@ -116,6 +118,20 @@ def api_get(url, timeout=15):
         return {"error": str(e)}
 
 
+def api_post(url, payload, timeout=15):
+    """POST JSON to SportyBet API."""
+    try:
+        data = json.dumps(payload).encode("utf-8")
+        req = urllib.request.Request(url, data=data, headers={
+            **HEADERS,
+            "Content-Type": "application/json",
+        })
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return json.loads(resp.read().decode())
+    except Exception as e:
+        return {"error": str(e)}
+
+
 def send_telegram(message):
     try:
         url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
@@ -134,7 +150,7 @@ def send_telegram(message):
 def load_proven_odds():
     try:
         url = f"{GH_RAW}/data/proven_odds.json"
-        req = urllib.request.Request(url, headers={"User-Agent": "ONIMIX/3.1", "Cache-Control": "no-cache"})
+        req = urllib.request.Request(url, headers={"User-Agent": "ONIMIX/3.2", "Cache-Control": "no-cache"})
         with urllib.request.urlopen(req, timeout=15) as r:
             return json.loads(r.read().decode())
     except:
@@ -169,15 +185,23 @@ def get_proven_boost(odds_value, league, proven_data):
 
 
 def parse_markets(markets):
-    """Parse prematch markets correctly. Key: market id=18 has multiple lines."""
+    """Parse prematch markets correctly. Key: market id=18 has multiple lines.
+    Also extracts outcomeId for Over 1.5 for booking purposes."""
     o15 = o25 = home_o05 = away_o05 = btts = 0
+    o15_outcome_id = None
+    o15_specifier = None
     sa = 0
     for m in markets:
         mid = str(m.get("id", ""))
+        specifier = m.get("specifier", "")
         for o in m.get("outcomes", []):
             desc = str(o.get("desc", ""))
             val = float(o.get("odds", 0))
-            if mid == "18" and desc == "Over 1.5": o15 = val
+            oid = str(o.get("id", ""))
+            if mid == "18" and desc == "Over 1.5":
+                o15 = val
+                o15_outcome_id = oid
+                o15_specifier = specifier if specifier else "total=1.5"
             elif mid == "18" and desc == "Over 2.5": o25 = val
             elif mid == "19" and desc == "Over 0.5": home_o05 = val
             elif mid == "20" and desc == "Over 0.5": away_o05 = val
@@ -197,7 +221,12 @@ def parse_markets(markets):
     if btts > 0:
         if btts <= 1.80: sa += 2
         elif btts <= 2.20: sa += 1
-    return {"o15": o15, "o25": o25, "home_o05": home_o05, "away_o05": away_o05, "btts": btts, "sa_score": min(sa, 14)}
+    return {
+        "o15": o15, "o25": o25, "home_o05": home_o05, "away_o05": away_o05,
+        "btts": btts, "sa_score": min(sa, 14),
+        "o15_outcome_id": o15_outcome_id,
+        "o15_specifier": o15_specifier,
+    }
 
 
 def discover_upcoming(league_name, league_id):
@@ -218,6 +247,7 @@ def discover_upcoming(league_name, league_id):
         eid = evt["eventId"]
         home = evt.get("homeTeamName", "?")
         away = evt.get("awayTeamName", "?")
+        game_id = evt.get("gameId", "")
         edata = api_get(f"{API_BASE}/event?eventId={eid}", timeout=10)
         event = edata.get("data", {})
         if not event:
@@ -231,10 +261,12 @@ def discover_upcoming(league_name, league_id):
             continue
         print(f"    ✅ {home} vs {away} — O1.5: {o15:.2f}, SA: {sa}")
         candidates.append({
-            "event_id": eid, "league": league_name,
+            "event_id": eid, "game_id": game_id, "league": league_name,
             "home": home, "away": away, "match": f"{home} vs {away}",
             "o15_odds": o15, "sa_score": sa,
             "o25": parsed["o25"], "btts": parsed["btts"],
+            "o15_outcome_id": parsed["o15_outcome_id"],
+            "o15_specifier": parsed["o15_specifier"],
             "match_key": f"{league_name}_{home}_{away}",
         })
         time.sleep(0.2)
@@ -255,6 +287,71 @@ def select_and_score(candidates, proven_data, correction):
         scored.append({**c, "confidence": round(conf, 1), "proven_boost": boost, "proven_reason": reason})
     scored.sort(key=lambda x: x["confidence"], reverse=True)
     return scored
+
+
+def generate_booking_code(selections):
+    """Generate SportyBet booking code for a list of selections.
+    Each selection needs: eventId, marketId, specifier, outcomeId.
+    Returns the share/booking code or None on failure."""
+    if not selections:
+        return None
+
+    payload = {
+        "selections": selections
+    }
+
+    # Try SportyBet share endpoint
+    result = api_post(BOOKING_URL, payload)
+    if "error" in result:
+        print(f"  ⚠️ Booking API error: {result['error']}")
+        # Try alternate endpoint format
+        alt_url = "https://www.sportybet.com/api/ng/orders/share"
+        result = api_post(alt_url, {"outcomes": selections})
+        if "error" in result:
+            return None
+
+    # Extract share code from response
+    data = result.get("data", result)
+    if isinstance(data, dict):
+        code = data.get("shareCode") or data.get("code") or data.get("betId")
+        if code:
+            return str(code)
+
+    # Try extracting from top-level
+    code = result.get("shareCode") or result.get("code")
+    if code:
+        return str(code)
+
+    print(f"  ℹ️ Booking response: {json.dumps(result)[:200]}")
+    return None
+
+
+def book_slip(slip_legs):
+    """Book a slip on SportyBet. Returns booking code or None."""
+    selections = []
+    for leg in slip_legs:
+        event_id = leg.get("event_id", "")
+        outcome_id = leg.get("o15_outcome_id", "")
+        specifier = leg.get("o15_specifier", "total=1.5")
+
+        if not event_id or not outcome_id:
+            print(f"  ⚠️ Missing booking data for {leg.get('match', '?')}")
+            continue
+
+        selections.append({
+            "eventId": event_id,
+            "marketId": "18",
+            "specifier": specifier,
+            "outcomeId": outcome_id,
+        })
+
+    if len(selections) < len(slip_legs):
+        print(f"  ⚠️ Only {len(selections)}/{len(slip_legs)} legs have booking data")
+        if not selections:
+            return None
+
+    code = generate_booking_code(selections)
+    return code
 
 
 def build_slips(scored):
@@ -280,19 +377,28 @@ def build_slips(scored):
         if len(selected) < n: continue
         combo = 1.0
         for s in selected: combo *= s["o15_odds"]
+
+        # Generate booking code for this slip
+        booking_code = book_slip(selected)
+        if booking_code:
+            print(f"  🎫 {cfg['name']} booked: {booking_code}")
+        else:
+            print(f"  ⚠️ {cfg['name']} booking failed — picks still valid")
+
         slips.append({
             "name": cfg["name"], "legs": selected, "num_legs": len(selected),
             "combined_odds": round(combo, 2),
             "avg_confidence": round(sum(s["confidence"] for s in selected)/len(selected), 1),
             "avg_sa": round(sum(s["sa_score"] for s in selected)/len(selected), 1),
             "potential_1k": round(1000 * combo),
+            "booking_code": booking_code,
         })
     return slips
 
 
 def format_message(slips, stats):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    msg = f"🎯 *ONIMIX VFL ELITE v3.1*\n📊 *ODDS-BASED ENGINE*\n⏰ {now}\n{'='*35}\n\n"
+    msg = f"🎯 *ONIMIX VFL ELITE v3.2*\n📊 *ODDS-BASED ENGINE + AUTO-BOOK*\n⏰ {now}\n{'='*35}\n\n"
     msg += f"🔍 *Scan:* {stats['leagues']} leagues, {stats['scanned']} matches\n"
     msg += f"🎯 *Sweet spot:* {stats['candidates']} | After filter: {stats['scored']}\n\n"
     if not slips:
@@ -306,17 +412,25 @@ def format_message(slips, stats):
             msg += f"   📊 SA: {leg['sa_score']} | Conf: {leg['confidence']:.0f}%\n"
         msg += f"\n💰 Combined: *{slip['combined_odds']:.2f}x*\n"
         msg += f"💵 ₦1,000 → ₦{slip['potential_1k']:,}\n"
-        msg += f"📊 Avg Conf: {slip['avg_confidence']:.0f}% | SA: {slip['avg_sa']:.1f}\n{'─'*30}\n"
+        msg += f"📊 Avg Conf: {slip['avg_confidence']:.0f}% | SA: {slip['avg_sa']:.1f}\n"
+        # Booking code section
+        if slip.get("booking_code"):
+            msg += f"🎫 *BOOKING CODE: {slip['booking_code']}*\n"
+            msg += f"📲 Open SportyBet → Load Code → Place Bet\n"
+        else:
+            msg += f"🎫 _Manual booking required (auto-book unavailable)_\n"
+        msg += f"{'─'*30}\n"
     msg += f"\n🔒 *Pure odds-based — zero matchup dependency*\n"
     msg += f"• Sweet spot: {MIN_ODDS}-{MAX_ODDS} | SA ≥ {MIN_SA_SCORE}\n"
     msg += f"• Proven odds DB + 5-rule correction ✅\n"
+    msg += f"• Auto-booking enabled 🎫\n"
     msg += f"\n⚠️ *Gamble responsibly.*"
     return msg
 
 
 def run():
     print("="*60)
-    print("🎯 ONIMIX VFL ELITE v3.1 — ODDS-BASED ENGINE")
+    print("🎯 ONIMIX VFL ELITE v3.2 — ODDS-BASED + AUTO-BOOK")
     print("="*60)
     start = time.time()
     correction = CorrectionSystem()
@@ -334,14 +448,16 @@ def run():
     print(f"📊 After scoring: {len(scored)}")
     slips = build_slips(scored)
     print(f"📊 Slips: {len(slips)}")
+    booked = sum(1 for s in slips if s.get("booking_code"))
+    print(f"🎫 Booked: {booked}/{len(slips)} slips")
     stats = {"leagues": len(LEAGUES), "scanned": total_scanned, "candidates": len(all_cands), "scored": len(scored)}
     msg = format_message(slips, stats)
     send_telegram(msg)
     elapsed = time.time() - start
     print(f"\n⏱️ Done in {elapsed:.1f}s")
-    return {"status": "success", "version": "3.1", "method": "ODDS-BASED",
-            "stats": stats, "slips_count": len(slips), "slips": slips,
-            "scored_picks": scored, "elapsed": round(elapsed, 1)}
+    return {"status": "success", "version": "3.2", "method": "ODDS-BASED+AUTOBOOK",
+            "stats": stats, "slips_count": len(slips), "booked_count": booked,
+            "slips": slips, "scored_picks": scored, "elapsed": round(elapsed, 1)}
 
 if __name__ == "__main__":
     result = run()
