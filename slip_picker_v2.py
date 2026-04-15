@@ -20,6 +20,46 @@ TG_TOKEN = "8548617749:AAENDPXnXb0Rcr453me-7rIMfE6E28nS_Ow"
 TG_CHAT = "1745848158"
 SWEET = (1.38, 1.60)
 MEMORY_FILE = "/tmp/onimix_failure_memory.json"
+PROVEN_ODDS_URL = 'https://raw.githubusercontent.com/Onimix/onimix-vfl-elite/main/data/proven_odds.json'
+
+def load_proven_odds():
+    """Load proven odds database from GitHub (built by Odds Tracker agent)."""
+    try:
+        req = urllib.request.Request(PROVEN_ODDS_URL, headers={
+            'User-Agent': 'Mozilla/5.0', 'Cache-Control': 'no-cache'
+        })
+        ctx = ssl.create_default_context()
+        with urllib.request.urlopen(req, timeout=15, context=ctx) as r:
+            return json.loads(r.read().decode())
+    except:
+        return {}
+
+def get_proven_odds_boost(odds_value, matchup_key, proven_data):
+    """Check proven odds DB for confidence boost/penalty."""
+    if not proven_data or proven_data.get('total_settled', 0) < 20:
+        return 0, "insufficient data"
+    boost = 0
+    reasons = []
+    buckets = proven_data.get('odds_buckets', {})
+    for bk, bv in buckets.items():
+        try:
+            lo, hi = float(bk.split('-')[0]), float(bk.split('-')[1])
+            if lo <= odds_value <= hi and bv.get('reliable', False):
+                rate = bv.get('hit_rate', 0)
+                if rate >= 0.80: boost += 2; reasons.append(f"@{bk} {rate*100:.0f}%")
+                elif rate >= 0.70: boost += 1; reasons.append(f"@{bk} {rate*100:.0f}%")
+                elif rate < 0.50: boost -= 2; reasons.append(f"@{bk} DANGER")
+                break
+        except: pass
+    matchup_odds = proven_data.get('matchup_odds', {})
+    if matchup_key in matchup_odds:
+        mo = matchup_odds[matchup_key]
+        if mo.get('reliable', False):
+            mrate = mo.get('hit_rate', 0)
+            if mrate >= 0.85: boost += 3; reasons.append(f"matchup {mrate*100:.0f}%")
+            elif mrate >= 0.70: boost += 1; reasons.append(f"matchup {mrate*100:.0f}%")
+            elif mrate < 0.50: boost -= 3; reasons.append(f"matchup TRAP {mrate*100:.0f}%")
+    return boost, " | ".join(reasons) if reasons else "no data"
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36',
@@ -646,6 +686,14 @@ def run():
     # Initialize Correction System
     cs = CorrectionSystem()
     print("\n🛡️ Correction System loaded")
+
+    # Load proven odds database
+    proven_data = load_proven_odds()
+    if proven_data and proven_data.get('total_settled', 0) > 0:
+        print(f"📊 Proven Odds: {proven_data.get('total_settled',0)} settled, "
+              f"{proven_data.get('overall_hit_pct','N/A')} hit rate")
+    else:
+        print("📊 Proven Odds: building database...")
     mem_count = len(cs.memory.get("failures", []))
     print(f"   Memory: {mem_count} recorded failures")
 
@@ -754,6 +802,17 @@ def run():
                 })
                 continue
 
+            # RULE 6: PROVEN ODDS CHECK
+            matchup_key = f"{lg}:{home} vs {away}"
+            po_boost, po_reason = get_proven_odds_boost(ou15_odds, matchup_key, proven_data)
+            if po_boost <= -3:
+                print(f"  🚫 RULE6 SKIP {home}v{away}: PROVEN TRAP — {po_reason}")
+                skipped_corrections.append({
+                    'home': home, 'away': away, 'rule': 'PROVEN_ODDS',
+                    'reason': po_reason
+                })
+                continue
+
             # Get outcomeId for Over 1.5
             oid = ''
             for m in ev.get('markets', []):
@@ -770,13 +829,15 @@ def run():
                 'kickoff': ko, 'est': est,
                 'adj_confidence': adj_confidence,
                 'signals': sig_count,
-                'combined': (sa_score * adj_confidence) + (14 if tier == 'GOLD' else 13),
+                'combined': (sa_score * adj_confidence) + (14 if tier == 'GOLD' else 13) + po_boost,
+                'proven_boost': po_boost,
             }
             all_candidates.append(candidate)
             flag = '🇪🇸' if lg == 'spain' else '🇩🇪'
             tier_icon = '🥇' if tier == 'GOLD' else '🥈'
+            po_tag = f" PO={po_boost:+d}" if po_boost != 0 else ""
             print(f"  ✅ {flag}{tier_icon} {home}v{away} SA={sa_score} @{ou15_odds:.2f} "
-                  f"conf={adj_confidence:.2f} sigs={sig_count} KO={ko}")
+                  f"conf={adj_confidence:.2f} sigs={sig_count}{po_tag} KO={ko}")
 
     if not all_candidates:
         print("\n❌ No qualified picks after correction system filtering.")

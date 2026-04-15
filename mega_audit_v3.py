@@ -28,6 +28,81 @@ SWEET = (1.38, 1.60)
 MIN_SA = 6
 TARGET_ODDS = 20000
 MEMORY_FILE = "/tmp/onimix_failure_memory.json"
+PROVEN_ODDS_URL = f'https://raw.githubusercontent.com/Onimix/onimix-vfl-elite/main/data/proven_odds.json'
+
+# ══════════════════════════════════════════════════════════════════════
+# PROVEN ODDS INTEGRATION (from Odds Tracker v1.0)
+# ══════════════════════════════════════════════════════════════════════
+
+def load_proven_odds():
+    """Load proven odds database from GitHub (built by Odds Tracker agent)."""
+    try:
+        req = urllib.request.Request(PROVEN_ODDS_URL, headers={
+            'User-Agent': 'Mozilla/5.0', 'Cache-Control': 'no-cache'
+        })
+        ctx = ssl.create_default_context()
+        with urllib.request.urlopen(req, timeout=15, context=ctx) as r:
+            data = json.loads(r.read().decode())
+        return data
+    except:
+        return {}
+
+def get_proven_odds_boost(odds_value, matchup_key, proven_data):
+    """
+    Check if this odds value and matchup have a proven track record.
+    Returns (boost, reason):
+      boost > 0: confidence boost (proven winner)
+      boost < 0: confidence penalty (proven loser)
+      boost = 0: no data
+    """
+    if not proven_data or proven_data.get('total_settled', 0) < 20:
+        return 0, "insufficient data"
+
+    boost = 0
+    reasons = []
+
+    # Check odds bucket hit rate
+    buckets = proven_data.get('odds_buckets', {})
+    for bk, bv in buckets.items():
+        try:
+            lo = float(bk.split('-')[0])
+            hi = float(bk.split('-')[1])
+            if lo <= odds_value <= hi and bv.get('reliable', False):
+                rate = bv.get('hit_rate', 0)
+                if rate >= 0.80:
+                    boost += 2
+                    reasons.append(f"odds@{bk} {rate*100:.0f}% hit")
+                elif rate >= 0.70:
+                    boost += 1
+                    reasons.append(f"odds@{bk} {rate*100:.0f}% hit")
+                elif rate < 0.50:
+                    boost -= 2
+                    reasons.append(f"odds@{bk} DANGER {rate*100:.0f}%")
+                break
+        except:
+            pass
+
+    # Check matchup-specific odds performance
+    matchup_odds = proven_data.get('matchup_odds', {})
+    if matchup_key in matchup_odds:
+        mo = matchup_odds[matchup_key]
+        if mo.get('reliable', False):
+            mrate = mo.get('hit_rate', 0)
+            if mrate >= 0.85:
+                boost += 3
+                reasons.append(f"matchup {mrate*100:.0f}% proven")
+            elif mrate >= 0.70:
+                boost += 1
+                reasons.append(f"matchup {mrate*100:.0f}% OK")
+            elif mrate < 0.50:
+                boost -= 3
+                reasons.append(f"matchup {mrate*100:.0f}% TRAP")
+
+    # Check SA score correlation
+    sa_stats = proven_data.get('sa_score_stats', {})
+
+    reason = " | ".join(reasons) if reasons else "no proven data"
+    return boost, reason
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36',
@@ -436,6 +511,14 @@ def run_mega_audit():
     cs = CorrectionSystem()
     print(f"\n🛡️ Correction System: {len(cs.memory.get('failures',[]))} failures in memory")
 
+    # Load proven odds database from Odds Tracker
+    proven_data = load_proven_odds()
+    if proven_data and proven_data.get('total_settled', 0) > 0:
+        print(f"📊 Proven Odds loaded: {proven_data.get('total_settled',0)} settled, "
+              f"{proven_data.get('overall_hit_pct','N/A')} hit rate")
+    else:
+        print("📊 Proven Odds: no data yet (tracker building database)")
+
     # Pre-fetch yesterday & recent results
     yesterday = {}
     recent = {}
@@ -515,6 +598,15 @@ def run_mega_audit():
                            'reason': f"{sigs}/2: {sig_d}"})
             continue
 
+        # RULE 6: PROVEN ODDS CHECK (from Odds Tracker database)
+        matchup_key = f"{lg}:{home} vs {away}"
+        po_boost, po_reason = get_proven_odds_boost(odds, matchup_key, proven_data)
+        if po_boost <= -3:
+            print(f"  🚫 R6 {home}v{away}: PROVEN TRAP — {po_reason}")
+            skipped.append({'match': f"{home}v{away}", 'rule': 'PROVEN_ODDS',
+                           'reason': po_reason})
+            continue
+
         # Get outcomeId
         oid = ''
         for m in ev.get('markets', []):
@@ -523,17 +615,20 @@ def run_mega_audit():
                     if 'over' in o.get('desc','').lower():
                         oid = str(o.get('id',''))
 
-        combined = (sa * adj_conf) + (14 if tier == 'GOLD' else 13)
+        # Combined score now includes proven odds boost
+        combined = (sa * adj_conf) + (14 if tier == 'GOLD' else 13) + po_boost
         candidates.append({
             'home': home, 'away': away, 'league': lg,
             'tier': tier, 'hist_rate': hist_rate, 'sa_score': sa,
             'odds': odds, 'eventId': ev.get('eventId',''),
             'outcomeId': oid, 'kickoff': ko, 'est': est,
             'adj_confidence': adj_conf, 'signals': sigs,
-            'combined': combined
+            'combined': combined, 'proven_boost': po_boost,
+            'proven_reason': po_reason
         })
         fl = '🇪🇸' if lg == 'spain' else '🇩🇪'
-        print(f"  ✅ {fl} {home}v{away} [{tier}] SA={sa} @{odds:.2f} conf={adj_conf:.2f}")
+        po_tag = f" PO={po_boost:+d}" if po_boost != 0 else ""
+        print(f"  ✅ {fl} {home}v{away} [{tier}] SA={sa} @{odds:.2f} conf={adj_conf:.2f}{po_tag}")
 
     if not candidates:
         print("\nNo qualified candidates after corrections.")
