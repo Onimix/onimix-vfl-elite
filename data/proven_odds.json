@@ -1,0 +1,285 @@
+{
+  "last_updated": "2026-04-15T07:38:41.977943+01:00",
+  "total_settled": 19,
+  "overall_hit_rate": 0.7368,
+  "overall_hit_pct": "73.7%",
+  "sweet_spot_analysis": {
+    "1.38-1.60": {
+      "total": 7,
+      "won": 5,
+      "hit_rate": 0.7143,
+      "hit_pct": "71.4%"
+    },
+    "outside_sweet": {
+      "total": 12,
+      "won": 9,
+      "hit_rate": 0.75,
+      "hit_pct": "75.0%"
+    }
+  },
+  "odds_buckets": {
+    "1.20-1.24": {
+      "total": 1,
+      "won": 1,
+      "lost": 0,
+      "hit_rate": 1.0,
+      "hit_pct": "100.0%",
+      "reliable": false
+    },
+    "1.25-1.29": {
+      "total": 4,
+      "won": 4,
+      "lost": 0,
+      "hit_rate": 1.0,
+      "hit_pct": "100.0%",
+      "reliable": false
+    },
+    "1.30-1.34": {
+      "total": 3,
+      "won": 2,
+      "lost": 1,
+      "hit_rate": 0.6667,
+      "hit_pct": "66.7%",
+      "reliable": false
+    },
+    "1.35-1.39": {
+      "total": 4,
+      "won": 2,
+      "lost": 2,
+      "hit_rate": 0.5,
+      "hit_pct": "50.0%",
+      "reliable": false
+    },
+    "1.40-1.44": {
+      "total": 3,
+      "won": 2,
+      "lost": 1,
+      "hit_rate": 0.6667,
+      "hit_pct": "66.7%",
+      "reliable": false
+    },
+    "1.45-1.49": {
+      "total": 2,
+      "won": 2,
+      "lost": 0,
+      "hit_rate": 1.0,
+      "hit_pct": "100.0%",
+      "reliable": false
+    },
+    "1.50-1.54": {
+      "total": 1,
+      "won": 1,
+      "lost": 0,
+      "hit_rate": 1.0,
+      "hit_pct": "100.0%",
+      "reliable": false
+    },
+    "1.60-1.64": {
+      "total": 1,
+      "won": 0,
+      "lost": 1,
+      "hit_rate": 0.0,
+      "hit_pct": "0.0%",
+      "reliable": false
+    }
+  },
+  "league_stats": {
+    "germany": {
+      "total": 9,
+      "won": 7,
+      "hit_rate": 0.7778,
+      "hit_pct": "77.8%"
+    },
+    "italy": {
+      "total": 10,
+      "won": 7,
+      "hit_rate": 0.7,
+      "hit_pct": "70.0%"
+    }
+  },
+  "sa_score_stats": {
+    "5": {
+      "total": 1,
+      "won": 0,
+      "hit_rate": 0.0,
+      "hit_pct": "0.0%"
+    },
+    "6": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "hit_pct": "100.0%"
+    },
+    "8": {
+      "total": 6,
+      "won": 4,
+      "hit_rate": 0.6667,
+      "hit_pct": "66.7%"
+    },
+    "9": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "hit_pct": "100.0%"
+    },
+    "10": {
+      "total": 2,
+      "won": 1,
+      "hit_rate": 0.5,
+      "hit_pct": "50.0%"
+    },
+    "11": {
+      "total": 3,
+      "won": 2,
+      "hit_rate": 0.6667,
+      "hit_pct": "66.7%"
+    },
+    "12": {
+      "total": 4,
+      "won": 4,
+      "hit_rate": 1.0,
+      "hit_pct": "100.0%"
+    },
+    "13": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "hit_pct": "100.0%"
+    }
+  },
+  "matchup_odds": {
+    "germany:HDH vs STP": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.32,
+      "reliable": false
+    },
+    "germany:HSV vs BMU": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.2,
+      "reliable": false
+    },
+    "germany:LEV vs SCF": {
+      "total": 1,
+      "won": 0,
+      "hit_rate": 0.0,
+      "avg_odds": 1.34,
+      "reliable": false
+    },
+    "germany:RBL vs SVW": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.48,
+      "reliable": false
+    },
+    "germany:SGE vs KOE": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.35,
+      "reliable": false
+    },
+    "germany:TSG vs BMG": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.28,
+      "reliable": false
+    },
+    "germany:UNI vs BVB": {
+      "total": 1,
+      "won": 0,
+      "hit_rate": 0.0,
+      "avg_odds": 1.41,
+      "reliable": false
+    },
+    "germany:VFB vs MAI": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.29,
+      "reliable": false
+    },
+    "germany:WOB vs FCA": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.29,
+      "reliable": false
+    },
+    "italy:ACM vs LEC": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.37,
+      "reliable": false
+    },
+    "italy:ATA vs UDI": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.41,
+      "reliable": false
+    },
+    "italy:CAG vs PIS": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.27,
+      "reliable": false
+    },
+    "italy:GEN vs FIO": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.46,
+      "reliable": false
+    },
+    "italy:NAP vs LAZ": {
+      "total": 1,
+      "won": 0,
+      "hit_rate": 0.0,
+      "avg_odds": 1.35,
+      "reliable": false
+    },
+    "italy:PAR vs BFC": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.52,
+      "reliable": false
+    },
+    "italy:ROM vs JUV": {
+      "total": 1,
+      "won": 0,
+      "hit_rate": 0.0,
+      "avg_odds": 1.39,
+      "reliable": false
+    },
+    "italy:TOR vs COM": {
+      "total": 1,
+      "won": 0,
+      "hit_rate": 0.0,
+      "avg_odds": 1.62,
+      "reliable": false
+    },
+    "italy:USC vs SAS": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.41,
+      "reliable": false
+    },
+    "italy:VER vs INT": {
+      "total": 1,
+      "won": 1,
+      "hit_rate": 1.0,
+      "avg_odds": 1.3,
+      "reliable": false
+    }
+  }
+}
